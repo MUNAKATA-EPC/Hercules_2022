@@ -15,19 +15,29 @@ DSR1202 dsr1202(1);
 #include <control_LED.h>
 
 void setup() {
+
   startup();
+
 }
 
 void loop() {
+
   Serial_receive();
   print_LCD();
   control_LED();
 
   if ((state_LCD == 4) && (state_white == 1) && (switch_program == HIGH)) {
+
     //オフェンスプログラム
+
   } else if ((state_LCD == 5) && (state_white == 1) && (switch_program == HIGH)) {
+
     //ディフェンスプログラム
+
   } else if ((state_LCD == 6) && (state_white == 1) && (switch_program == HIGH)) {
+
     dsr1202.move(10, 10, 10, 10);
+
   }
+  
 }
