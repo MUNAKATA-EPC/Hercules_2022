@@ -30,4 +30,4 @@ void loop() {
   } else if ((state_LCD == 6) && (state_white == 1) && (switch_program == HIGH)) {
     dsr1202.move(10, 10, 10, 10);
   }
-}
+}//ふじたきよゆきが編集しました
