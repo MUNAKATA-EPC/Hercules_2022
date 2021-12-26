@@ -1,4 +1,5 @@
 void startup() {
+
   pinMode(button_LCD, INPUT);
   pinMode(switch_program, INPUT);
   pinMode(button_white, INPUT);
@@ -54,4 +55,5 @@ void startup() {
   noTone(buzzer);
 
   lcd.clear(); //LCD表示の全削除
+  
 }
