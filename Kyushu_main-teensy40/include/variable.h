@@ -11,13 +11,17 @@ int USS4 = 0;
 
 int IMU; //IMU値
 
-int val_LCD = 0;  //タクトスイッチの状態
-int old_val_LCD = 0;  //val_LCDの直前の値の保存
-int state_LCD = 0;  //LCDの表示情報
+class Class1 {
+private:
 
-int val_white = 0;  //白いボタンの状態
-int old_val_white = 0;  //val_whiteの直前の値の保存
-int state_white = 0;  //プログラムモード
+public:
+  int val = 0;
+  int old_val = 0;
+  int state = 0;
+};
+
+Class1 LCD;
+Class1 white;
 
 double timer;
 double timer_start = 0.00;
@@ -30,3 +34,10 @@ double O = 30; //操作分母量
 double W, V = 0;
 double X, Z = 0;
 double A, B, C = 0;
+
+int motor_1;
+int motor_2;
+int motor_3;
+int motor_4;
+
+int G, H, I, J; //最終操作量
