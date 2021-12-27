@@ -6,7 +6,7 @@ void print_LCD() {
 
     state_LCD = state_LCD + 1;
     
-    if (state_LCD >= 7) {
+    if (state_LCD >= 6) {
 
       state_LCD = 0;
 
@@ -18,7 +18,7 @@ void print_LCD() {
   
   old_val_LCD = val_LCD;
 
-  if ((state_LCD == 4) || (state_LCD == 5) || (state_LCD == 6)) {
+  if ((state_LCD == 4) || (state_LCD == 5)) {
 
     val_white = digitalRead(button_white);
     
@@ -196,18 +196,56 @@ void print_LCD() {
 
     lcd.setCursor(0, 0);
     lcd.print("rads:");
-    lcd.setCursor(5, 0);
-    lcd.print("num");
+
+    if (CAM_angle < 10) {
+
+      lcd.setCursor(5, 0);
+      lcd.print("00");
+      lcd.setCursor(7, 0);
+      lcd.print(CAM_angle);
+
+    } else if (CAM_angle < 100) {
+
+      lcd.setCursor(5, 0);
+      lcd.print("0");
+      lcd.setCursor(6, 0);
+      lcd.print(CAM_angle);
+
+    } else {
+
+      lcd.setCursor(5, 1);
+      lcd.print(CAM_angle);
+
+    }
 
     lcd.setCursor(0, 1);
     lcd.print("dis:");
-    lcd.setCursor(4, 1);
-    lcd.print("num");
 
-  } else if (state_LCD == 4) {  //オフェンスモード
+    if (CAM_distance < 10) {
+
+      lcd.setCursor(5, 1);
+      lcd.print("00");
+      lcd.setCursor(7, 1);
+      lcd.print(CAM_distance);
+
+    } else if (CAM_distance < 100) {
+
+      lcd.setCursor(5, 1);
+      lcd.print("0");
+      lcd.setCursor(6, 1);
+      lcd.print(CAM_distance);
+
+    } else {
+
+      lcd.setCursor(5, 1);
+      lcd.print(CAM_distance);
+
+    }
+
+  } else if (state_LCD == 4) {  //ゲームモード
 
     lcd.setCursor(0, 0);
-    lcd.print("Offense");
+    lcd.print("GameMode");
 
     if (state_white == 0) {
 
@@ -221,24 +259,7 @@ void print_LCD() {
 
     }
 
-  } else if (state_LCD == 5) {  //ディフェンスモード
-
-    lcd.setCursor(0, 0);
-    lcd.print("Defence");
-
-    if (state_white == 0) {
-
-      lcd.setCursor(0, 1);
-      lcd.print("Stop");
-
-    } else if (state_white == 1) {
-
-      lcd.setCursor(0, 1);
-      lcd.print("Run");
-
-    }
-
-  } else if (state_LCD == 6) {  //モーターチェック
+  } else if (state_LCD == 5) {  //モーターチェック
 
     lcd.setCursor(0, 0);
     lcd.print("Motor");
