@@ -16,7 +16,35 @@ void pid() {
     A = 30; //上限値
   }
 
-  
-  
-  
+  G = A + motor_1;
+
+  if (G < -30) {
+    G = -30;
+  } else if (G > 30) {
+    G = 30;
+  }
+
+  H = A + motor_2;
+
+  if (H < -30) {
+    H = -30;
+  } else if (H > 30) {
+    H = 30;
+  }
+
+  I = A + motor_3;
+
+  if (I < -30) {
+    I = -30;
+  } else if (I > 30) {
+    I = 30;
+  }
+
+  J = A + motor_4;
+
+  if (J < -30) {
+    J = -30;
+  } else if (J > 30) {
+    J = 30;
+  }
 }
