@@ -1,5 +1,7 @@
 void startup() {
 
+  dsr1202.Init(); //MD準備
+
   pinMode(button_LCD, INPUT);
   pinMode(switch_program, INPUT);
   pinMode(button_white, INPUT);
@@ -12,16 +14,14 @@ void startup() {
   lcd.setCursor(0, 1);
   lcd.print("booting");
 
-  dsr1202.Init(); //MD準備
-
-  Serial.begin(115200);  //USBシリアル通信開始
   Serial3.begin(115200); //USSとのシリアル通信
   Serial4.begin(115200); //IMUとのシリアル通信
 
-  while ((!Serial3) || (!Serial4)) { //接続待機
+  while (!Serial1 || !Serial2 || !Serial3 || !Serial4) { //接続待機
     ;
   }
 
+/*
   tone(buzzer, 1046.502, 1000); //ド6
   delay(1000);
   noTone(buzzer);
@@ -50,10 +50,10 @@ void startup() {
   delay(250);
   noTone(buzzer);
   delay(200);
+*/
   tone(buzzer, 2093.005, 250); //ド7
   delay(250);
   noTone(buzzer);
 
   lcd.clear(); //LCD表示の全削除
-  
 }
