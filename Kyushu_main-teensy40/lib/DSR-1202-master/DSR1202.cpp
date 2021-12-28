@@ -16,7 +16,7 @@ DSR1202::DSR1202(int pin)
 
 void DSR1202::Init()
 {
-	Serial.begin(9600);
+	Serial.begin(115200);
 	
 	if(PinNo == 2)
 	{
