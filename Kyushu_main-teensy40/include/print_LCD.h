@@ -3,6 +3,7 @@ void print_LCD() {
 
   if (LCD.val == LOW && LCD.old_val == HIGH) {
     LCD.state = LCD.state + 1;
+    white.state = 0;
 
     if (LCD.state >= 6) {
       LCD.state = 0;
@@ -30,10 +31,6 @@ void print_LCD() {
   }
   
   if (LCD.state == 0) { //システム全停止
-    if (white.state == 1) {
-      white.state = 0;
-    }
-    
     lcd.setCursor(0, 0);
     lcd.print("System");
     lcd.setCursor(0, 1);
