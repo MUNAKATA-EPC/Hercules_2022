@@ -10,21 +10,20 @@
 #define trigPin4 9  //  右超音波のトリガー
 #define LED 13  //LEDピン
 
-double Duration1 = 0;  //  前からの出力値
-double Distance1 = 0;  //  前の距離
-double Duration2 = 0;  //  左からの出力値
-double Distance2 = 0;  //  左の距離
-double Duration3 = 0;  //  後からの出力値
-double Distance3 = 0;  //  後の距離
-double Duration4 = 0;  //  右からの出力値
-double Distance4 = 0;  //  右の距離
+class ClassA {
+private:
+  
+public:
+  double Duration = 0;
+  double Distance = 0;
+
+  int send_Distance = 0;
+
+};
+
+ClassA front, left, back, right;
 
 int timeout = 20000; //タイムアウト設定値(マイクロ秒)
-
-int send_Distance1;
-int send_Distance2;
-int send_Distance3;
-int send_Distance4;
 
 void setup() {
   pinMode(echoPin1, INPUT);
@@ -57,20 +56,20 @@ void loop() {
 
   digitalWrite(trigPin1, LOW);  //パスル出力終了処理
 
-  Duration1 = pulseIn(echoPin1, HIGH, timeout); //パスル確認処理
+  front.Duration = pulseIn(echoPin1, HIGH, timeout); //パスル確認処理
 
-  if (Duration1 > 0) {  //前超音波
-    Duration1 = Duration1 / 2;
-    Distance1 = Duration1 * 340 * 100 / 1000000;
+  if (front.Duration > 0) {  //前超音波
+    front.Duration = front.Duration / 2;
+    front.Distance = front.Duration * 340 * 100 / 1000000;
 
   }
 
-  if (Distance1 >= 254) {
-    Distance1 = 254;
+  if (front.Distance >= 254) {
+    front.Distance = 254;
 
   }
   
-  Serial.print(Distance1);  //シリアルモニタ用
+  Serial.print(front.Distance);  //シリアルモニタ用
   Serial.print("\t");
 
   digitalWrite(LED, LOW);  //動作確認用LED処理
@@ -83,20 +82,20 @@ void loop() {
 
   digitalWrite(trigPin2, LOW);  //パスル出力終了処理
 
-  Duration2 = pulseIn(echoPin2, HIGH, timeout); //パスル確認処理
+  left.Duration = pulseIn(echoPin2, HIGH, timeout); //パスル確認処理
 
-  if (Duration2 > 0) {  //左超音波
-    Duration2 = Duration2 / 2;
-    Distance2 = Duration2 * 340 * 100 / 1000000;
-
-  }
-
-  if (Distance2 >= 254) {
-    Distance2 = 254;
+  if (left.Duration > 0) {  //左超音波
+    left.Duration = left.Duration / 2;
+    left.Distance = left.Duration * 340 * 100 / 1000000;
 
   }
 
-  Serial.print(Distance2);  //シリアルモニタ用
+  if (left.Distance >= 254) {
+    left.Distance = 254;
+
+  }
+
+  Serial.print(left.Distance);  //シリアルモニタ用
   Serial.print("\t");
 
   digitalWrite(LED, HIGH); //動作確認用LED処理
@@ -109,20 +108,20 @@ void loop() {
 
   digitalWrite(trigPin3, LOW);  //パスル出力終了処理
 
-  Duration3 = pulseIn(echoPin3, HIGH, timeout); //パスル確認処理
+  back.Duration = pulseIn(echoPin3, HIGH, timeout); //パスル確認処理
 
-  if (Duration3 > 0) {  //後超音波
-    Duration3 = Duration3 / 2;
-    Distance3 = Duration3 * 340 * 100 / 1000000;
-
-  }
-
-  if (Distance3 >= 254) {
-    Distance3 = 254;
+  if (back.Duration > 0) {  //後超音波
+    back.Duration = back.Duration / 2;
+    back.Distance = back.Duration * 340 * 100 / 1000000;
 
   }
 
-  Serial.print(Distance3);  //シリアルモニタ用
+  if (back.Distance >= 254) {
+    back.Distance = 254;
+
+  }
+
+  Serial.print(back.Distance);  //シリアルモニタ用
   Serial.print("\t");
 
   digitalWrite(LED, LOW);  //動作確認用LED処理
@@ -135,85 +134,85 @@ void loop() {
 
   digitalWrite(trigPin4, LOW);  //パスル出力終了処理
 
-  Duration4 = pulseIn(echoPin4, HIGH, timeout); //パスル確認処理
+  right.Duration = pulseIn(echoPin4, HIGH, timeout); //パスル確認処理
 
-  if (Duration4 > 0) {  //右超音波
-    Duration4 = Duration4 / 2;
-    Distance4 = Duration4 * 340 * 100 / 1000000;
-
-  }
-
-  if (Distance4 >= 254) {
-    Distance4 = 254;
+  if (right.Duration > 0) {  //右超音波
+    right.Duration = right.Duration / 2;
+    right.Distance = right.Duration * 340 * 100 / 1000000;
 
   }
 
-  Serial.println(Distance4);  //シリアルモニタ用
+  if (right.Distance >= 254) {
+    right.Distance = 254;
 
-  send_Distance1 = Distance1;
-  send_Distance2 = Distance2;
-  send_Distance3 = Distance3;
-  send_Distance4 = Distance4;
+  }
+
+  Serial.println(right.Distance);  //シリアルモニタ用
+
+  front.send_Distance = front.Distance;
+  left.send_Distance = left.Distance;
+  back.send_Distance = back.Distance;
+  right.send_Distance = right.Distance;
 
   Serial1.write(255);
   
-  if (Distance1 < 40.00) {
-    if (Distance2 < 40.00) {
-      if (Distance3 < 40.00) {
-        if (Distance4 < 40.00) {
+  if (front.Distance < 40.00) {
+    if (left.Distance < 40.00) {
+      if (back.Distance < 40.00) {
+        if (right.Distance < 40.00) {
           Serial1.write(1); //停止
 
         } else {
           Serial1.write(5); //右
 
         }
-      } else if (Distance4 < 40.00) {
+      } else if (right.Distance < 40.00) {
         Serial1.write(3); //後
 
       } else {
         Serial1.write(9); //右後
 
       }
-    } else if (Distance3 < 40.00) {
-      if (Distance4 < 40.00) {
+    } else if (back.Distance < 40.00) {
+      if (right.Distance < 40.00) {
         Serial1.write(4); //左
 
       } else {
         Serial1.write(1); //停止
 
       }
-    } else if (Distance4 < 40.00) {
+    } else if (right.Distance < 40.00) {
       Serial1.write(8); //左後
 
     } else {
       Serial1.write(3); //後
 
     }
-  } else if (Distance2 < 40.00) {
-    if (Distance3 < 40.00) {
-      if (Distance4 < 40.00) {
+  } else if (left.Distance < 40.00) {
+    if (back.Distance < 40.00) {
+      if (right.Distance < 40.00) {
         Serial1.write(2); //前
 
       } else {
         Serial1.write(7); //右前
 
       }
-    } else if (Distance4 < 40.00) {
+    } else if (right.Distance < 40.00) {
       Serial1.write(1); //停止
 
     } else {
       Serial1.write(5); //右
 
     }
-  } else if (Distance3 < 40.00) {
-    if (Distance4 < 40.00) {
+  } else if (back.Distance < 40.00) {
+    if (right.Distance < 40.00) {
       Serial1.write(6); //左前
 
     } else {
       Serial1.write(2); //前
 
     }
-  } else if (Distance4 < 40.00) {
+  } else if (right.Distance < 40.00) {
     Serial1.write(2); //左
 
   } else {
@@ -221,10 +220,10 @@ void loop() {
 
   }
 
-  Serial1.write(send_Distance1);
-  Serial1.write(send_Distance2);
-  Serial1.write(send_Distance3);
-  Serial1.write(send_Distance4);
+  Serial1.write(front.send_Distance);
+  Serial1.write(left.send_Distance);
+  Serial1.write(back.send_Distance);
+  Serial1.write(right.send_Distance);
 
   Serial1.flush();
 
