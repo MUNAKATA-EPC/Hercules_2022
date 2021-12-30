@@ -20,7 +20,6 @@ double Duration4 = 0;  //  右からの出力値
 double Distance4 = 0;  //  右の距離
 
 int timeout = 20000; //タイムアウト設定値(マイクロ秒)
-int buffer = 0; //Teensyからの定位置送信要求処理用
 
 int send_Distance1;
 int send_Distance2;
@@ -44,6 +43,7 @@ void setup() {
   while (!Serial1) {
     ; //Teensyとの接続待機
   }
+
 }
 
 void loop() {
@@ -62,10 +62,12 @@ void loop() {
   if (Duration1 > 0) {  //前超音波
     Duration1 = Duration1 / 2;
     Distance1 = Duration1 * 340 * 100 / 1000000;
+
   }
 
   if (Distance1 >= 254) {
     Distance1 = 254;
+
   }
   
   Serial.print(Distance1);  //シリアルモニタ用
@@ -86,10 +88,12 @@ void loop() {
   if (Duration2 > 0) {  //左超音波
     Duration2 = Duration2 / 2;
     Distance2 = Duration2 * 340 * 100 / 1000000;
+
   }
 
   if (Distance2 >= 254) {
     Distance2 = 254;
+
   }
 
   Serial.print(Distance2);  //シリアルモニタ用
@@ -110,10 +114,12 @@ void loop() {
   if (Duration3 > 0) {  //後超音波
     Duration3 = Duration3 / 2;
     Distance3 = Duration3 * 340 * 100 / 1000000;
+
   }
 
   if (Distance3 >= 254) {
     Distance3 = 254;
+
   }
 
   Serial.print(Distance3);  //シリアルモニタ用
@@ -134,10 +140,12 @@ void loop() {
   if (Duration4 > 0) {  //右超音波
     Duration4 = Duration4 / 2;
     Distance4 = Duration4 * 340 * 100 / 1000000;
+
   }
 
   if (Distance4 >= 254) {
     Distance4 = 254;
+
   }
 
   Serial.println(Distance4);  //シリアルモニタ用
@@ -147,86 +155,77 @@ void loop() {
   send_Distance3 = Distance3;
   send_Distance4 = Distance4;
 
-  buffer = Serial1.read();  //Teensyからの要求確認
-
   Serial1.write(255);
   
-  if (buffer == 1) {
-    if (Distance3 < 45.00) {
-      if (Distance2 > 50.00) {
-        if (Distance4 > 50.00) {
-          Serial1.write(10);  //停止
-        } else {
-          Serial1.write(13);  //左
-        }
-      } else if (Distance4 > 50.00) {
-        Serial1.write(14);  //右
-      } else {
-        Serial1.write(10);  //停止
-      }
-    } else if (Distance2 > 50.00) {
-      if (Distance4 > 50.00) {
-        Serial1.write(12);  //後
-      } else {
-        Serial1.write(17);  //左後
-      }
-    } else if (Distance4 > 50.00) {
-      Serial1.write(18);  //右後
-    } else {
-      Serial1.write(12);  //後
-    }
-  } else {
-    if (Distance1 < 30.00) {
-      if (Distance2 < 30.00) {
-        if (Distance3 < 30.00) {
-          if (Distance4 < 30.00) {
-            Serial1.write(1); //停止
-          } else {
-            Serial1.write(5); //右
-          }
-        } else if (Distance4 < 30.00) {
-          Serial1.write(3); //後
-        } else {
-          Serial1.write(9); //右後
-        }
-      } else if (Distance3 < 30.00) {
-        if (Distance4 < 30.00) {
-          Serial1.write(4); //左
-        } else {
+  if (Distance1 < 40.00) {
+    if (Distance2 < 40.00) {
+      if (Distance3 < 40.00) {
+        if (Distance4 < 40.00) {
           Serial1.write(1); //停止
-        }
-      } else if (Distance4 < 30.00) {
-        Serial1.write(8); //左後
-      } else {
-        Serial1.write(3); //後
-      }
-    } else if (Distance2 < 30.00) {
-      if (Distance3 < 30.00) {
-        if (Distance4 < 30.00) {
-          Serial1.write(2); //前
+
         } else {
-          Serial1.write(7); //右前
+          Serial1.write(5); //右
+
         }
-      } else if (Distance4 < 30.00) {
+      } else if (Distance4 < 40.00) {
+        Serial1.write(3); //後
+
+      } else {
+        Serial1.write(9); //右後
+
+      }
+    } else if (Distance3 < 40.00) {
+      if (Distance4 < 40.00) {
+        Serial1.write(4); //左
+
+      } else {
         Serial1.write(1); //停止
-      } else {
-        Serial1.write(5); //右
+
       }
-    } else if (Distance3 < 30.00) {
-      if (Distance4 < 30.00) {
-        Serial1.write(6); //左前
-      } else {
-        Serial1.write(2); //前
-      }
-    } else if (Distance4 < 30.00) {
-      Serial1.write(2); //左
+    } else if (Distance4 < 40.00) {
+      Serial1.write(8); //左後
+
     } else {
-      Serial1.write(1); //停止
+      Serial1.write(3); //後
+
     }
+  } else if (Distance2 < 40.00) {
+    if (Distance3 < 40.00) {
+      if (Distance4 < 40.00) {
+        Serial1.write(2); //前
+
+      } else {
+        Serial1.write(7); //右前
+
+      }
+    } else if (Distance4 < 40.00) {
+      Serial1.write(1); //停止
+
+    } else {
+      Serial1.write(5); //右
+
+    }
+  } else if (Distance3 < 40.00) {
+    if (Distance4 < 40.00) {
+      Serial1.write(6); //左前
+
+    } else {
+      Serial1.write(2); //前
+
+    }
+  } else if (Distance4 < 40.00) {
+    Serial1.write(2); //左
+
+  } else {
+    Serial1.write(1); //停止
+
   }
 
   Serial1.write(send_Distance1);
   Serial1.write(send_Distance2);
   Serial1.write(send_Distance3);
   Serial1.write(send_Distance4);
+
+  Serial1.flush();
+
 }
