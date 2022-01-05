@@ -5,6 +5,7 @@ void Serial_receive() {
     if (head_CAM == 255) {
       CAM_angle = Serial2.read();
       CAM_distance = Serial2.read();
+
     }
   }
 
@@ -17,6 +18,7 @@ void Serial_receive() {
       USS2 = Serial3.read();
       USS3 = Serial3.read();
       USS4 = Serial3.read();
+
     }
   }
 
@@ -25,8 +27,10 @@ void Serial_receive() {
     
     if (IMU <= 90) {
       IMU = IMU + 90;
+
     } else {
       IMU = IMU - 90;
+      
     }
   }
 }
