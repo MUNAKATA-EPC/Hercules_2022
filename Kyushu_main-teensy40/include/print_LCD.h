@@ -1,42 +1,58 @@
 void print_LCD() {
   LCD.val = digitalRead(button_LCD);
 
-  if (LCD.val == LOW && LCD.old_val == HIGH) {
-    LCD.state = LCD.state + 1;
-    white.state = 0;
+  if (digitalRead(switch_program) == HIGH) {
+    goto hogehoge;
 
-    if (LCD.state >= 6) {
-      LCD.state = 0;
+  } else {
+    if (LCD.val == LOW && LCD.old_val == HIGH) {
+      LCD.state = LCD.state + 1;
+      white.state = 0;
+
+      if (LCD.state >= 6) {
+        LCD.state = 0;
+
+      }
+
+      lcd.clear();
     }
-
-    lcd.clear();
   }
+
+  hogehoge:
   
   LCD.old_val = LCD.val;
 
   if (LCD.state == 4 || LCD.state == 5) {
     white.val = digitalRead(button_white);
-    
-    if (white.val == LOW && white.old_val == HIGH) {
+
+    if (digitalRead(switch_program) == HIGH) {
+      goto nyan;
+
+    } else if (white.val == LOW && white.old_val == HIGH) {
       white.state = white.state + 1;
 
       if (white.state >= 2) {
         white.state = 0;
+
       }
 
       lcd.clear();
     }
+    
+    nyan:
   
     white.old_val = white.val;
   }
-  
-  if (LCD.state == 0) { //システム全停止
+
+  //システム全停止
+  if (LCD.state == 0) {
     lcd.setCursor(0, 0);
     lcd.print("System");
     lcd.setCursor(0, 1);
     lcd.print("Stop");
 
-  } else if (LCD.state == 1) {  //USSとIMU
+  //USSとIMU
+  } else if (LCD.state == 1) {
     lcd.setCursor(0, 0); //USSをLCDに表示
     lcd.print("USS:");
     lcd.setCursor(0, 1); //IMUをLCDに表示
@@ -51,6 +67,7 @@ void print_LCD() {
     } else {
       lcd.setCursor(6, 0);
       lcd.print(USS);
+
     }
 
     if (IMU < 10) {
@@ -68,9 +85,11 @@ void print_LCD() {
     } else {
       lcd.setCursor(5, 1);
       lcd.print(IMU);
+
     }
 
-  } else if (LCD.state == 2) {  //USS個別の値
+  //USS個別の値
+  } else if (LCD.state == 2) {
     lcd.setCursor(0, 0);
     lcd.print("F");
 
@@ -89,6 +108,7 @@ void print_LCD() {
     } else {
       lcd.setCursor(1, 0);
       lcd.print(USS1);
+
     }
 
     lcd.setCursor(4, 0);
@@ -109,6 +129,7 @@ void print_LCD() {
     } else {
       lcd.setCursor(5, 0);
       lcd.print(USS2);
+
     }
 
     lcd.setCursor(0, 1);
@@ -129,6 +150,7 @@ void print_LCD() {
     } else {
       lcd.setCursor(1, 1);
       lcd.print(USS3);
+
     }
 
     lcd.setCursor(4, 1);
@@ -149,9 +171,11 @@ void print_LCD() {
     } else {
       lcd.setCursor(5, 1);
       lcd.print(USS4);
+
     }
 
-  } else if (LCD.state == 3) {  //カメラアングルとか
+  //カメラアングルとか
+  } else if (LCD.state == 3) {
     lcd.setCursor(0, 0);
     lcd.print("rads:");
 
@@ -170,6 +194,7 @@ void print_LCD() {
     } else {
       lcd.setCursor(5, 1);
       lcd.print(CAM_angle);
+
     }
 
     lcd.setCursor(0, 1);
@@ -190,9 +215,11 @@ void print_LCD() {
     } else {
       lcd.setCursor(5, 1);
       lcd.print(CAM_distance);
+
     }
 
-  } else if (LCD.state == 4) {  //ゲームモード
+  //ゲームモード
+  } else if (LCD.state == 4) {
     lcd.setCursor(0, 0);
     lcd.print("GameMode");
 
@@ -203,9 +230,11 @@ void print_LCD() {
     } else if (white.state == 1) {
       lcd.setCursor(0, 1);
       lcd.print("Run");
+
     }
 
-  } else if (LCD.state == 5) {  //モーターチェック
+  //モーターチェック
+  } else if (LCD.state == 5) {
     lcd.setCursor(0, 0);
     lcd.print("Motor");
 
@@ -216,6 +245,7 @@ void print_LCD() {
     } else if (white.state == 1) {
       lcd.setCursor(0, 1);
       lcd.print("Run");
+      
     }
   }
 }
