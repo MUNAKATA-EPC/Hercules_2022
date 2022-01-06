@@ -1,42 +1,34 @@
 void Motor_limit() {
-  G = A + motor_1;
+  operation_G = operation_A + motor_1;
 
-  if (G < -30) {
-    G = -30;
-
-  } else if (G > 30) {
-    G = 30;
-
+  if (operation_G < -30) {
+    operation_G = -30;
+  } else if (operation_G > 30) {
+    operation_G = 30;
   }
 
-  H = A + motor_2;
+  operation_H = operation_A + motor_2;
 
-  if (H < -30) {
-    H = -30;
-
-  } else if (H > 30) {
-    H = 30;
-
+  if (operation_H < -30) {
+    operation_H = -30;
+  } else if (operation_H > 30) {
+    operation_H = 30;
   }
 
-  I = A + motor_3;
+  operation_I = operation_A + motor_3;
 
-  if (I < -30) {
-    I = -30;
-
-  } else if (I > 30) {
-    I = 30;
-
+  if (operation_I < -30) {
+    operation_I = -30;
+  } else if (operation_I > 30) {
+    operation_I = 30;
   }
 
-  J = A + motor_4;
+  operation_J = operation_A + motor_4;
 
-  if (J < -30) {
-    J = -30;
-
-  } else if (J > 30) {
-    J = 30;
-    
+  if (operation_J < -30) {
+    operation_J = -30;
+  } else if (operation_J > 30) {
+    operation_J = 30;
   }
 }
 
@@ -49,7 +41,7 @@ void Motor_1() {
 
   Motor_limit();
 
-  dsr1202.move(G, H, I, J);
+  dsr1202.move(operation_G, operation_H, operation_I, operation_J);
 }
 
 //前
@@ -61,7 +53,7 @@ void Motor_2() {
 
   Motor_limit();
 
-  dsr1202.move(G, H, I, J);
+  dsr1202.move(operation_G, operation_H, operation_I, operation_J);
 }
 
 //後
@@ -73,7 +65,7 @@ void Motor_3() {
 
   Motor_limit();
 
-  dsr1202.move(G, H, I, J);
+  dsr1202.move(operation_G, operation_H, operation_I, operation_J);
 }
 
 //左
@@ -85,7 +77,7 @@ void Motor_4() {
 
   Motor_limit();
 
-  dsr1202.move(G, H, I, J);
+  dsr1202.move(operation_G, operation_H, operation_I, operation_J);
 }
 
 //右
@@ -97,7 +89,7 @@ void Motor_5() {
 
   Motor_limit();
 
-  dsr1202.move(G, H, I, J);
+  dsr1202.move(operation_G, operation_H, operation_I, operation_J);
 }
 
 //左前
@@ -109,7 +101,7 @@ void Motor_6() {
 
   Motor_limit();
 
-  dsr1202.move(G, H, I, J);
+  dsr1202.move(operation_G, operation_H, operation_I, operation_J);
 }
 
 //右前
@@ -121,7 +113,7 @@ void Motor_7() {
 
   Motor_limit();
 
-  dsr1202.move(G, H, I, J);
+  dsr1202.move(operation_G, operation_H, operation_I, operation_J);
 }
 
 //左後
@@ -133,7 +125,7 @@ void Motor_8() {
 
   Motor_limit();
 
-  dsr1202.move(G, H, I, J);
+  dsr1202.move(operation_G, operation_H, operation_I, operation_J);
 }
 
 //右後
@@ -145,5 +137,5 @@ void Motor_9() {
 
   Motor_limit();
 
-  dsr1202.move(G, H, I, J);
+  dsr1202.move(operation_G, operation_H, operation_I, operation_J);
 }
