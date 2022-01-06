@@ -3,10 +3,10 @@
 
 SoftwareSerial mySerial(4, 5); // RX, TX
 
-#define rads1Pin 9   //コート角度
-#define riole1Pin 10 //コート左右
-#define rads2Pin 7   //ボール角度
-#define riole2Pin 8  //ボール左右
+#define rads1Pin 3   //コート角度
+#define riole1Pin 6 //コート左右
+#define rads2Pin 8   //ボール角度
+#define riole2Pin 9  //ボール左右
 #define LED 13       //LED
 
 int head, rads1, riole1, rads2, riole2;
