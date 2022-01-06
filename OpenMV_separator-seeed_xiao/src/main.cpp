@@ -24,6 +24,7 @@ void setup() {
 void loop() {
   if (mySerial.available() > 0) {
     digitalWrite(LED, HIGH);
+
     head = mySerial.read();
 
     if (head == 'w') {
@@ -41,35 +42,16 @@ void loop() {
       }
 
       head = mySerial.read();
-
+      
       if (head == 'z') {
         riole2 = mySerial.read();
       }
     } else {
-      mySerial.readStringUntil('w');
-      rads1 = mySerial.read();
       head = mySerial.read();
-
-      if (head == 'x') {
-        riole1 = mySerial.read();
-      }
-
-      head = mySerial.read();
-
-      if (head == 'y') {
-        rads2 = mySerial.read();
-      }
-
-      head = mySerial.read();
-
-      if (head == 'z') {
-        riole2 = mySerial.read();
-      }
     }
   } else {
     digitalWrite(LED, LOW);
   }
-
   Serial.print(rads1);
   Serial.print("\t");
   Serial.print(riole1);
