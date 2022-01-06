@@ -13,12 +13,11 @@ int IMU; //IMU値
 
 class Class1 {
 private:
-
+  /* private何もわからん */
 public:
   int val = 0;
   int old_val = 0;
   int state = 0;
-  
 };
 
 Class1 LCD, white;
@@ -26,13 +25,13 @@ Class1 LCD, white;
 double timer;
 double timer_start = 0.00;
 
-double W, V = 0;
-double X, Z = 0;
-double A, B, C = 0;
+double val_I, old_val_I = 0;
+double deviation, val_D = 0;
+double operation_A, operation_B, operation_C = 0;
 
 int motor_1;
 int motor_2;
 int motor_3;
 int motor_4;
 
-int G, H, I, J; //最終操作量
+int operation_G, operation_H, operation_I, operation_J; //最終操作量
