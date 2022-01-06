@@ -5,7 +5,7 @@
 
 FaBoLCDmini_AQM0802A lcd;
 
-DSR1202 dsr1202(1);
+DSR1202 dsr1202(1); //テストコメント
 
 #include "define.h"
 #include "variable.h"
