@@ -3,28 +3,24 @@ void print_LCD() {
 
   if (digitalRead(switch_program) == HIGH) {
     goto hogehoge;
-  } else {
-    if (LCD.val == LOW && LCD.old_val == HIGH) {
-      LCD.state = LCD.state + 1;
-      white.state = 0;
-
-      if (LCD.state >= 6) {
-        LCD.state = 0;
-      }
-
-      lcd.clear();
-    }
   }
 
-  hogehoge:
+  if (LCD.val == LOW && LCD.old_val == HIGH) {
+    LCD.state = LCD.state + 1;
+    white.state = 0;
+
+    if (LCD.state >= 6) {
+      LCD.state = 0;
+    }
+
+    lcd.clear();
+  }
+
   LCD.old_val = LCD.val;
 
   if (LCD.state == 4 || LCD.state == 5) {
     white.val = digitalRead(button_white);
-
-    if (digitalRead(switch_program) == HIGH) {
-      goto nyan;
-    } else if (white.val == LOW && white.old_val == HIGH) {
+    if (white.val == LOW && white.old_val == HIGH) {
       white.state = white.state + 1;
 
       if (white.state >= 2) {
@@ -34,9 +30,10 @@ void print_LCD() {
       lcd.clear();
     }
 
-    nyan:
     white.old_val = white.val;
   }
+
+  hogehoge:
 
   //システム全停止
   if (LCD.state == 0) {
@@ -44,6 +41,7 @@ void print_LCD() {
     lcd.print("System");
     lcd.setCursor(0, 1);
     lcd.print("Stop");
+
   //USSとIMU
   } else if (LCD.state == 1) {
     lcd.setCursor(0, 0); //USSをLCDに表示
