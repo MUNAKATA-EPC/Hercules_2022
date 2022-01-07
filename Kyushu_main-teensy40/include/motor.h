@@ -1,34 +1,34 @@
 void Motor_limit() {
   operation_G = operation_A + motor_1;
 
-  if (operation_G < -30) {
-    operation_G = -30;
-  } else if (operation_G > 30) {
-    operation_G = 30;
+  if (operation_G < -40) {
+    operation_G = -40;
+  } else if (operation_G > 40) {
+    operation_G = 40;
   }
 
   operation_H = operation_A + motor_2;
 
-  if (operation_H < -30) {
-    operation_H = -30;
-  } else if (operation_H > 30) {
-    operation_H = 30;
+  if (operation_H < -40) {
+    operation_H = -40;
+  } else if (operation_H > 40) {
+    operation_H = 40;
   }
 
   operation_I = operation_A + motor_3;
 
-  if (operation_I < -30) {
-    operation_I = -30;
-  } else if (operation_I > 30) {
-    operation_I = 30;
+  if (operation_I < -40) {
+    operation_I = -40;
+  } else if (operation_I > 40) {
+    operation_I = 40;
   }
 
   operation_J = operation_A + motor_4;
 
-  if (operation_J < -30) {
-    operation_J = -30;
-  } else if (operation_J > 30) {
-    operation_J = 30;
+  if (operation_J < -40) {
+    operation_J = -40;
+  } else if (operation_J > 40) {
+    operation_J = 40;
   }
 }
 
