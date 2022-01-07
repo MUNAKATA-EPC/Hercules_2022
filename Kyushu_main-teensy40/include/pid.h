@@ -9,9 +9,9 @@ void pid() {
   operation_A = operation_A + operation_B + operation_C;  //最終的な操作量
   operation_A = operation_A / operation_PID;  //ゲインを1未満で設定できるように、共通分母で割る(通常ゲインは1以上で設定できない)
 
-  if (operation_A < -set_operation_A) {
-    operation_A = -set_operation_A;  //下限値
-  } else if (operation_A > set_operation_A) {
-    operation_A = set_operation_A; //上限値
+  if (operation_A < -set_limit_operation) {
+    operation_A = -set_limit_operation;  //下限値
+  } else if (operation_A > set_limit_operation_) {
+    operation_A = set_limit_operation; //上限値
   }
 }

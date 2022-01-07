@@ -4,5 +4,6 @@
 #define gain_D 19  //微分ゲイン
 #define operation_PID 30 //操作分母量
 
-#define set_operation_A 40
+#define set_limit_operation 40  //操作量限界値
 #define motor_speed 20  //モーター速度
+#define motor_limit 40  //モーター速度限界値

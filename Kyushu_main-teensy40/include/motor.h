@@ -1,34 +1,34 @@
 void Motor_limit() {
   operation_G = operation_A + motor_1;
 
-  if (operation_G < -40) {
-    operation_G = -40;
-  } else if (operation_G > 40) {
-    operation_G = 40;
+  if (operation_G < -motor_limit) {
+    operation_G = -motor_limit;
+  } else if (operation_G > motor_limit) {
+    operation_G = motor_limit;
   }
 
   operation_H = operation_A + motor_2;
 
-  if (operation_H < -40) {
-    operation_H = -40;
-  } else if (operation_H > 40) {
-    operation_H = 40;
+  if (operation_H < -motor_limit) {
+    operation_H = -motor_limit;
+  } else if (operation_H > motor_limit) {
+    operation_H = motor_limit;
   }
 
   operation_I = operation_A + motor_3;
 
-  if (operation_I < -40) {
-    operation_I = -40;
-  } else if (operation_I > 40) {
-    operation_I = 40;
+  if (operation_I < -motor_limit) {
+    operation_I = -motor_limit;
+  } else if (operation_I > motor_limit) {
+    operation_I = motor_limit;
   }
 
   operation_J = operation_A + motor_4;
 
-  if (operation_J < -40) {
-    operation_J = -40;
-  } else if (operation_J > 40) {
-    operation_J = 40;
+  if (operation_J < -motor_limit) {
+    operation_J = -motor_limit;
+  } else if (operation_J > motor_limit) {
+    operation_J = motor_limit;
   }
 }
 
