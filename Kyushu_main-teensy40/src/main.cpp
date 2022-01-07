@@ -91,7 +91,8 @@ void loop() {
       }
     }
   } else if (LCD.state == 5 && white.state == 1 && digitalRead(switch_program) == HIGH) {
-    dsr1202.move(10, 10, 10, 10);  //右前, 右後, 左前, 左後(全部正回転で反時計回り)
+    //dsr1202.move(10, 10, 10, 10);  //右前, 右後, 左前, 左後(全部正回転で反時計回り)
+    Motor_1();
   } else {
     dsr1202.move(0, 0, 0, 0);
   }
