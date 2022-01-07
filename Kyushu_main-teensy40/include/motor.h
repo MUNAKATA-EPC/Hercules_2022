@@ -46,10 +46,10 @@ void Motor_1() {
 
 //前
 void Motor_2() {
-  motor_1 = 20; //右前
-  motor_2 = 20; //右後
-  motor_3 = -20;  //左前
-  motor_4 = -20;  //左後
+  motor_1 = motor_speed; //右前
+  motor_2 = motor_speed; //右後
+  motor_3 = -motor_speed;  //左前
+  motor_4 = -motor_speed;  //左後
 
   Motor_limit();
 
@@ -58,10 +58,10 @@ void Motor_2() {
 
 //後
 void Motor_3() {
-  motor_1 = -20;  //右前
-  motor_2 = -20;  //右後
-  motor_3 = 20; //左前
-  motor_4 = 20; //左後
+  motor_1 = -motor_speed;  //右前
+  motor_2 = -motor_speed;  //右後
+  motor_3 = motor_speed; //左前
+  motor_4 = motor_speed; //左後
 
   Motor_limit();
 
@@ -70,10 +70,10 @@ void Motor_3() {
 
 //左
 void Motor_4() {
-  motor_1 = 20; //右前
-  motor_2 = -20;  //右後
-  motor_3 = 20; //左前
-  motor_4 = -20;  //左後
+  motor_1 = motor_speed; //右前
+  motor_2 = -motor_speed;  //右後
+  motor_3 = motor_speed; //左前
+  motor_4 = -motor_speed;  //左後
 
   Motor_limit();
 
@@ -82,10 +82,10 @@ void Motor_4() {
 
 //右
 void Motor_5() {
-  motor_1 = -20;  //右前
-  motor_2 = 20; //右後
-  motor_3 = -20;  //左前
-  motor_4 = 20; //左後
+  motor_1 = -motor_speed;  //右前
+  motor_2 = motor_speed; //右後
+  motor_3 = -motor_speed;  //左前
+  motor_4 = motor_speed; //左後
 
   Motor_limit();
 
@@ -94,10 +94,10 @@ void Motor_5() {
 
 //左前
 void Motor_6() {
-  motor_1 = 20; //右前
+  motor_1 = motor_speed; //右前
   motor_2 = 0;  //右後
   motor_3 = 0;  //左前
-  motor_4 = -20;  //左後
+  motor_4 = -motor_speed;  //左後
 
   Motor_limit();
 
@@ -107,8 +107,8 @@ void Motor_6() {
 //右前
 void Motor_7() {
   motor_1 = 0;  //右前
-  motor_2 = 20; //右後
-  motor_3 = -20;  //左前
+  motor_2 = motor_speed; //右後
+  motor_3 = -motor_speed;  //左前
   motor_4 = 0;  //左後
 
   Motor_limit();
@@ -119,8 +119,8 @@ void Motor_7() {
 //左後
 void Motor_8() {
   motor_1 = 0;  //右前
-  motor_2 = -20;  //右後
-  motor_3 = 20; //左前
+  motor_2 = -motor_speed;  //右後
+  motor_3 = motor_speed; //左前
   motor_4 = 0;  //左後
 
   Motor_limit();
@@ -130,10 +130,10 @@ void Motor_8() {
 
 //右後
 void Motor_9() {
-  motor_1 = -20;  //右前
+  motor_1 = -motor_speed;  //右前
   motor_2 = 0;  //右後
   motor_3 = 0;  //左前
-  motor_4 = 20; //左後
+  motor_4 = motor_speed; //左後
 
   Motor_limit();
 
