@@ -11,7 +11,7 @@ void pid() {
 
   if (operation_A < -set_limit_operation) {
     operation_A = -set_limit_operation;  //下限値
-  } else if (operation_A > set_limit_operation_) {
+  } else if (operation_A > set_limit_operation) {
     operation_A = set_limit_operation; //上限値
   }
 }
