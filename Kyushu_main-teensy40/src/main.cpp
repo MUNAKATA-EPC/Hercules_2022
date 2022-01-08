@@ -9,12 +9,10 @@ DSR1202 dsr1202(1);
 
 #include "define.h"
 #include "variable.h"
-#include "pid_parameter.h"
 #include "startup.h"
 #include "Serial_receive.h"
 #include "print_LCD.h"
 #include "control_LED.h"
-#include "pid.h"
 #include "motor.h"
 
 void setup() {
@@ -25,7 +23,6 @@ void loop() {
   Serial_receive();
   print_LCD();
   control_LED();
-  pid();
 
   if (LCD.state == 4 && white.state == 1 && digitalRead(switch_program) == HIGH) {
     if (timer_start != 0.00) {   
@@ -56,7 +53,7 @@ void loop() {
       }
     } else {
       if (analogRead(LINE_ALL) < 100) {
-        Serial1.print("1R0002R0003R0004R000");
+        Serial1.println("1R0002R0003R0004R000");
         timer_start = millis() / 100;
       } else {
         if (CAM_angle < 120) {
