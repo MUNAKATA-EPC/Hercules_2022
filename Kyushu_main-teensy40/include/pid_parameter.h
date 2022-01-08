@@ -1,9 +1,9 @@
-#define IMU_center 90 //ジャイロ中心値
-#define gain_P 10  //比例ゲイン
-#define gain_I 0.8 //積分ゲイン
-#define gain_D 19  //微分ゲイン
-#define operation_PID 30 //操作分母量
+int IMU_center =  90; //ジャイロ中心値
+double gain_P = 1;  //比例ゲイン
+double gain_I = 0; //積分ゲイン
+double gain_D = 2;  //微分ゲイン
+int operation_PID = 3; //操作分母量
 
-#define set_limit_operation 40  //操作量限界値
-#define motor_speed 20  //モーター速度
-#define motor_limit 40  //モーター速度限界値
+int set_limit_operation = 30;  //操作量限界値
+int motor_speed = 20;  //モーター速度
+int motor_limit = 30;  //モーター速度限界値
