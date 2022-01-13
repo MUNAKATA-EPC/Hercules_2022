@@ -23,11 +23,27 @@ void Serial_receive() {
 
   if (Serial4.available() > 0) {
     IMU = Serial4.read();
-    
-    if (IMU <= 90) {
-      IMU = IMU + 90;
+
+    if (IMU < ThresholdOfIMU[0]) {
+      direction = 5;
+    } else if (IMU < ThresholdOfIMU[1]) {
+      direction = 6;
+    } else if (IMU < ThresholdOfIMU[2]) {
+      direction = 7;
+    } else if (IMU < ThresholdOfIMU[3]) {
+      direction = 8;
+    } else if (IMU < ThresholdOfIMU[4]) {
+      direction = 9;
+    } else if (IMU < ThresholdOfIMU[5]) {
+      direction = 1;
+    } else if (IMU < ThresholdOfIMU[6]) {
+      direction = 2;
+    } else if (IMU < ThresholdOfIMU[7]) {
+      direction = 3;
+    } else if (IMU < ThresholdOfIMU[8]) {
+      direction = 4;
     } else {
-      IMU = IMU - 90;
+      direction = 5;
     }
   }
 }
