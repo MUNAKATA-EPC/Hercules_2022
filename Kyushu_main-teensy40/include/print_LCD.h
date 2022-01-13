@@ -164,7 +164,7 @@ void print_LCD() {
       lcd.setCursor(6, 0);
       lcd.print(CAM_angle);
     } else {
-      lcd.setCursor(5, 1);
+      lcd.setCursor(5, 0);
       lcd.print(CAM_angle);
     }
 
