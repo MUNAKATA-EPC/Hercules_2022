@@ -32,6 +32,7 @@ void DSR1202::Init()
 	}
 }
 
+//右前, 右後, 左前, 左後(全部正回転で反時計回り)
 void DSR1202::move(int a, int b, int c, int d)
 {
 	int val = 0;
