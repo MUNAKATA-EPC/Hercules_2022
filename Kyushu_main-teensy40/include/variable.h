@@ -37,4 +37,4 @@ int motor_4;
 int operation_G, operation_H, operation_I, operation_J; //最終操作量
 
 int direction; //方向判定用
-int ThresholdOfIMU[] = {3, 23, 45, 68, 90, 113, 135, 158, 178};  //IMU閾値
+const int ThresholdOfIMU[] = {3, 23, 45, 68, 90, 113, 135, 158, 178};  //IMU閾値
