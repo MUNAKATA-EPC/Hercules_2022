@@ -24,13 +24,12 @@ void setup() {
 void loop() {
   if (mySerial.available() > 0) {
     digitalWrite(LED, HIGH);
-
     head = mySerial.read();
 
     if (head == 'w') {
       rads1 = mySerial.read();
       head = mySerial.read();
-
+      
       if (head == 'x') {
         riole1 = mySerial.read();
       }
@@ -59,6 +58,8 @@ void loop() {
   Serial.print(rads2);
   Serial.print("\t");
   Serial.println(riole2);
+
+  analogWriteResolution(7);
 
   analogWrite(rads1Pin, rads1);
   analogWrite(riole1Pin, riole1);
