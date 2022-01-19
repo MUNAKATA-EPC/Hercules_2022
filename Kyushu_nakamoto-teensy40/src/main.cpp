@@ -20,15 +20,11 @@ void setup() {
 }
 
 void loop() {
-  Serial_receive();
-  print_LCD();
-  control_LED();
-
   if (LCD.state == 4 && white.state == 1 && digitalRead(switch_program) == HIGH) {
-    if (timer_start != 0) {   
-      timer = millis() - timer_start;
-    }
-    
+    Serial_receive();
+    control_LED();
+    timer = millis() - timer_start;
+
     if (timer < 200) {
       Motor_1();  //方向修正
     } else if (timer < 700) {
@@ -57,40 +53,40 @@ void loop() {
         timer_start = millis();
       } else {
         if (CAM_distance < 70) {
-          if (CAM_angle < 6) {
-            Motor_2();  //前進
-          } else if (CAM_angle < 35) {
-            Motor_7();  //右前
-          } else if (CAM_angle < 56) {
-            Motor_3();  //右
-          } else if (CAM_angle < 76) {
-            Motor_8();  //右後
-          } else if (CAM_angle < 96) {
-            Motor_4();  //後
-          } else if (CAM_angle < 116) {
-            Motor_9();  //左後
-          } else if (CAM_angle < 136) {
-            Motor_3();  //左
-          } else if (CAM_angle < 176) {
-            Motor_6();  //左前
+          if (CAM_area == 2) {  //前
+            Motor_2();
+          } else if (CAM_area == 3) { //後
+            Motor_8();
+          } else if (CAM_area == 4) { //左
+            Motor_3();
+          } else if (CAM_area == 5) { //右
+            Motor_3();
+          } else if (CAM_area == 6) { //左前
+            Motor_6();
+          } else if (CAM_area == 7) { //右前
+            Motor_7();
+          } else if (CAM_area == 8) { //左後
+            Motor_9();
+          } else if (CAM_area == 9) { //右後
+            Motor_8();
           }
         } else {
-          if (CAM_angle < 6) {
-            Motor_2();  //前進
-          } else if (CAM_angle < 35) {
-            Motor_7();  //右前
-          } else if (CAM_angle < 56) {
-            Motor_5();  //右
-          } else if (CAM_angle < 76) {
-            Motor_9();  //右後
-          } else if (CAM_angle < 96) {
-            Motor_3();  //後
-          } else if (CAM_angle < 116) {
-            Motor_8();  //左後
-          } else if (CAM_angle < 136) {
-            Motor_4();  //左
-          } else if (CAM_angle < 176) {
-            Motor_6();  //左前
+          if (CAM_area == 2) {  //前
+            Motor_2();
+          } else if (CAM_area == 3) { //後
+            Motor_3();
+          } else if (CAM_area == 4) { //左
+            Motor_4();
+          } else if (CAM_area == 5) { //右
+            Motor_5();
+          } else if (CAM_area == 6) { //左前
+            Motor_6();
+          } else if (CAM_area == 7) { //右前
+            Motor_7();
+          } else if (CAM_area == 8) { //左後
+            Motor_8();
+          } else if (CAM_area == 9) { //右後
+            Motor_9();
           } else {
             if (USS3 < 45) {
               if (USS2 > 50) {
@@ -120,9 +116,13 @@ void loop() {
       }
     }
   } else if (LCD.state == 5 && white.state == 1 && digitalRead(switch_program) == HIGH) {
-    //dsr1202.move(10, 10, 10, 10);  //右前, 右後, 左前, 左後(全部正回転で反時計回り)
+    Serial_receive();
+    control_LED();
     Motor_1();
   } else {
+    Serial_receive();
+    print_LCD();
+    control_LED();
     dsr1202.move(0, 0, 0, 0);
   }
 }
