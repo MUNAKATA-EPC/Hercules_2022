@@ -1,10 +1,6 @@
 void print_LCD() {
   LCD.val = digitalRead(button_LCD);
 
-  if (digitalRead(switch_program) == HIGH) {
-    goto hogehoge;
-  }
-
   if (LCD.val == LOW && LCD.old_val == HIGH) {
     LCD.state = LCD.state + 1;
     white.state = 0;
@@ -32,8 +28,6 @@ void print_LCD() {
 
     white.old_val = white.val;
   }
-
-  hogehoge:
 
   //システム全停止
   if (LCD.state == 0) {
