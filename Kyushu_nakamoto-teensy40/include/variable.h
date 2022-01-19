@@ -22,8 +22,8 @@ public:
 
 Class1 LCD, white;
 
-double timer;
-double timer_start = 0.00;
+unsigned long timer;
+unsigned long timer_start = 0;
 
 double val_I, old_val_I = 0;
 double deviation, val_D = 0;

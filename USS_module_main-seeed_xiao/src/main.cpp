@@ -226,5 +226,4 @@ void loop() {
   Serial1.write(right.send_Distance);
 
   Serial1.flush();
-
 }
