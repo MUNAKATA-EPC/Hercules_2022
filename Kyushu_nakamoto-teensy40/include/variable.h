@@ -1,6 +1,7 @@
 int head_CAM;
 int CAM_angle = 0;
 int CAM_distance = 0;
+int CAM_area;
 
 int head_USS; //USSからのヘッダ
 int USS; //超音波センサ値(方向指定値)
@@ -37,4 +38,3 @@ int motor_4;
 int operation_G, operation_H, operation_I, operation_J; //最終操作量
 
 int direction; //方向判定用
-const int ThresholdOfIMU[] = {3, 23, 45, 68, 90, 113, 135, 158, 178};  //IMU閾値
