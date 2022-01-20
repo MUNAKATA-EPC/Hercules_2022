@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART '2MS1T2B4M2QES'
+CLASS = DISCRETE
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "ARROW_PART_NUMBER", "ARROW_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "Dailywell", "2MS1T2B4M2QES" (!) = "", "2MS1T2B4M2QES", "Other", "118-2MS1T2B4M2QES", "https://www.mouser.co.uk/ProductDetail/Dailywell/2MS1T2B4M2QES/?qs=B6kkDfuK7%2FBFwlEcJvZVfQ%3D%3D", "", "", "Toggle Switches SPDT ON-ON", "https://akizukidenshi.com/download/2MS1-T1-B4-M2-Q-E-S.pdf", "19.56 mm"
+END_PART
+
+END.

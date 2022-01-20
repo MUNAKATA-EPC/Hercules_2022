@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name B2B-XH-A_LF__SN_)(type Legacy)(uri ${KIPRJMOD}/herakuresu2022.pretty/B2B-XH-A_LF__SN_.mod)(options "")(descr ""))
+  (lib (name herakuresu2022)(type KiCad)(uri ${KIPRJMOD}/herakuresu2022.pretty)(options "")(descr ""))
+)

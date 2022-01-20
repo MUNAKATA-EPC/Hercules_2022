@@ -1,0 +1,72 @@
+(Japanese_coding: sjis)
+(function "ECS_12716414"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2020-11-17-17:07:40)
+    (utime 2020-11-17-17:07:40)
+    (interface
+        (port "1" (symbPinId 1) (portType INOUT))
+        (port "2" (symbPinId 2) (portType INOUT))
+        (port "3" (symbPinId 3) (portType INOUT))
+    )
+    (property "symbolName" "2MS1T2B4M2QES")
+)
+
+
+(pinAssign "ECS_12716414"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2020-11-17-17:07:40)
+    (utime 2020-11-17-17:07:40)
+    (interface
+        (port "1" (symbPinId 1) (portName "NO") (portType INOUT))
+        (port "2" (symbPinId 2) (portName "COM") (portType INOUT))
+        (port "3" (symbPinId 3) (portName "NC") (portType INOUT))
+    )
+    (internal
+        (funcInst (functionRef "ECS_12716414")
+                (port "1" (match "1"))
+                (port "2" (match "2"))
+                (port "3" (match "3"))
+        )
+    )
+    (property "usePowerBox" "No")
+    (property "symbolName" "2MS1T2B4M2QES")
+)
+
+
+(part "2MS1T2B4M2QES"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2020-11-17-17:07:40)
+    (utime 2020-11-17-17:07:40)
+    (packageRef "2MS1T2B4M2QES")
+    (pinAssignRef "ECS_12716414")
+    (interface
+        (port "1" (symbPinId 1) (portName "NO") (portType INOUT))
+        (port "2" (symbPinId 2) (portName "COM") (portType INOUT))
+        (port "3" (symbPinId 3) (portName "NC") (portType INOUT))
+    )
+    (partClass UNDEF)
+    (useInSchema Y)
+    (useInLayout Y)
+    (inPartsList Y)
+    (partType NORMAL)
+    (placeRestriction FREE)
+    (property "enetNonSeries" "YES")
+    (property "refDesPrefix" "S")
+    (property "description" "Toggle Switches SPDT ON-ON")
+    (property "Manufacturer_Name" "Dailywell")
+    (property "Manufacturer_Part_Number" "2MS1T2B4M2QES")
+    (property "Mouser_Part_Number" "118-2MS1T2B4M2QES")
+    (property "Mouser_Price/Stock" "https://www.mouser.co.uk/ProductDetail/Dailywell/2MS1T2B4M2QES/?qs=B6kkDfuK7%2FBFwlEcJvZVfQ%3D%3D")
+    (property "Arrow_Part_Number" "")
+    (property "Arrow_Price/Stock" "")
+    (property "Datasheet_Link" "https://akizukidenshi.com/download/2MS1-T1-B4-M2-Q-E-S.pdf")
+    (property "compAreaTopHeight" 19.56)
+)
+
+
