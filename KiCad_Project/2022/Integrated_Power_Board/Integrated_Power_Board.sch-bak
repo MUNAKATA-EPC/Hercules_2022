@@ -1,4 +1,76 @@
-EESchema Schematic File Version 2
-EELAYER 25 0
+EESchema Schematic File Version 4
+EELAYER 30 0
 EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Filter:BNX025 FL?
+U 1 1 61E9826B
+P 6250 2450
+F 0 "FL?" H 6250 2775 50  0000 C CNN
+F 1 "BNX025" H 6250 2684 50  0000 C CNN
+F 2 "Filter:Filter_Murata_BNX025" H 6250 2250 50  0001 C CNN
+F 3 "https://www.murata.com/en-us/products/productdetail.aspx?cate=luNoiseSupprFilteBlockType&partno=BNX025H01%23" V 6225 2425 50  0001 C CNN
+	1    6250 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP C?
+U 1 1 61E9D1C6
+P 7050 2500
+F 0 "C?" H 7168 2546 50  0000 L CNN
+F 1 "CP" H 7168 2455 50  0000 L CNN
+F 2 "" H 7088 2350 50  0001 C CNN
+F 3 "~" H 7050 2500 50  0001 C CNN
+	1    7050 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D D?
+U 1 1 61EAA1B2
+P 7450 2350
+F 0 "D?" H 7450 2133 50  0000 C CNN
+F 1 "D" H 7450 2224 50  0000 C CNN
+F 2 "" H 7450 2350 50  0001 C CNN
+F 3 "~" H 7450 2350 50  0001 C CNN
+	1    7450 2350
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x02 J?
+U 1 1 61EAC191
+P 7950 2350
+F 0 "J?" H 8030 2342 50  0000 L CNN
+F 1 "Conn_01x02" H 8030 2251 50  0000 L CNN
+F 2 "" H 7950 2350 50  0001 C CNN
+F 3 "~" H 7950 2350 50  0001 C CNN
+	1    7950 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6650 2350 7050 2350
+Connection ~ 7050 2350
+Wire Wire Line
+	7050 2350 7300 2350
+Wire Wire Line
+	7600 2350 7750 2350
+Wire Wire Line
+	7750 2450 7750 2650
+Wire Wire Line
+	7750 2650 7050 2650
+Wire Wire Line
+	6650 2550 6650 2650
+Wire Wire Line
+	6650 2650 7050 2650
+Connection ~ 7050 2650
 $EndSCHEMATC
