@@ -1,6 +1,25 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
+# Connector_Generic_Conn_01x02
+#
+DEF Connector_Generic_Conn_01x02 J 0 40 Y N 1 F N
+F0 "J" 0 100 50 H V C CNN
+F1 "Connector_Generic_Conn_01x02" 0 -200 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ Connector*:*_1x??_*
+$ENDFPLIST
+DRAW
+S -50 -95 0 -105 1 1 6 N
+S -50 5 0 -5 1 1 6 N
+S -50 50 50 -150 1 1 10 f
+X Pin_1 1 -200 0 150 R 50 50 1 1 P
+X Pin_2 2 -200 -100 150 R 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # Converter_DCDC_OKL-T_6-W12N-C
 #
 DEF Converter_DCDC_OKL-T_6-W12N-C U 0 40 Y Y 1 L N
@@ -18,6 +37,31 @@ X VOUT 4 800 300 200 L 40 40 0 0 O
 X SENSE 5 800 100 200 L 40 40 0 0 I
 X TRIM 6 800 0 200 L 40 40 0 0 I
 X GND 7 800 -300 200 L 40 40 0 0 W
+ENDDRAW
+ENDDEF
+#
+# Device_Battery
+#
+DEF Device_Battery BT 0 0 N N 1 F N
+F0 "BT" 100 100 50 H V L CNN
+F1 "Device_Battery" 100 0 50 H V L CNN
+F2 "" 0 60 50 V I C CNN
+F3 "" 0 60 50 V I C CNN
+DRAW
+S -80 -55 80 -65 0 1 0 F
+S -80 70 80 60 0 1 0 F
+S -52 -78 50 -98 0 1 0 F
+S -52 47 50 27 0 1 0 F
+P 2 0 1 0 0 -60 0 -50 N
+P 2 0 1 0 0 -40 0 -30 N
+P 2 0 1 0 0 -20 0 -10 N
+P 2 0 1 0 0 0 0 10 N
+P 2 0 1 0 0 20 0 30 N
+P 2 0 1 0 0 70 0 100 N
+P 2 0 1 10 10 105 50 105 N
+P 2 0 1 10 30 125 30 85 N
+X - 1 0 -200 100 U 50 50 1 1 P
+X + 2 0 200 100 D 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
@@ -81,6 +125,24 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
+# Device_Fuse
+#
+DEF Device_Fuse F 0 0 N Y 1 F N
+F0 "F" 80 0 50 V V C CNN
+F1 "Device_Fuse" -75 0 50 V V C CNN
+F2 "" -70 0 50 V I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ *Fuse*
+$ENDFPLIST
+DRAW
+S -30 -100 30 100 0 1 10 N
+P 2 0 1 0 0 100 0 -100 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # Device_R
 #
 DEF Device_R R 0 0 N Y 1 F N
@@ -119,6 +181,46 @@ P 5 0 1 0 0 90 40 75 0 60 -40 45 0 30 N
 X 1 1 0 150 50 D 50 50 1 1 P
 X 2 2 150 0 50 L 50 50 1 1 P
 X 3 3 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# Device_Varistor
+#
+DEF Device_Varistor RV 0 0 N Y 1 F N
+F0 "RV" 125 0 50 V V C CNN
+F1 "Device_Varistor" -125 0 50 V V C CNN
+F2 "" -70 0 50 V I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ RV_*
+ Varistor*
+$ENDFPLIST
+DRAW
+T 0 -70 -80 50 0 0 0 U Normal 0 C C
+S -40 -100 40 100 0 1 10 N
+P 3 0 1 0 -75 100 -75 50 75 -50 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# Device_Voltmeter_DC
+#
+DEF Device_Voltmeter_DC MES 0 1 N N 1 F N
+F0 "MES" -130 40 50 H V R CNN
+F1 "Device_Voltmeter_DC" -130 -30 50 H V R CNN
+F2 "" 0 100 50 V I C CNN
+F3 "" 0 100 50 V I C CNN
+DRAW
+C 0 0 100 0 1 10 N
+T 0 0 0 100 0 0 0 V Normal 0 C C
+P 2 0 0 0 -125 -125 -75 -75 N
+P 2 0 0 0 75 75 125 125 N
+P 3 0 0 0 75 125 125 125 125 75 N
+P 2 0 1 0 10 150 30 150 N
+P 2 0 1 0 20 160 20 140 N
+X - 1 0 -200 100 U 50 50 1 1 P
+X + 2 0 200 100 D 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
@@ -170,6 +272,22 @@ X CG 4 400 -100 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
+# Integrated_Power_Board-cache_Switch_SW_SPST
+#
+DEF Integrated_Power_Board-cache_Switch_SW_SPST SW 0 0 Y N 1 F N
+F0 "SW" 0 125 50 H V C CNN
+F1 "Integrated_Power_Board-cache_Switch_SW_SPST" 0 -100 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+C -80 0 20 0 0 0 N
+C 80 0 20 0 0 0 N
+P 2 0 0 0 -60 10 60 70 N
+X A 1 -200 0 100 R 50 50 1 1 P
+X B 2 200 0 100 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # Switch_SW_SPST
 #
 DEF Switch_SW_SPST SW 0 0 Y N 1 F N
@@ -183,6 +301,62 @@ C 80 0 20 0 0 0 N
 P 2 0 0 0 -60 10 60 70 N
 X A 1 -200 0 100 R 50 50 1 1 P
 X B 2 200 0 100 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# power_+12V
+#
+DEF power_+12V #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -150 50 H I C CNN
+F1 "power_+12V" 0 140 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 2 0 1 0 -30 50 0 100 N
+P 2 0 1 0 0 0 0 100 N
+P 2 0 1 0 0 100 30 50 N
+X +12V 1 0 0 0 U 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# power_+5V
+#
+DEF power_+5V #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -150 50 H I C CNN
+F1 "power_+5V" 0 140 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 2 0 1 0 -30 50 0 100 N
+P 2 0 1 0 0 0 0 100 N
+P 2 0 1 0 0 100 30 50 N
+X +5V 1 0 0 0 U 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# power_GND
+#
+DEF power_GND #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -250 50 H I C CNN
+F1 "power_GND" 0 -150 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 6 0 1 0 0 0 0 -50 50 -50 0 -100 -50 -50 0 -50 N
+X GND 1 0 0 0 D 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# power_GND1
+#
+DEF power_GND1 #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -250 50 H I C CNN
+F1 "power_GND1" 0 -150 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 6 0 1 0 0 0 0 -50 50 -50 0 -100 -50 -50 0 -50 N
+X GND1 1 0 0 0 D 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
