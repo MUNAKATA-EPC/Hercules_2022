@@ -49,7 +49,10 @@ void loop() {
       }
     } else {
       if (analogRead(LINE_ALL) < 300) {
-        Serial1.println("1R0002R0003R0004R000");
+        for (size_t i = 0; i <= 100; i++) {
+          Serial1.println("1R0002R0003R0004R000");
+        }
+
         timer_start = millis();
       } else {
         if (CAM_distance < 70) {
@@ -88,28 +91,28 @@ void loop() {
           } else if (CAM_area == 9) { //右後
             Motor_9();
           } else {
-            if (USS3 < 45) {
-              if (USS2 > 50) {
-                if (USS4 > 50) {
-                  Motor_1();  //方向修正
+            if (USS3 > 50) {
+              if (USS2 < 70) {
+                if (USS4 < 70) {
+                  Motor_3();  //後
                 } else {
-                  Motor_4();  //左
+                  Motor_9();  //右後
                 }
-              } else if (USS4 > 50) {
-                Motor_5();  //右
-              } else {
-                Motor_1();  //方向修正
-              }
-            } else if (USS2 > 50) {
-              if (USS4 > 50) {
-                Motor_3();  //後
-              } else {
+              } else if (USS4 < 70) {
                 Motor_8();  //左後
+              } else {
+                Motor_3();  //後
               }
-            } else if (USS4 > 50) {
-              Motor_9();  //右後
+            } else if (USS2 < 70) {
+              if (USS4 < 70) {
+                Motor_1();  //方向修正
+              } else {
+                Motor_5();  //右
+              }
+            } else if (USS4 < 70) {
+              Motor_4();  //左
             } else {
-              Motor_3();  //後
+              Motor_1();  //方向修正
             }
           }
         }
@@ -124,5 +127,6 @@ void loop() {
     print_LCD();
     control_LED();
     dsr1202.move(0, 0, 0, 0);
+    Serial.println(analogRead(LINE_ALL));
   }
 }
