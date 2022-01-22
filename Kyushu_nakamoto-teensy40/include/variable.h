@@ -26,6 +26,9 @@ Class1 LCD, white;
 unsigned long timer;
 unsigned long timer_start = 0;
 
+unsigned long position_timer = 0;
+unsigned long old_position_timer = 0;
+
 double val_I, old_val_I = 0;
 double deviation, val_D = 0;
 double operation_A, operation_B, operation_C = 0;

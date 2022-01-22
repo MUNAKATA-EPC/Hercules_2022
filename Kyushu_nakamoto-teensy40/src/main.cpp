@@ -56,6 +56,8 @@ void loop() {
         timer_start = millis();
       } else {
         if (CAM_distance > 0) {
+          position_timer = millis();
+          old_position_timer = millis();
           if (CAM_distance < 70) {
             if (CAM_area == 2) {  //前
               Motor_2();
@@ -94,28 +96,33 @@ void loop() {
             }
           }
         } else {
-          if (USS3 > 50) {
-            if (USS2 < 70) {
-              if (USS4 < 70) {
-                Motor_3();  //後
+          position_timer = millis() - old_position_timer;
+          if (position_timer > 2000) {//ボールが見えなくなって二秒以上経過したら
+            if (USS3 > 50) {
+              if (USS2 < 70) {
+                if (USS4 < 70) {
+                  Motor_3();  //後
+                } else {
+                  Motor_9();  //右後
+                }
+              } else if (USS4 < 70) {
+                Motor_8();  //左後
               } else {
-                Motor_9();  //右後
+                Motor_3();  //後
+              }
+            } else if (USS2 < 70) {
+              if (USS4 < 70) {
+                Motor_1();  //方向修正
+              } else {
+                Motor_5();  //右
               }
             } else if (USS4 < 70) {
-              Motor_8();  //左後
+              Motor_4();  //左
             } else {
-              Motor_3();  //後
-            }
-          } else if (USS2 < 70) {
-            if (USS4 < 70) {
               Motor_1();  //方向修正
-            } else {
-              Motor_5();  //右
             }
-          } else if (USS4 < 70) {
-            Motor_4();  //左
           } else {
-            Motor_1();  //方向修正
+            Motor_1();//方向修正
           }
         }
       }
