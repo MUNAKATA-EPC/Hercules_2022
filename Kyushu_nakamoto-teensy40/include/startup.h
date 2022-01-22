@@ -3,6 +3,10 @@ void startup() {
   pinMode(switch_program, INPUT);
   pinMode(button_white, INPUT);
   pinMode(LED, OUTPUT);
+  pinMode(LINE_1, INPUT);
+  pinMode(LINE_2, INPUT);
+  pinMode(LINE_3, INPUT);
+  pinMode(LINE_4, INPUT);
 
   lcd.begin(); //LCDの準備開始
 

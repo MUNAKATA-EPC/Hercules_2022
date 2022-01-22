@@ -3,4 +3,8 @@
 #define switch_program 9  //トグルスイッチ
 #define button_white 10 //白いボタン
 #define LED 13
-#define LINE_ALL A8 //全体のまとめ(アナログ接続)
+#define LINE_1 2
+#define LINE_2 3
+#define LINE_3 4
+#define LINE_4 5
+#define LINE_ALL 22 //全体のまとめ(アナログ接続)
