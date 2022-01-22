@@ -44,7 +44,7 @@ void Serial_receive() {
     CAM_area = 2; //前
   }
 
-  if (IMU < 3) {
+  if (IMU < 5) {
     direction = 5;
   } else if (IMU < 23) {
     direction = 6;
@@ -60,7 +60,7 @@ void Serial_receive() {
     direction = 2;
   } else if (IMU < 158) {
     direction = 3;
-  } else if (IMU < 178) {
+  } else if (IMU < 176) {
     direction = 4;
   } else {
     direction = 5;

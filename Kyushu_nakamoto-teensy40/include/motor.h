@@ -1,11 +1,11 @@
 //停止
 void Motor_1() {
   if (direction == 1) {
-    dsr1202.move(-11, -11, -11, -11); //全方向共通値
+    dsr1202.move(-20, -20, -20, -20); //全方向共通値
   } else if (direction == 2) {
-    dsr1202.move(-10, -10, -10, -10); //全方向共通値
+    dsr1202.move(-15, -15, -15, -15); //全方向共通値
   } else if (direction == 3) {
-    dsr1202.move(-9, -9, -9, -9); //修正強
+    dsr1202.move(-10, -10, -10, -10); //修正強
   } else if (direction == 4) {
     dsr1202.move(-8, -8, -8, -8); //修正弱
   } else if (direction == 5) {
@@ -13,11 +13,11 @@ void Motor_1() {
   } else if (direction == 6) {
     dsr1202.move(8, 8, 8, 8); //修正弱
   } else if (direction == 7) {
-    dsr1202.move(9, 9, 9, 9); //修正強
+    dsr1202.move(10, 10, 10, 10); //修正強
   } else if (direction == 8) {
-    dsr1202.move(10, 10, 10, 10); //全方向共通値
+    dsr1202.move(15, 15, 15, 15); //全方向共通値
   } else if (direction == 9) {
-    dsr1202.move(11, 11, 11, 11); //全方向共通値
+    dsr1202.move(20, 20, 20, 20); //全方向共通値
   }
 }
 
