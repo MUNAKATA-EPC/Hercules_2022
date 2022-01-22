@@ -5,11 +5,11 @@ SoftwareSerial mySerial(4, 5); // RX, TX
 
 #define rads1Pin 3   //コート角度
 #define riole1Pin 6 //コート左右
-#define rads2Pin 8   //ボール角度
-#define riole2Pin 9  //ボール左右
+#define rads2Pin 8   //ゴール角度
+#define riole2Pin 9  //ゴール左右
 #define LED 13       //LED
 
-int head, rads1, riole1, rads2, riole2;
+int head, rads1, riole1, rads2, riole2 = 0;
 
 void setup() {
   pinMode(LED, OUTPUT);
@@ -28,25 +28,12 @@ void loop() {
 
     if (head == 'w') {
       rads1 = mySerial.read();
-      head = mySerial.read();
-      
-      if (head == 'x') {
-        riole1 = mySerial.read();
-      }
-
-      head = mySerial.read();
-
-      if (head == 'y') {
-        rads2 = mySerial.read();
-      }
-
-      head = mySerial.read();
-      
-      if (head == 'z') {
-        riole2 = mySerial.read();
-      }
-    } else {
-      head = mySerial.read();
+    } else if (head == 'x') {
+      riole1 = mySerial.read();
+    } else if (head == 'y') {
+      rads2 = mySerial.read();
+    } else if (head == 'z') {
+      riole2 = mySerial.read();
     }
   } else {
     digitalWrite(LED, LOW);
