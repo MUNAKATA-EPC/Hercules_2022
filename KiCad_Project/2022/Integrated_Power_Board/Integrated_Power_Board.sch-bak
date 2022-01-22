@@ -1,4 +1,211 @@
-EESchema Schematic File Version 2
-EELAYER 25 0
+EESchema Schematic File Version 4
+EELAYER 30 0
 EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Filter:BNX025 FL?
+U 1 1 61E9826B
+P 5050 2450
+F 0 "FL?" H 5050 2775 50  0000 C CNN
+F 1 "BNX025" H 5050 2684 50  0000 C CNN
+F 2 "Filter:Filter_Murata_BNX025" H 5050 2250 50  0001 C CNN
+F 3 "https://www.murata.com/en-us/products/productdetail.aspx?cate=luNoiseSupprFilteBlockType&partno=BNX025H01%23" V 5025 2425 50  0001 C CNN
+	1    5050 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP C?
+U 1 1 61E9D1C6
+P 5850 2500
+F 0 "C?" H 5968 2546 50  0000 L CNN
+F 1 "CP" H 5968 2455 50  0000 L CNN
+F 2 "" H 5888 2350 50  0001 C CNN
+F 3 "~" H 5850 2500 50  0001 C CNN
+	1    5850 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5450 2350 5850 2350
+Wire Wire Line
+	5450 2550 5450 2650
+Wire Wire Line
+	5450 2650 5850 2650
+$Comp
+L Converter_DCDC:OKL-T_6-W12N-C U?
+U 1 1 61EADD40
+P 7750 2650
+F 0 "U?" H 7750 3215 50  0000 C CNN
+F 1 "OKL-T_6-W12N-C" H 7750 3124 50  0000 C CNN
+F 2 "CONV_OKL-T/6-W12N-C" H 7300 3100 50  0001 L BNN
+F 3 "" H 7750 2650 50  0001 L BNN
+	1    7750 2650
+	1    0    0    -1  
+$EndComp
+Connection ~ 5850 2350
+$Comp
+L Device:D D?
+U 1 1 61EAA1B2
+P 9900 2350
+F 0 "D?" H 9900 2133 50  0000 C CNN
+F 1 "D" H 9900 2224 50  0000 C CNN
+F 2 "" H 9900 2350 50  0001 C CNN
+F 3 "~" H 9900 2350 50  0001 C CNN
+	1    9900 2350
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 61ECBA50
+P 9400 2650
+F 0 "C?" H 9515 2696 50  0000 L CNN
+F 1 "C" H 9515 2605 50  0000 L CNN
+F 2 "" H 9438 2500 50  0001 C CNN
+F 3 "~" H 9400 2650 50  0001 C CNN
+	1    9400 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 61ECFE45
+P 6450 2500
+F 0 "C?" H 6565 2546 50  0000 L CNN
+F 1 "C" H 6565 2455 50  0000 L CNN
+F 2 "" H 6488 2350 50  0001 C CNN
+F 3 "~" H 6450 2500 50  0001 C CNN
+	1    6450 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5850 2350 6450 2350
+Connection ~ 6450 2350
+Wire Wire Line
+	6450 2350 6650 2350
+Wire Wire Line
+	6450 2650 6450 3150
+Wire Wire Line
+	5850 2650 6450 2650
+Connection ~ 5850 2650
+Connection ~ 6450 2650
+$Comp
+L Device:R R?
+U 1 1 61ED432C
+P 6800 2550
+F 0 "R?" H 6870 2596 50  0000 L CNN
+F 1 "R" H 6870 2505 50  0000 L CNN
+F 2 "" V 6730 2550 50  0001 C CNN
+F 3 "~" H 6800 2550 50  0001 C CNN
+	1    6800 2550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6650 2550 6650 2350
+Connection ~ 6650 2350
+Wire Wire Line
+	6650 2350 6950 2350
+NoConn ~ 8550 2750
+Wire Wire Line
+	6450 3150 6650 3150
+$Comp
+L Switch:SW_SPST SW?
+U 1 1 61EDE86A
+P 6650 2850
+F 0 "SW?" V 6604 2948 50  0000 L CNN
+F 1 "SW_SPST" V 6695 2948 50  0000 L CNN
+F 2 "" H 6650 2850 50  0001 C CNN
+F 3 "~" H 6650 2850 50  0001 C CNN
+	1    6650 2850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6650 3150 6650 3050
+Connection ~ 6650 3150
+Wire Wire Line
+	6650 3150 9150 3150
+Wire Wire Line
+	6650 2650 6650 2550
+Connection ~ 6650 2550
+Wire Wire Line
+	9400 2350 9400 2500
+$Comp
+L Device:R R?
+U 1 1 61EE2976
+P 9700 2650
+F 0 "R?" H 9770 2696 50  0000 L CNN
+F 1 "R" H 9770 2605 50  0000 L CNN
+F 2 "" V 9630 2650 50  0001 C CNN
+F 3 "~" H 9700 2650 50  0001 C CNN
+	1    9700 2650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9400 3150 9700 3150
+Wire Wire Line
+	9700 3150 9700 2800
+Wire Wire Line
+	9400 2350 9700 2350
+Wire Wire Line
+	9700 2500 9700 2350
+Connection ~ 9700 2350
+Wire Wire Line
+	9700 2350 9750 2350
+$Comp
+L Device:R_POT_TRIM_US RV?
+U 1 1 61EE7113
+P 8800 2650
+F 0 "RV?" H 8732 2696 50  0000 R CNN
+F 1 "R_POT_TRIM_US" H 8732 2605 50  0000 R CNN
+F 2 "" H 8800 2650 50  0001 C CNN
+F 3 "~" H 8800 2650 50  0001 C CNN
+	1    8800 2650
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9400 2800 9400 3150
+$Comp
+L Device:R R?
+U 1 1 61EF0CD5
+P 9150 2800
+F 0 "R?" H 9220 2846 50  0000 L CNN
+F 1 "R" H 9220 2755 50  0000 L CNN
+F 2 "" V 9080 2800 50  0001 C CNN
+F 3 "~" H 9150 2800 50  0001 C CNN
+	1    9150 2800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8950 2650 9000 2650
+Wire Wire Line
+	9000 2650 9000 2800
+Wire Wire Line
+	9000 2800 8800 2800
+Connection ~ 9000 2650
+Wire Wire Line
+	8550 2950 9150 2950
+Wire Wire Line
+	9000 2650 9150 2650
+Connection ~ 9150 2950
+Wire Wire Line
+	8550 2650 8650 2650
+Wire Wire Line
+	9150 3150 9150 2950
+Connection ~ 9400 2350
+Wire Wire Line
+	8550 2350 9400 2350
+Wire Wire Line
+	8550 2550 9400 2350
+Wire Wire Line
+	9150 3150 9400 3150
+Connection ~ 9150 3150
+Connection ~ 9400 3150
 $EndSCHEMATC
