@@ -55,65 +55,67 @@ void loop() {
 
         timer_start = millis();
       } else {
-        if (CAM_distance < 70) {
-          if (CAM_area == 2) {  //前
-            Motor_2();
-          } else if (CAM_area == 3) { //後
-            Motor_8();
-          } else if (CAM_area == 4) { //左
-            Motor_3();
-          } else if (CAM_area == 5) { //右
-            Motor_3();
-          } else if (CAM_area == 6) { //左前
-            Motor_6();
-          } else if (CAM_area == 7) { //右前
-            Motor_7();
-          } else if (CAM_area == 8) { //左後
-            Motor_9();
-          } else if (CAM_area == 9) { //右後
-            Motor_8();
+        if (CAM_distance > 0) {
+          if (CAM_distance < 70) {
+            if (CAM_area == 2) {  //前
+              Motor_2();
+            } else if (CAM_area == 3) { //後
+              Motor_8();
+            } else if (CAM_area == 4) { //左
+              Motor_3();
+            } else if (CAM_area == 5) { //右
+              Motor_3();
+            } else if (CAM_area == 6) { //左前
+              Motor_6();
+            } else if (CAM_area == 7) { //右前
+              Motor_7();
+            } else if (CAM_area == 8) { //左後
+              Motor_9();
+            } else if (CAM_area == 9) { //右後
+              Motor_8();
+            }
+          } else {
+            if (CAM_area == 2) {  //前
+              Motor_2();
+            } else if (CAM_area == 3) { //後
+              Motor_3();
+            } else if (CAM_area == 4) { //左
+              Motor_4();
+            } else if (CAM_area == 5) { //右
+              Motor_5();
+            } else if (CAM_area == 6) { //左前
+              Motor_6();
+            } else if (CAM_area == 7) { //右前
+              Motor_7();
+            } else if (CAM_area == 8) { //左後
+              Motor_8();
+            } else if (CAM_area == 9) { //右後
+              Motor_9();
+            }
           }
         } else {
-          if (CAM_area == 2) {  //前
-            Motor_2();
-          } else if (CAM_area == 3) { //後
-            Motor_3();
-          } else if (CAM_area == 4) { //左
-            Motor_4();
-          } else if (CAM_area == 5) { //右
-            Motor_5();
-          } else if (CAM_area == 6) { //左前
-            Motor_6();
-          } else if (CAM_area == 7) { //右前
-            Motor_7();
-          } else if (CAM_area == 8) { //左後
-            Motor_8();
-          } else if (CAM_area == 9) { //右後
-            Motor_9();
-          } else {
-            if (USS3 > 50) {
-              if (USS2 < 70) {
-                if (USS4 < 70) {
-                  Motor_3();  //後
-                } else {
-                  Motor_9();  //右後
-                }
-              } else if (USS4 < 70) {
-                Motor_8();  //左後
-              } else {
-                Motor_3();  //後
-              }
-            } else if (USS2 < 70) {
+          if (USS3 > 50) {
+            if (USS2 < 70) {
               if (USS4 < 70) {
-                Motor_1();  //方向修正
+                Motor_3();  //後
               } else {
-                Motor_5();  //右
+                Motor_9();  //右後
               }
             } else if (USS4 < 70) {
-              Motor_4();  //左
+              Motor_8();  //左後
             } else {
-              Motor_1();  //方向修正
+              Motor_3();  //後
             }
+          } else if (USS2 < 70) {
+            if (USS4 < 70) {
+              Motor_1();  //方向修正
+            } else {
+              Motor_5();  //右
+            }
+          } else if (USS4 < 70) {
+            Motor_4();  //左
+          } else {
+            Motor_1();  //方向修正
           }
         }
       }

@@ -24,7 +24,7 @@ void Serial_receive() {
     IMU = Serial4.read();
   }
 
-  if (CAM_angle < 6) {
+  if (CAM_angle < 5) {
     CAM_area = 2; //前
   } else if (CAM_angle < 35) {
     CAM_area = 7; //右前
