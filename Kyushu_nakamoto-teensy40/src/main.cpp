@@ -48,7 +48,7 @@ void loop() {
         Motor_9();  //右後
       }
     } else {
-      if (analogRead(LINE_ALL) < 300) {
+      if (digitalRead(LINE_1) == LOW || digitalRead(LINE_2) == LOW || digitalRead(LINE_3) == LOW || digitalRead(LINE_4) == LOW) {
         for (size_t i = 0; i <= 100; i++) {
           Serial1.println("1R0002R0003R0004R000");
         }
@@ -127,6 +127,5 @@ void loop() {
     print_LCD();
     control_LED();
     dsr1202.move(0, 0, 0, 0);
-    Serial.println(analogRead(LINE_ALL));
   }
 }
