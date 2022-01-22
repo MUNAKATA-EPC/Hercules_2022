@@ -42,7 +42,7 @@ sensor.set_contrast(1)#コントラスト
 sensor.set_brightness(-3)#明るさ
 sensor.set_saturation(0)#彩
 sensor.set_auto_gain(False) # must be turned off for color tracking
-#sensor.set_auto_whitebal(False,(-5.02073, -5.019987, 0.6176831))# must be turned off for color tracking
+sensor.set_auto_whitebal(False,(-5.02073, -5.019987, 0.6176831))# must be turned off for color tracking
 clock = time.clock()
 
 tim1 = Timer(4, freq=1000)
@@ -196,6 +196,7 @@ while(True):  #メインループ
  uart.writechar(255)
  uart.writechar(rads[ball_namber])
  uart.writechar(distanceA[ball_namber])
+
  #uart.write(str(abs(cxA[ball_namber]-320)))
 
  #uart.write(str(abs(distanceA[ball_namber])))
