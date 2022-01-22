@@ -1,0 +1,17 @@
+
+This directory is intended for PlatformIO Unit Testing and project tests.
+
+Unit Testing is a software testing method by which individual units of
+source code, sets of one or more MCU program modules together with associated
+control data, usage procedures, and operating procedures, are tested to
+determine whether they are fit for use. Unit testing finds problems early
+in the development cycle.
+
+このディレクトリは、PlatformIOユニットテストおよびプロジェクトテストを対象としています。
+ユニットテストは、ソースコードの個々のユニット、関連する制御データ、使用手順、および操作手順とともに1つ以上のMCUプログラムモジュールのセットによるソフトウェアテスト方法であり、
+それらが使用に適しているかどうかを判断するためにテストされます。 
+単体テストでは、開発サイクルの早い段階で問題が見つかります。
+
+
+More information about PlatformIO Unit Testing:
+- https://docs.platformio.org/page/plus/unit-testing.html
