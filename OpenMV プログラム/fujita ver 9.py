@@ -30,8 +30,8 @@ thresholds3 = [(0, 0, 42, 73, 26, 57)]#ゴール（青色）
 
 #上で色の変更可　ただLAB色空間での探知である
 # generic_blue_thresholds
-uart = UART(3, 115200)
-#uart.init(115200, bits=8, parity=None, stop=1, timeout_char=1000)
+uart = UART(3, 115200, timeout_char = 100)
+uart.init(115200, bits=8, parity=None, stop=1, timeout_char=1000)
 #uart1 = UART(1, 115200, timeout_char=1000)
 
 sensor.reset()
