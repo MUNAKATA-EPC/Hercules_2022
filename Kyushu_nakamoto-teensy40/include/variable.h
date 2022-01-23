@@ -5,6 +5,8 @@ int CAM_area;
 
 int head_USS; //USSからのヘッダ
 int USS; //超音波センサ値(方向指定値)
+int latest_USS;
+
 int USS1 = 0;
 int USS2 = 0;
 int USS3 = 0;

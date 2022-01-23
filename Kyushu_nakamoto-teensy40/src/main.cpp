@@ -25,32 +25,52 @@ void loop() {
     control_LED();
     timer = millis() - timer_start;
 
-    if (timer < 200) {
+    if (timer < 300) {
       Motor_1();  //方向修正
-    } else if (timer < 700) {
-      if (USS == 1) {
+    } else if (timer < 500) {
+      if (latest_USS == 1) {
         Motor_1();  //方向修正
-      } else if (USS == 2) {
+      } else if (latest_USS == 2) {
         Motor_2();  //前
-      } else if (USS == 3) {
+      } else if (latest_USS == 3) {
         Motor_3();  //後
-      } else if (USS == 4) {
+      } else if (latest_USS == 4) {
         Motor_4();  //左
-      } else if (USS == 5) {
+      } else if (latest_USS == 5) {
         Motor_5();  //右
-      } else if (USS == 6) {
+      } else if (latest_USS == 6) {
         Motor_6();  //左前
-      } else if (USS == 7) {
+      } else if (latest_USS == 7) {
         Motor_7();  //右前
-      } else if (USS == 8) {
+      } else if (latest_USS == 8) {
         Motor_8();  //左後
-      } else if (USS == 9) {
+      } else if (latest_USS == 9) {
         Motor_9();  //右後
       }
     } else {
       if (digitalRead(LINE_1) == LOW || digitalRead(LINE_2) == LOW || digitalRead(LINE_3) == LOW || digitalRead(LINE_4) == LOW) {
-        for (size_t i = 0; i <= 100; i++) {
-          Serial1.println("1R0002R0003R0004R000");
+        //for (size_t i = 0; i <= 300; i++) {
+          //Serial1.println("1R0002R0003R0004R000");
+        //}
+        Serial1.println("1R0002R0003R0004R000");
+        if (USS == 1) {
+          latest_USS = 1;
+        } else if (USS == 2) {
+          latest_USS = 2;
+        } else if (USS == 3) {
+         latest_USS = 3;
+        } else if (USS == 4) {
+          latest_USS = 4;
+        } else if (USS == 5) {
+          latest_USS = 5;
+        } else if (USS == 6) {
+          latest_USS = 6;
+        } else if (USS == 7) {
+          latest_USS = 7;
+        } else if (USS == 8) {
+          latest_USS = 8;
+        } else if (USS == 9) {
+          latest_USS = 9;
         }
 
         timer_start = millis();
@@ -58,7 +78,7 @@ void loop() {
         if (CAM_distance > 0) {
           position_timer = millis();
           old_position_timer = millis();
-          if (CAM_distance < 70) {
+          if (CAM_distance < 90) {
             if (CAM_area == 2) {  //前
               Motor_2();
             } else if (CAM_area == 3) { //後
@@ -68,9 +88,9 @@ void loop() {
             } else if (CAM_area == 5) { //右
               Motor_3();
             } else if (CAM_area == 6) { //左前
-              Motor_6();
+              Motor_8();
             } else if (CAM_area == 7) { //右前
-              Motor_7();
+              Motor_9();
             } else if (CAM_area == 8) { //左後
               Motor_9();
             } else if (CAM_area == 9) { //右後

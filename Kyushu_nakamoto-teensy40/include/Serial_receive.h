@@ -1,14 +1,16 @@
 void Serial_receive() {
-  if (Serial2.available() > 0) {
+
+  while (Serial2.available() > 0) {
     head_CAM = Serial2.read();
 
     if (head_CAM == 255) {
       CAM_angle = Serial2.read();
       CAM_distance = Serial2.read();
+      break;
     }
   }
 
-  if (Serial3.available() > 0) {
+  while (Serial3.available() > 0) {
     head_USS = Serial3.read();
 
     if (head_USS == 255) {
@@ -17,6 +19,7 @@ void Serial_receive() {
       USS2 = Serial3.read();
       USS3 = Serial3.read();
       USS4 = Serial3.read();
+      break;
     }
   }
 
@@ -24,7 +27,7 @@ void Serial_receive() {
     IMU = Serial4.read();
   }
 
-  if (CAM_angle < 5) {
+  if (CAM_angle < 6) {
     CAM_area = 2; //前
   } else if (CAM_angle < 35) {
     CAM_area = 7; //右前
@@ -38,7 +41,7 @@ void Serial_receive() {
     CAM_area = 8; //左後
   } else if (CAM_angle < 136) {
     CAM_area = 4; //左
-  } else if (CAM_angle < 176) {
+  } else if (CAM_angle < 175) {
     CAM_area = 6; //左前
   } else {
     CAM_area = 2; //前
