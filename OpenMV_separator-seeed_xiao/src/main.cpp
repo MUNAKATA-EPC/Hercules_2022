@@ -46,6 +46,12 @@ void loop() {
   Serial.print("\t");
   Serial.println(riole2);
 
+  if (riole1 == 0) {
+    riole1 = 0;
+  } else if (riole1 == 100) {
+    riole1 = 127;
+  }
+  
   analogWriteResolution(7);
 
   analogWrite(rads1Pin, rads1);
