@@ -10,6 +10,8 @@
 #define trigPin4 9  //  右超音波のトリガー
 #define LED 13  //LEDピン
 
+#define val 35.00
+
 class ClassA {
 private:
   
@@ -156,67 +158,67 @@ void loop() {
 
   Serial1.write(255);
   
-  if (front.Distance < 40.00) {
-    if (left.Distance < 40.00) {
-      if (back.Distance < 40.00) {
-        if (right.Distance < 40.00) {
+  if (front.Distance < val) {
+    if (left.Distance < val) {
+      if (back.Distance < val) {
+        if (right.Distance < val) {
           Serial1.write(1); //停止
 
         } else {
           Serial1.write(5); //右
 
         }
-      } else if (right.Distance < 40.00) {
+      } else if (right.Distance < val) {
         Serial1.write(3); //後
 
       } else {
         Serial1.write(9); //右後
 
       }
-    } else if (back.Distance < 40.00) {
-      if (right.Distance < 40.00) {
+    } else if (back.Distance < val) {
+      if (right.Distance < val) {
         Serial1.write(4); //左
 
       } else {
         Serial1.write(1); //停止
 
       }
-    } else if (right.Distance < 40.00) {
+    } else if (right.Distance < val) {
       Serial1.write(8); //左後
 
     } else {
       Serial1.write(3); //後
 
     }
-  } else if (left.Distance < 40.00) {
-    if (back.Distance < 40.00) {
-      if (right.Distance < 40.00) {
+  } else if (left.Distance < val) {
+    if (back.Distance < val) {
+      if (right.Distance < val) {
         Serial1.write(2); //前
 
       } else {
         Serial1.write(7); //右前
 
       }
-    } else if (right.Distance < 40.00) {
+    } else if (right.Distance < val) {
       Serial1.write(1); //停止
 
     } else {
       Serial1.write(5); //右
 
     }
-  } else if (back.Distance < 40.00) {
-    if (right.Distance < 40.00) {
+  } else if (back.Distance < val) {
+    if (right.Distance < val) {
       Serial1.write(6); //左前
 
     } else {
       Serial1.write(2); //前
 
     }
-  } else if (right.Distance < 40.00) {
+  } else if (right.Distance < 35.00) {
     Serial1.write(2); //左
 
   } else {
-    Serial1.write(1); //停止
+    Serial1.write(2); //停止
 
   }
 
