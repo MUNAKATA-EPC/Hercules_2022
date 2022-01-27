@@ -49,30 +49,7 @@ void loop() {
       }
     } else {
       if (digitalRead(LINE_1) == LOW || digitalRead(LINE_2) == LOW || digitalRead(LINE_3) == LOW || digitalRead(LINE_4) == LOW) {
-        //for (size_t i = 0; i <= 300; i++) {
-          //Serial1.println("1R0002R0003R0004R000");
-        //}
         Serial1.println("1R0002R0003R0004R000");
-        if (USS == 1) {
-          latest_USS = 1;
-        } else if (USS == 2) {
-          latest_USS = 2;
-        } else if (USS == 3) {
-         latest_USS = 3;
-        } else if (USS == 4) {
-          latest_USS = 4;
-        } else if (USS == 5) {
-          latest_USS = 5;
-        } else if (USS == 6) {
-          latest_USS = 6;
-        } else if (USS == 7) {
-          latest_USS = 7;
-        } else if (USS == 8) {
-          latest_USS = 8;
-        } else if (USS == 9) {
-          latest_USS = 9;
-        }
-
         timer_start = millis();
       } else {
         if (CAM_distance > 0) {
