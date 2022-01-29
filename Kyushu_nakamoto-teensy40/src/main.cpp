@@ -4,7 +4,6 @@
 #include <DSR1202.h>
 
 FaBoLCDmini_AQM0802A lcd;
-
 DSR1202 dsr1202(1);
 
 #include "define.h"
@@ -26,8 +25,8 @@ void loop() {
     Serial_receive();
     control_LED();
     pid();
+    
     LINE.timer = millis() - LINE.timer_start;
-
     if (LINE.timer < 300) {
       Motor_1();  //方向修正
     } else if (LINE.timer < 500) {

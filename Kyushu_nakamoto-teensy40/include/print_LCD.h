@@ -1,31 +1,24 @@
 void print_LCD() {
   LCD.val = digitalRead(button_LCD);
-
   if (LCD.val == LOW && LCD.old_val == HIGH) {
     LCD.state = LCD.state + 1;
     white.state = 0;
-
     if (LCD.state >= 6) {
       LCD.state = 0;
     }
-
     lcd.clear();
   }
-
   LCD.old_val = LCD.val;
 
   if (LCD.state == 4 || LCD.state == 5) {
     white.val = digitalRead(button_white);
     if (white.val == LOW && white.old_val == HIGH) {
       white.state = white.state + 1;
-
       if (white.state >= 2) {
         white.state = 0;
       }
-
       lcd.clear();
     }
-
     white.old_val = white.val;
   }
 
@@ -72,7 +65,6 @@ void print_LCD() {
   } else if (LCD.state == 2) {
     lcd.setCursor(0, 0);
     lcd.print("F");
-
     if (USS1 < 10) {
       lcd.setCursor(1, 0);
       lcd.print("00");
@@ -90,7 +82,6 @@ void print_LCD() {
 
     lcd.setCursor(4, 0);
     lcd.print("L");
-
     if (USS2 < 10) {
       lcd.setCursor(5, 0);
       lcd.print("00");
@@ -108,7 +99,6 @@ void print_LCD() {
 
     lcd.setCursor(0, 1);
     lcd.print("B");
-
     if (USS3 < 10) {
       lcd.setCursor(1, 1);
       lcd.print("00");
@@ -126,7 +116,6 @@ void print_LCD() {
 
     lcd.setCursor(4, 1);
     lcd.print("R");
-
     if (USS4 < 10) {
       lcd.setCursor(5, 1);
       lcd.print("00");
@@ -146,7 +135,6 @@ void print_LCD() {
   } else if (LCD.state == 3) {
     lcd.setCursor(0, 0);
     lcd.print("rads:");
-
     if (CAM_angle < 10) {
       lcd.setCursor(5, 0);
       lcd.print("00");
@@ -164,7 +152,6 @@ void print_LCD() {
 
     lcd.setCursor(0, 1);
     lcd.print("dis:");
-
     if (CAM_distance < 10) {
       lcd.setCursor(5, 1);
       lcd.print("00");
@@ -184,7 +171,7 @@ void print_LCD() {
   } else if (LCD.state == 4) {
     lcd.setCursor(0, 0);
     lcd.print("GameMode");
-
+    
     if (white.state == 0) {
       lcd.setCursor(0, 1);
       lcd.print("Stop");

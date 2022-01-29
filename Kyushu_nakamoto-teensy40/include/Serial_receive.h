@@ -1,8 +1,6 @@
 void Serial_receive() {
-
   while (Serial2.available() > 0) {
     head_CAM = Serial2.read();
-
     if (head_CAM == 255) {
       CAM_angle = Serial2.read();
       CAM_distance = Serial2.read();
@@ -12,7 +10,6 @@ void Serial_receive() {
 
   while (Serial3.available() > 0) {
     head_USS = Serial3.read();
-
     if (head_USS == 255) {
       USS = Serial3.read();
       USS1 = Serial3.read();
