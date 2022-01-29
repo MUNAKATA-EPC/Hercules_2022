@@ -16,7 +16,7 @@ DSR1202::DSR1202(int pin)
 
 void DSR1202::Init()
 {
-	Serial.begin(115200);
+	Serial.begin(9600);
 	
 	if(PinNo == 2)
 	{
@@ -32,7 +32,6 @@ void DSR1202::Init()
 	}
 }
 
-//右前, 右後, 左前, 左後(全部正回転で反時計回り)
 void DSR1202::move(int a, int b, int c, int d)
 {
 	int val = 0;
