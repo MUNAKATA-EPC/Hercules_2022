@@ -7,4 +7,3 @@
 #define LINE_2 3
 #define LINE_3 4
 #define LINE_4 5
-#define LINE_ALL 22 //全体のまとめ(アナログ接続)
