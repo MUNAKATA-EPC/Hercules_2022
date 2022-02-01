@@ -19,7 +19,7 @@ U 1 1 61E9826B
 P 4500 2450
 F 0 "FL1" H 4500 2775 50  0000 C CNN
 F 1 "BNX025" H 4500 2684 50  0000 C CNN
-F 2 "Filter:Filter_Murata_BNX025" H 4500 2250 50  0001 C CNN
+F 2 "BNX016-01:FIL_BNX016-01" H 4500 2250 50  0001 C CNN
 F 3 "https://www.murata.com/en-us/products/productdetail.aspx?cate=luNoiseSupprFilteBlockType&partno=BNX025H01%23" V 4475 2425 50  0001 C CNN
 	1    4500 2450
 	1    0    0    -1  
@@ -47,7 +47,7 @@ U 1 1 61EADD40
 P 7200 2650
 F 0 "U1" H 7200 3215 50  0000 C CNN
 F 1 "OKL-T_6-W12N-C" H 7200 3124 50  0000 C CNN
-F 2 "CONV_OKL-T/6-W12N-C" H 6750 3100 50  0001 L BNN
+F 2 "OKL-T_6-W12N-C:DCDC-murata-6A" H 6750 3100 50  0001 L BNN
 F 3 "" H 7200 2650 50  0001 L BNN
 	1    7200 2650
 	1    0    0    -1  
@@ -208,26 +208,11 @@ Wire Wire Line
 	8600 3150 8850 3150
 Connection ~ 8600 3150
 Connection ~ 8850 3150
-$Comp
-L Device:Voltmeter_DC MES2
-U 1 1 61EAE85E
-P 9550 2700
-F 0 "MES2" H 9703 2746 50  0000 L CNN
-F 1 "Voltmeter_DC" H 9703 2655 50  0000 L CNN
-F 2 "" V 9550 2800 50  0001 C CNN
-F 3 "~" V 9550 2800 50  0001 C CNN
-	1    9550 2700
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	9150 3150 9550 3150
-Wire Wire Line
-	9550 3150 9550 2900
 Connection ~ 9150 3150
 Wire Wire Line
 	9500 2350 9550 2350
-Wire Wire Line
-	9550 2350 9550 2500
 $Comp
 L power:GND1 #PWR013
 U 1 1 61EBE4FF
@@ -239,7 +224,6 @@ F 3 "" H 9550 3150 50  0001 C CNN
 	1    9550 3150
 	1    0    0    -1  
 $EndComp
-Connection ~ 9550 3150
 $Comp
 L power:+5V #PWR012
 U 1 1 61EBF0D6
@@ -251,7 +235,6 @@ F 3 "" H 9550 2350 50  0001 C CNN
 	1    9550 2350
 	0    1    1    0   
 $EndComp
-Connection ~ 9550 2350
 $Comp
 L Device:Battery BT1
 U 1 1 61EBFC23
@@ -351,8 +334,6 @@ Connection ~ 2900 2350
 Wire Wire Line
 	3500 2350 3650 2350
 Connection ~ 3650 2350
-Wire Wire Line
-	2250 2750 1700 2750
 Connection ~ 1700 2750
 Text GLabel 2900 2150 1    50   Input ~ 0
 Voltage
@@ -364,7 +345,7 @@ U 1 1 61EF0035
 P 3150 3450
 F 0 "J1" V 3114 3262 50  0000 R CNN
 F 1 "Conn_01x02" V 3023 3262 50  0000 R CNN
-F 2 "" H 3150 3450 50  0001 C CNN
+F 2 "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" H 3150 3450 50  0001 C CNN
 F 3 "~" H 3150 3450 50  0001 C CNN
 	1    3150 3450
 	0    -1   -1   0   
@@ -375,7 +356,7 @@ U 1 1 61EF3E59
 P 8700 3650
 F 0 "J4" V 8664 3462 50  0000 R CNN
 F 1 "Conn_01x02" V 8573 3462 50  0000 R CNN
-F 2 "" H 8700 3650 50  0001 C CNN
+F 2 "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" H 8700 3650 50  0001 C CNN
 F 3 "~" H 8700 3650 50  0001 C CNN
 	1    8700 3650
 	0    -1   -1   0   
@@ -386,33 +367,12 @@ U 1 1 61EF4C98
 P 9450 3650
 F 0 "J5" V 9414 3462 50  0000 R CNN
 F 1 "Conn_01x02" V 9323 3462 50  0000 R CNN
-F 2 "" H 9450 3650 50  0001 C CNN
+F 2 "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" H 9450 3650 50  0001 C CNN
 F 3 "~" H 9450 3650 50  0001 C CNN
 	1    9450 3650
 	0    -1   -1   0   
 $EndComp
-$Comp
-L Device:D_Schottky D1
-U 1 1 61EDC595
-P 2250 2600
-F 0 "D1" V 2204 2680 50  0000 L CNN
-F 1 "D_Schottky" V 2295 2680 50  0000 L CNN
-F 2 "" H 2250 2600 50  0001 C CNN
-F 3 "~" H 2250 2600 50  0001 C CNN
-	1    2250 2600
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	2250 2750 2900 2750
-Connection ~ 2250 2750
 Connection ~ 2900 2750
-Wire Wire Line
-	2150 2350 2250 2350
-Wire Wire Line
-	2250 2450 2250 2350
-Connection ~ 2250 2350
-Wire Wire Line
-	2250 2350 2900 2350
 $Comp
 L power:+12V #PWR02
 U 1 1 61EE4D28
@@ -441,7 +401,7 @@ U 1 1 61EEBF37
 P 3900 3450
 F 0 "J2" V 3864 3262 50  0000 R CNN
 F 1 "Conn_01x02" V 3773 3262 50  0000 R CNN
-F 2 "" H 3900 3450 50  0001 C CNN
+F 2 "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" H 3900 3450 50  0001 C CNN
 F 3 "~" H 3900 3450 50  0001 C CNN
 	1    3900 3450
 	0    -1   -1   0   
@@ -474,7 +434,7 @@ U 1 1 61EEE7BE
 P 4625 3450
 F 0 "J3" V 4589 3262 50  0000 R CNN
 F 1 "Conn_01x02" V 4498 3262 50  0000 R CNN
-F 2 "" H 4625 3450 50  0001 C CNN
+F 2 "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" H 4625 3450 50  0001 C CNN
 F 3 "~" H 4625 3450 50  0001 C CNN
 	1    4625 3450
 	0    -1   -1   0   
@@ -545,4 +505,8 @@ F 3 "" H 9450 3850 50  0001 C CNN
 	1    9450 3850
 	-1   0    0    1   
 $EndComp
+Wire Wire Line
+	1700 2750 2900 2750
+Wire Wire Line
+	2150 2350 2900 2350
 $EndSCHEMATC
