@@ -1,4 +1,5 @@
 (fp_lib_table
   (lib (name OKL-T_6-W12N-C)(type KiCad)(uri C:/Users/藤田/Documents/GitHub/Hercules_2022/KiCad_Project/2022/OKL-T_6-W12N-C)(options "")(descr ""))
   (lib (name BNX016-01)(type KiCad)(uri C:/Users/藤田/Documents/GitHub/Hercules_2022/KiCad_Project/2022/BNX016-01)(options "")(descr ""))
+  (lib (name herakuresu2022)(type KiCad)(uri C:/Users/藤田/Documents/GitHub/Hercules_2022/KiCad_Project/2022/herakuresu2022.pretty)(options "")(descr ""))
 )
