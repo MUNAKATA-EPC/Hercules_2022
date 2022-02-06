@@ -1,4 +1,4 @@
-19230892744922807
+19235641977706452
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -56210,12 +56210,26 @@ Yellow 5381 Series LED
 2
 2
 Library
+2MS1T2B4M2QES
+2MS1T2B4M2QES-1
+Switch
+0
+3
+3
+Library
 DCDC-murata-6A
 
 
 0
 18
 13
+Library
+FIL_BNX016-01
+
+
+0
+6
+4
 Library
 LCDmodule
 
@@ -56251,6 +56265,13 @@ S428
 0
 4
 4
+Library
+Seeeduino XIAO-MOUDLE14P-2.54-21X17.8MM
+
+
+0
+20
+20
 Library
 Teensy
 
