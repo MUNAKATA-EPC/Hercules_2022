@@ -41,17 +41,6 @@ Wire Wire Line
 	4900 2550 4900 2650
 Wire Wire Line
 	4900 2650 5300 2650
-$Comp
-L Converter_DCDC:OKL-T_6-W12N-C U1
-U 1 1 61EADD40
-P 7200 2650
-F 0 "U1" H 7200 3215 50  0000 C CNN
-F 1 "OKL-T_6-W12N-C" H 7200 3124 50  0000 C CNN
-F 2 "OKL-T_6-W12N-C:DCDC-murata-6A" H 6750 3100 50  0001 L BNN
-F 3 "" H 7200 2650 50  0001 L BNN
-	1    7200 2650
-	1    0    0    -1  
-$EndComp
 Connection ~ 5300 2350
 $Comp
 L Device:D D2
@@ -116,17 +105,6 @@ Wire Wire Line
 NoConn ~ 8000 2750
 Wire Wire Line
 	5900 3150 6100 3150
-$Comp
-L Switch:SW_SPST SW2
-U 1 1 61EDE86A
-P 6100 2850
-F 0 "SW2" V 6054 2948 50  0000 L CNN
-F 1 "SW_SPST" V 6145 2948 50  0000 L CNN
-F 2 "herakuresu2022:2MS1T2B4M2QES" H 6100 2850 50  0001 C CNN
-F 3 "~" H 6100 2850 50  0001 C CNN
-	1    6100 2850
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	6100 3150 6100 3050
 Connection ~ 6100 3150
@@ -238,35 +216,24 @@ $EndComp
 $Comp
 L Device:Battery BT1
 U 1 1 61EBFC23
-P 1700 2550
-F 0 "BT1" H 1808 2596 50  0000 L CNN
-F 1 "Battery" H 1808 2505 50  0000 L CNN
-F 2 "Connector_JST:JST_VH_B2P-VH-B_1x02_P3.96mm_Vertical" V 1700 2610 50  0001 C CNN
-F 3 "~" V 1700 2610 50  0001 C CNN
-	1    1700 2550
+P 1575 2550
+F 0 "BT1" H 1683 2596 50  0000 L CNN
+F 1 "Battery" H 1683 2505 50  0000 L CNN
+F 2 "Connector_JST:JST_VH_B2P-VH-B_1x02_P3.96mm_Vertical" V 1575 2610 50  0001 C CNN
+F 3 "~" V 1575 2610 50  0001 C CNN
+	1    1575 2550
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:Fuse F1
 U 1 1 61EC72DA
-P 2000 2350
-F 0 "F1" V 1803 2350 50  0000 C CNN
-F 1 "Fuse" V 1894 2350 50  0000 C CNN
-F 2 "herakuresu2022:fuse_socket" V 1930 2350 50  0001 C CNN
-F 3 "~" H 2000 2350 50  0001 C CNN
-	1    2000 2350
+P 1875 2350
+F 0 "F1" V 1678 2350 50  0000 C CNN
+F 1 "Fuse" V 1769 2350 50  0000 C CNN
+F 2 "herakuresu2022:fuse_socket" V 1805 2350 50  0001 C CNN
+F 3 "~" H 1875 2350 50  0001 C CNN
+	1    1875 2350
 	0    1    1    0   
-$EndComp
-$Comp
-L Integrated_Power_Board-cache:Switch_SW_SPST SW1
-U 1 1 61EC8A2A
-P 3300 2350
-F 0 "SW1" H 3300 2585 50  0000 C CNN
-F 1 "Switch_SW_SPST" H 3300 2494 50  0000 C CNN
-F 2 "" H 3300 2350 50  0001 C CNN
-F 3 "" H 3300 2350 50  0001 C CNN
-	1    3300 2350
-	1    0    0    -1  
 $EndComp
 $Comp
 L Device:Varistor RV1
@@ -280,7 +247,7 @@ F 3 "~" H 3650 2500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1700 2350 1850 2350
+	1575 2350 1725 2350
 Wire Wire Line
 	3650 2350 3900 2350
 Wire Wire Line
@@ -293,12 +260,12 @@ Connection ~ 3650 2650
 $Comp
 L power:GND #PWR01
 U 1 1 61ED0CD7
-P 1700 2750
-F 0 "#PWR01" H 1700 2500 50  0001 C CNN
-F 1 "GND" H 1705 2577 50  0000 C CNN
-F 2 "" H 1700 2750 50  0001 C CNN
-F 3 "" H 1700 2750 50  0001 C CNN
-	1    1700 2750
+P 1575 2750
+F 0 "#PWR01" H 1575 2500 50  0001 C CNN
+F 1 "GND" H 1580 2577 50  0000 C CNN
+F 2 "" H 1575 2750 50  0001 C CNN
+F 3 "" H 1575 2750 50  0001 C CNN
+	1    1575 2750
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -318,27 +285,23 @@ Wire Wire Line
 $Comp
 L Device:Voltmeter_DC MES1
 U 1 1 61ED4B62
-P 2900 2550
-F 0 "MES1" H 3000 2450 50  0000 L CNN
-F 1 "Voltmeter_DC" H 2650 2250 50  0000 L CNN
-F 2 "herakuresu2022:voltage_counter" V 2900 2650 50  0001 C CNN
-F 3 "~" V 2900 2650 50  0001 C CNN
-	1    2900 2550
+P 2775 2550
+F 0 "MES1" H 2875 2450 50  0000 L CNN
+F 1 "Voltmeter_DC" H 2525 2250 50  0000 L CNN
+F 2 "herakuresu2022:voltage_counter" V 2775 2650 50  0001 C CNN
+F 3 "~" V 2775 2650 50  0001 C CNN
+	1    2775 2550
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2900 2750 3650 2750
-Wire Wire Line
-	2900 2350 3100 2350
-Connection ~ 2900 2350
-Wire Wire Line
-	3500 2350 3650 2350
+	2775 2350 2975 2350
+Connection ~ 2775 2350
 Connection ~ 3650 2350
-Connection ~ 1700 2750
-Text GLabel 2900 2150 1    50   Input ~ 0
+Connection ~ 1575 2750
+Text GLabel 2775 2150 1    50   Input ~ 0
 Voltage
 Wire Wire Line
-	2900 2150 2900 2350
+	2775 2150 2775 2350
 $Comp
 L Connector_Generic:Conn_01x02 J1
 U 1 1 61EF0035
@@ -372,7 +335,7 @@ F 3 "~" H 9450 3650 50  0001 C CNN
 	1    9450 3650
 	0    -1   -1   0   
 $EndComp
-Connection ~ 2900 2750
+Connection ~ 2775 2750
 $Comp
 L power:+12V #PWR02
 U 1 1 61EE4D28
@@ -506,7 +469,114 @@ F 3 "" H 9450 3850 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	1700 2750 2900 2750
+	1575 2750 2100 2750
 Wire Wire Line
-	2150 2350 2900 2350
+	2025 2350 2100 2350
+$Comp
+L Switch:SW_SPST SW2
+U 1 1 61EDE86A
+P 6100 2850
+F 0 "SW2" V 6054 2948 50  0000 L CNN
+F 1 "SW_SPST" V 6145 2948 50  0000 L CNN
+F 2 "herakuresu2022:2MS1T2B4M2QES" H 6100 2850 50  0001 C CNN
+F 3 "~" H 6100 2850 50  0001 C CNN
+	1    6100 2850
+	0    1    1    0   
+$EndComp
+$Comp
+L Converter_DCDC:OKL-T_6-W12N-C U1
+U 1 1 61EADD40
+P 7200 2650
+F 0 "U1" H 7200 3215 50  0000 C CNN
+F 1 "OKL-T_6-W12N-C" H 7200 3124 50  0000 C CNN
+F 2 "OKL-T_6-W12N-C:DCDC-murata-6A" H 6750 3100 50  0001 L BNN
+F 3 "" H 7200 2650 50  0001 L BNN
+	1    7200 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_SPST SW?
+U 1 1 62001AB7
+P 3175 2350
+F 0 "SW?" V 3129 2448 50  0000 L CNN
+F 1 "SW_SPST" V 3220 2448 50  0000 L CNN
+F 2 "herakuresu2022:2MS1T2B4M2QES" H 3175 2350 50  0001 C CNN
+F 3 "~" H 3175 2350 50  0001 C CNN
+	1    3175 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D_Shockley D?
+U 1 1 62006518
+P 2100 2550
+F 0 "D?" V 2054 2630 50  0000 L CNN
+F 1 "D_Shockley" V 2145 2630 50  0000 L CNN
+F 2 "" H 2100 2550 50  0001 C CNN
+F 3 "~" H 2100 2550 50  0001 C CNN
+	1    2100 2550
+	0    1    1    0   
+$EndComp
+$Comp
+L MCU_Microchip_ATtiny:ATtiny85-20PU U?
+U 1 1 62009351
+P 2875 5200
+F 0 "U?" H 2346 5246 50  0000 R CNN
+F 1 "ATtiny85-20PU" H 2346 5155 50  0000 R CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 2875 5200 50  0001 C CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/atmel-2586-avr-8-bit-microcontroller-attiny25-attiny45-attiny85_datasheet.pdf" H 2875 5200 50  0001 C CNN
+	1    2875 5200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2100 2400 2100 2350
+Connection ~ 2100 2350
+Wire Wire Line
+	2100 2700 2100 2750
+Connection ~ 2100 2750
+$Comp
+L power:GND1 #PWR?
+U 1 1 62012FF3
+P 2875 5800
+F 0 "#PWR?" H 2875 5550 50  0001 C CNN
+F 1 "GND1" H 2880 5627 50  0000 C CNN
+F 2 "" H 2875 5800 50  0001 C CNN
+F 3 "" H 2875 5800 50  0001 C CNN
+	1    2875 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP C?
+U 1 1 62019AD6
+P 3475 2550
+F 0 "C?" H 3593 2596 50  0000 L CNN
+F 1 "CP" H 3593 2505 50  0000 L CNN
+F 2 "" H 3513 2400 50  0001 C CNN
+F 3 "~" H 3475 2550 50  0001 C CNN
+	1    3475 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2100 2350 2775 2350
+Wire Wire Line
+	2100 2750 2775 2750
+Wire Wire Line
+	3375 2350 3475 2350
+Wire Wire Line
+	3475 2350 3475 2400
+Connection ~ 3475 2350
+Wire Wire Line
+	3475 2350 3650 2350
+Wire Wire Line
+	2775 2750 3650 2750
+$Comp
+L power:+5V #PWR?
+U 1 1 6201F98D
+P 2875 4600
+F 0 "#PWR?" H 2875 4450 50  0001 C CNN
+F 1 "+5V" H 2890 4773 50  0000 C CNN
+F 2 "" H 2875 4600 50  0001 C CNN
+F 3 "" H 2875 4600 50  0001 C CNN
+	1    2875 4600
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
