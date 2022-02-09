@@ -1,4 +1,4 @@
-19235641977706452
+19237286264081018
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -56223,6 +56223,13 @@ DCDC-murata-6A
 0
 18
 13
+Library
+DS-850k
+
+
+0
+2
+2
 Library
 FIL_BNX016-01
 
