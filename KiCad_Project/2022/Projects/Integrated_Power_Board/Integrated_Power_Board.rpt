@@ -1,0 +1,41 @@
+** Drc report for C:\Users\藤田\Documents\GitHub\Hercules_2022\KiCad_Project\2022\Projects\Integrated_Power_Board\Integrated_Power_Board.kicad_pcb **
+** Created on  **
+
+** Found 11 DRC errors **
+ErrType(45): コートヤードのオーバーラップ
+    @(140.081 mm, 101.219 mm): フットプリント U1 - F.Cu
+    @(129.159 mm, 115.316 mm): フットプリント D1 - F.Cu
+ErrType(45): コートヤードのオーバーラップ
+    @(138.049 mm, 104.521 mm): フットプリント R3 - F.Cu
+    @(145.669 mm, 107.315 mm): フットプリント R2 - F.Cu
+ErrType(45): コートヤードのオーバーラップ
+    @(126.365 mm, 88.519 mm): フットプリント J1 - F.Cu
+    @(129.667 mm, 84.455 mm): フットプリント R6 - F.Cu
+ErrType(45): コートヤードのオーバーラップ
+    @(155.703 mm, 85.909 mm): フットプリント C4 - F.Cu
+    @(158.877 mm, 82.931 mm): フットプリント RV2 - F.Cu
+ErrType(45): コートヤードのオーバーラップ
+    @(158.877 mm, 82.931 mm): フットプリント RV2 - F.Cu
+    @(159.893 mm, 91.567 mm): フットプリント R5 - F.Cu
+ErrType(45): コートヤードのオーバーラップ
+    @(129.667 mm, 84.455 mm): フットプリント R6 - F.Cu
+    @(132.715 mm, 89.281 mm): フットプリント D3 - F.Cu
+ErrType(45): コートヤードのオーバーラップ
+    @(136.779 mm, 80.518 mm): フットプリント J6 - F.Cu
+    @(136.779 mm, 87.249 mm): フットプリント J5 - F.Cu
+ErrType(45): コートヤードのオーバーラップ
+    @(136.779 mm, 80.518 mm): フットプリント J6 - F.Cu
+    @(132.715 mm, 89.281 mm): フットプリント D3 - F.Cu
+ErrType(45): コートヤードのオーバーラップ
+    @(136.779 mm, 87.249 mm): フットプリント J5 - F.Cu
+    @(132.715 mm, 89.281 mm): フットプリント D3 - F.Cu
+ErrType(45): コートヤードのオーバーラップ
+    @(167.132 mm, 87.884 mm): フットプリント J3 - F.Cu
+    @(167.132 mm, 94.488 mm): フットプリント J2 - F.Cu
+ErrType(45): コートヤードのオーバーラップ
+    @(129.159 mm, 115.316 mm): フットプリント D1 - F.Cu
+    @(125.095 mm, 95.885 mm): フットプリント BT1 - F.Cu
+
+** Found 0 unconnected pads **
+
+** End of Report **
