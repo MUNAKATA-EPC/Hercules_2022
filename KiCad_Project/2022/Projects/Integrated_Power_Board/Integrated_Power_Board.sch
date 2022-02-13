@@ -24,24 +24,8 @@ F 3 "https://www.murata.com/en-us/products/productdetail.aspx?cate=luNoiseSupprF
 	1    4500 2450
 	1    0    0    -1  
 $EndComp
-$Comp
-L Device:CP C2
-U 1 1 61E9D1C6
-P 5300 2500
-F 0 "C2" H 5418 2546 50  0000 L CNN
-F 1 "CP" H 5418 2455 50  0000 L CNN
-F 2 "Capacitor_THT:C_Radial_D16.0mm_H25.0mm_P7.50mm" H 5338 2350 50  0001 C CNN
-F 3 "~" H 5300 2500 50  0001 C CNN
-	1    5300 2500
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4900 2350 5300 2350
 Wire Wire Line
 	4900 2550 4900 2650
-Wire Wire Line
-	4900 2650 5300 2650
-Connection ~ 5300 2350
 $Comp
 L Device:D D3
 U 1 1 61EAA1B2
@@ -76,32 +60,8 @@ F 3 "~" H 5900 2500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5300 2350 5900 2350
-Connection ~ 5900 2350
-Wire Wire Line
-	5900 2350 6100 2350
-Wire Wire Line
 	5900 2650 5900 3150
-Wire Wire Line
-	5300 2650 5900 2650
-Connection ~ 5300 2650
 Connection ~ 5900 2650
-$Comp
-L Device:R R4
-U 1 1 61ED432C
-P 6250 2550
-F 0 "R4" H 6320 2596 50  0000 L CNN
-F 1 "R" H 6320 2505 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 6180 2550 50  0001 C CNN
-F 3 "~" H 6250 2550 50  0001 C CNN
-	1    6250 2550
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	6100 2550 6100 2350
-Connection ~ 6100 2350
-Wire Wire Line
-	6100 2350 6400 2350
 NoConn ~ 8000 2750
 Wire Wire Line
 	5900 3150 6100 3150
@@ -110,9 +70,6 @@ Wire Wire Line
 Connection ~ 6100 3150
 Wire Wire Line
 	6100 3150 8600 3150
-Wire Wire Line
-	6100 2650 6100 2550
-Connection ~ 6100 2550
 Wire Wire Line
 	8850 2350 8850 2500
 $Comp
@@ -298,10 +255,10 @@ Wire Wire Line
 Connection ~ 2775 2350
 Connection ~ 3650 2350
 Connection ~ 1575 2750
-Text GLabel 2775 2150 1    50   Input ~ 0
+Text GLabel 3475 2150 1    50   Input ~ 0
 Voltage
 Wire Wire Line
-	2775 2150 2775 2350
+	3475 2150 3475 2350
 $Comp
 L Connector_Generic:Conn_01x02 J2
 U 1 1 61EF0035
@@ -449,17 +406,6 @@ F 2 "Library:toggleswitch" H 6100 2850 50  0001 C CNN
 F 3 "~" H 6100 2850 50  0001 C CNN
 	1    6100 2850
 	0    1    1    0   
-$EndComp
-$Comp
-L Converter_DCDC:OKL-T_6-W12N-C U2
-U 1 1 61EADD40
-P 7200 2650
-F 0 "U2" H 7200 3215 50  0000 C CNN
-F 1 "OKL-T_6-W12N-C" H 7200 3124 50  0000 C CNN
-F 2 "Library:DCDC-murata-6A" H 6750 3100 50  0001 L BNN
-F 3 "" H 7200 2650 50  0001 L BNN
-	1    7200 2650
-	1    0    0    -1  
 $EndComp
 $Comp
 L Switch:SW_SPST SW1
@@ -615,35 +561,20 @@ NoConn ~ 2925 4125
 $Comp
 L Device:LED D2
 U 1 1 62036027
-P 3450 4550
-F 0 "D2" V 3489 4432 50  0000 R CNN
-F 1 "LED" V 3398 4432 50  0000 R CNN
-F 2 "LED_THT:LED_D3.0mm_Clear" H 3450 4550 50  0001 C CNN
-F 3 "~" H 3450 4550 50  0001 C CNN
-	1    3450 4550
+P 3450 4250
+F 0 "D2" V 3489 4132 50  0000 R CNN
+F 1 "LED" V 3398 4132 50  0000 R CNN
+F 2 "LED_THT:LED_D3.0mm_Clear" H 3450 4250 50  0001 C CNN
+F 3 "~" H 3450 4250 50  0001 C CNN
+	1    3450 4250
 	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R1
-U 1 1 6203AED7
-P 3450 4200
-F 0 "R1" H 3520 4246 50  0000 L CNN
-F 1 "R" H 3520 4155 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 3380 4200 50  0001 C CNN
-F 3 "~" H 3450 4200 50  0001 C CNN
-	1    3450 4200
-	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	4125 4275 4125 4225
 Wire Wire Line
-	3450 4400 3450 4350
-Wire Wire Line
-	3450 4050 3450 4025
-Wire Wire Line
 	3450 4025 2925 4025
 Wire Wire Line
-	3450 4750 3450 4700
+	3450 4450 3450 4400
 Wire Wire Line
 	2325 4600 2325 4625
 Wire Wire Line
@@ -655,12 +586,12 @@ Wire Wire Line
 $Comp
 L power:GND1 #PWR04
 U 1 1 62031C83
-P 3450 4750
-F 0 "#PWR04" H 3450 4500 50  0001 C CNN
-F 1 "GND1" H 3455 4577 50  0000 C CNN
-F 2 "" H 3450 4750 50  0001 C CNN
-F 3 "" H 3450 4750 50  0001 C CNN
-	1    3450 4750
+P 3450 4450
+F 0 "#PWR04" H 3450 4200 50  0001 C CNN
+F 1 "GND1" H 3455 4277 50  0000 C CNN
+F 2 "" H 3450 4450 50  0001 C CNN
+F 3 "" H 3450 4450 50  0001 C CNN
+	1    3450 4450
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -678,4 +609,41 @@ Wire Wire Line
 	1150 3825 1150 3425
 Wire Wire Line
 	1150 4125 1150 4625
+Wire Wire Line
+	4900 2350 5900 2350
+Wire Wire Line
+	4900 2650 5900 2650
+Wire Wire Line
+	3450 4025 3450 4100
+Connection ~ 5900 2350
+Wire Wire Line
+	5900 2350 6100 2350
+$Comp
+L Converter_DCDC:OKL-T_6-W12N-C U2
+U 1 1 61EADD40
+P 7200 2650
+F 0 "U2" H 7200 3215 50  0000 C CNN
+F 1 "OKL-T_6-W12N-C" H 7200 3124 50  0000 C CNN
+F 2 "Library:DCDC-murata-6A" H 6750 3100 50  0001 L BNN
+F 3 "" H 7200 2650 50  0001 L BNN
+	1    7200 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R4
+U 1 1 61ED432C
+P 6100 2500
+F 0 "R4" H 6170 2546 50  0000 L CNN
+F 1 "R" H 6170 2455 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 6030 2500 50  0001 C CNN
+F 3 "~" H 6100 2500 50  0001 C CNN
+	1    6100 2500
+	-1   0    0    1   
+$EndComp
+Connection ~ 6100 2350
+Wire Wire Line
+	6100 2350 6400 2350
+Wire Wire Line
+	6100 2650 6400 2550
+Connection ~ 6100 2650
 $EndSCHEMATC
