@@ -1,6 +1,9 @@
 void pid() {
   deviation = IMU - IMU_center;  //偏差:現在角度と目標角度のズレ
   val_I = val_I + deviation;  //偏差の積分値
+  if (IMU > 88 && IMU < 92) {
+    val_I = 0;
+  }
   val_D = deviation - old_val_I;  //偏差の微分値
   old_val_I = deviation;  //微分用前回偏差値の保存
   operation_A = gain_P * deviation;  //比例ゲイン*偏差
