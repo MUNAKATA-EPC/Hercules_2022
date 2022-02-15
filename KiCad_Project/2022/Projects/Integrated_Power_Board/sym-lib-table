@@ -1,0 +1,10 @@
+(sym_lib_table
+  (lib (name 2MS1T2B4M2QES)(type Legacy)(uri ${KIPRJMOD}/../../Library/Symbol/2MS1T2B4M2QES.lib)(options "")(descr ""))
+  (lib (name BNX016-01)(type Legacy)(uri ${KIPRJMOD}/../../Library/Symbol/BNX016-01.lib)(options "")(descr ""))
+  (lib (name OKL-T_6-W12N-C)(type Legacy)(uri ${KIPRJMOD}/../../Library/Symbol/OKL-T_6-W12N-C.lib)(options "")(descr ""))
+  (lib (name OpenMV)(type Legacy)(uri ${KIPRJMOD}/../../Library/Symbol/OpenMV.lib)(options "")(descr ""))
+  (lib (name s4282)(type Legacy)(uri ${KIPRJMOD}/../../Library/Symbol/s4282.lib)(options "")(descr ""))
+  (lib (name Seeeduino_XIAO)(type Legacy)(uri "${KIPRJMOD}/../../Library/Symbol/Seeeduino XIAO.lib")(options "")(descr ""))
+  (lib (name teensy)(type Legacy)(uri ${KIPRJMOD}/../../Library/Symbol/teensy.lib)(options "")(descr ""))
+  (lib (name usini_sensors)(type Legacy)(uri ${KIPRJMOD}/../../Library/Symbol/usini_sensors.lib)(options "")(descr ""))
+)
