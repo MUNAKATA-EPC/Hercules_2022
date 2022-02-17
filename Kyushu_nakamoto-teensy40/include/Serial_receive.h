@@ -24,21 +24,22 @@ void Serial_receive() {
     IMU = Serial4.read();
   }
 
-  if (CAM_angle < 6) {
+  CAM_angle = CAM_angle * 2;
+  if (CAM_angle < 12) {
     CAM_area = 2; //前
-  } else if (CAM_angle < 35) {
+  } else if (CAM_angle < 70) {
     CAM_area = 7; //右前
-  } else if (CAM_angle < 56) {
+  } else if (CAM_angle < 112) {
     CAM_area = 5; //右
-  } else if (CAM_angle < 76) {
+  } else if (CAM_angle < 152) {
     CAM_area = 9; //右後
-  } else if (CAM_angle < 96) {
+  } else if (CAM_angle < 192) {
     CAM_area = 3; //後
-  } else if (CAM_angle < 116) {
+  } else if (CAM_angle < 232) {
     CAM_area = 8; //左後
-  } else if (CAM_angle < 136) {
+  } else if (CAM_angle < 272) {
     CAM_area = 4; //左
-  } else if (CAM_angle < 175) {
+  } else if (CAM_angle < 350) {
     CAM_area = 6; //左前
   } else {
     CAM_area = 2; //前
