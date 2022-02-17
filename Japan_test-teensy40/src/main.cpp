@@ -40,17 +40,21 @@ void loop() {
           position.timer = millis();
           position.timer_start = position.timer;
           if (CAM_distance < 90) {
-            if (CAM_angle <= 180) {
+            if (CAM_angle <= 6) {
+              Move(CAM_angle, motor_speed);
+            } else if (CAM_angle <= 180) {
               Move(CAM_angle + 90, motor_speed);
-            } else {
+            } else if (CAM_angle < 354) {
               Move(CAM_angle - 90, motor_speed);
+            } else {
+              Move(CAM_angle, motor_speed);
             }
           } else {
             Move(CAM_angle, motor_speed);
           }
         } else {
           position.timer = millis() - position.timer_start;
-          if (position.timer < 2000) {  //ボールが見えなくなって2秒以内
+          if (position.timer < 1500) {
             Motor(1);  //方向修正
           } else {
             if (USS3 > 50) {

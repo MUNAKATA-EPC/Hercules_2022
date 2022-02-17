@@ -1,6 +1,6 @@
-int head_CAM, CAM_angle, CAM_distance; 
+int head_CAM, CAM_angle, CAM_distance;  //OpenMV 
 
-int head_USS, USS, USS1, USS2, USS3, USS4;
+int head_USS, USS, USS1, USS2, USS3, USS4;  //USS
 
 int IMU = 90; //IMU値
 
@@ -30,4 +30,4 @@ double operation_A, operation_B, operation_C = 0;
 
 int motor[] = {0, 0, 0, 0};
 
-int operation_G, operation_H, operation_I, operation_J = 0; //最終操作量
+int MotorPower[] = {0, 0, 0, 0};  //最終操作量
