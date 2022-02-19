@@ -54,6 +54,11 @@ void Motor(int direction) {
       motor[2] = 0;  //左前
       motor[3] = motor_speed;  //左後
       break;
+    default:
+      motor[0] = 0; //右前
+      motor[1] = 0; //右後
+      motor[2] = 0; //左前
+      motor[3] = 0; //左後
   }
 
   MotorPower[0] = operation_A + motor[0];
@@ -90,8 +95,8 @@ void Motor(int direction) {
 void Move(int motor_rads, int motor_power) {
   motor[0] = motor_power * cos((motor_rads + 45) * PI / 180);
   motor[1] = motor_power * sin((motor_rads + 45) * PI / 180);
-  motor[2] = motor_power * sin((motor_rads + 45) * PI / 180) * -1;
-  motor[3] = motor_power * cos((motor_rads + 45) * PI / 180) * -1;
+  motor[2] = -motor_power * sin((motor_rads + 45) * PI / 180);
+  motor[3] = -motor_power * cos((motor_rads + 45) * PI / 180);
 
   MotorPower[0] = operation_A + motor[0];
   if (MotorPower[0] < -motor_limit) {

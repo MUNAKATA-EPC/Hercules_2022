@@ -25,7 +25,6 @@ void loop() {
     Serial_receive();
     control_LED();
     pid();
-    
     LINE.timer = millis() - LINE.timer_start;
     if (LINE.timer < 300) {
       Motor(1);  //方向修正
@@ -39,13 +38,33 @@ void loop() {
         if (CAM_distance > 0) {
           position.timer = millis();
           position.timer_start = position.timer;
-          if (CAM_distance < 90) {
+          if (CAM_distance < 70) {
+            if (CAM_angle <= 6) {
+              Move(CAM_angle, motor_speed);
+            } else if (CAM_angle <= 180) {
+              Move(CAM_angle + 100, motor_speed);
+            } else if (CAM_angle < 354) {
+              Move(CAM_angle - 100, motor_speed);
+            } else {
+              Move(CAM_angle, motor_speed);
+            }
+          } else if (CAM_distance < 80) {
             if (CAM_angle <= 6) {
               Move(CAM_angle, motor_speed);
             } else if (CAM_angle <= 180) {
               Move(CAM_angle + 90, motor_speed);
             } else if (CAM_angle < 354) {
               Move(CAM_angle - 90, motor_speed);
+            } else {
+              Move(CAM_angle, motor_speed);
+            }
+          } else if (CAM_distance <= 100) {
+            if (CAM_angle <= 6){
+              Move(CAM_angle, motor_speed);
+            } else if (CAM_angle <= 180) {
+              Move(CAM_angle + 80, motor_speed);
+            } else if (CAM_angle < 354) {
+              Move(CAM_angle - 80, motor_speed);
             } else {
               Move(CAM_angle, motor_speed);
             }
