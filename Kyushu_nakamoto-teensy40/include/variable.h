@@ -30,4 +30,4 @@ double operation_A, operation_B, operation_C = 0;
 
 int motor[] = {0, 0, 0, 0};
 
-int operation_G, operation_H, operation_I, operation_J = 0; //最終操作量
+int MotorPower[] = {0, 0, 0, 0};  //最終操作量

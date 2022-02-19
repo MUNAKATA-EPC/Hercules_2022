@@ -1,78 +1,93 @@
 void Motor(int direction) {
-  if (direction == 1) {
-    motor[0] = 0;  //右前
-    motor[1] = 0;  //右後
-    motor[2] = 0;  //左前
-    motor[3] = 0;  //左後
-  } else if (direction == 2) {
-    motor[0] = motor_speed;  //右前
-    motor[1] = motor_speed;  //右後
-    motor[2] = -motor_speed; //左前
-    motor[3] = -motor_speed; //左後
-  } else if (direction == 3) {
-    motor[0] = -motor_speed; //右前
-    motor[1] = -motor_speed; //右後
-    motor[2] = motor_speed;  //左前
-    motor[3] = motor_speed;  //左後
-  } else if (direction == 4) {
-    motor[0] = motor_speed;  //右前
-    motor[1] = -motor_speed; //右後
-    motor[2] = motor_speed;  //左前
-    motor[3] = -motor_speed; //左後
-  } else if (direction == 5) {
-    motor[0] = -motor_speed; //右前
-    motor[1] = motor_speed;  //右後
-    motor[2] = -motor_speed; //左前
-    motor[3] = motor_speed;  //左後
-  } else if (direction == 6) {
-    motor[0] = motor_speed;  //右前
-    motor[1] = 0;  //右後
-    motor[2] = 0;  //左前
-    motor[3] = -motor_speed; //左後
-  } else if (direction == 7) {
-    motor[0] = 0;  //右前
-    motor[1] = motor_speed;  //右後
-    motor[2] = -motor_speed; //左前
-    motor[3] = 0;  //左後
-  } else if (direction == 8) {
-    motor[0] = 0;  //右前
-    motor[1] = -motor_speed; //右後
-    motor[2] = motor_speed;  //左前
-    motor[3] = 0;  //左後
-  } else if (direction == 9) {
-    motor[0] = -motor_speed; //右前
-    motor[1] = 0;  //右後
-    motor[2] = 0;  //左前
-    motor[3] = motor_speed;  //左後
+  switch (direction) {
+    case 1:
+      motor[0] = 0;  //右前
+      motor[1] = 0;  //右後
+      motor[2] = 0;  //左前
+      motor[3] = 0;  //左後
+      break;
+    case 2:
+      motor[0] = motor_speed;  //右前
+      motor[1] = motor_speed;  //右後
+      motor[2] = -motor_speed; //左前
+      motor[3] = -motor_speed; //左後
+      break;
+    case 3:
+      motor[0] = -motor_speed; //右前
+      motor[1] = -motor_speed; //右後
+      motor[2] = motor_speed;  //左前
+      motor[3] = motor_speed;  //左後
+      break;
+    case 4:
+      motor[0] = motor_speed;  //右前
+      motor[1] = -motor_speed; //右後
+      motor[2] = motor_speed;  //左前
+      motor[3] = -motor_speed; //左後
+      break;
+    case 5:
+      motor[0] = -motor_speed; //右前
+      motor[1] = motor_speed;  //右後
+      motor[2] = -motor_speed; //左前
+      motor[3] = motor_speed;  //左後
+      break;
+    case 6:
+      motor[0] = motor_speed;  //右前
+      motor[1] = 0;  //右後
+      motor[2] = 0;  //左前
+      motor[3] = -motor_speed; //左後
+      break;
+    case 7:
+      motor[0] = 0;  //右前
+      motor[1] = motor_speed;  //右後
+      motor[2] = -motor_speed; //左前
+      motor[3] = 0;  //左後
+      break;
+    case 8:
+      motor[0] = 0;  //右前
+      motor[1] = -motor_speed; //右後
+      motor[2] = motor_speed;  //左前
+      motor[3] = 0;  //左後
+      break;
+    case 9:
+      motor[0] = -motor_speed; //右前
+      motor[1] = 0;  //右後
+      motor[2] = 0;  //左前
+      motor[3] = motor_speed;  //左後
+      break;
+    default:
+      motor[0] = 0; //右前
+      motor[1] = 0; //右後
+      motor[2] = 0; //左前
+      motor[3] = 0; //左後
   }
 
-  operation_G = operation_A + motor[0];
-  if (operation_G < -motor_limit) {
-    operation_G = -motor_limit;
-  } else if (operation_G > motor_limit) {
-    operation_G = motor_limit;
+  MotorPower[0] = operation_A + motor[0];
+  if (MotorPower[0] < -motor_limit) {
+    MotorPower[0] = -motor_limit;
+  } else if (MotorPower[0] > motor_limit) {
+    MotorPower[0] = motor_limit;
   }
 
-  operation_H = operation_A + motor[1];
-  if (operation_H < -motor_limit) {
-    operation_H = -motor_limit;
-  } else if (operation_H > motor_limit) {
-    operation_H = motor_limit;
+  MotorPower[1] = operation_A + motor[1];
+  if (MotorPower[1] < -motor_limit) {
+    MotorPower[1] = -motor_limit;
+  } else if (MotorPower[1] > motor_limit) {
+    MotorPower[1] = motor_limit;
   }
 
-  operation_I = operation_A + motor[2];
-  if (operation_I < -motor_limit) {
-    operation_I = -motor_limit;
-  } else if (operation_I > motor_limit) {
-    operation_I = motor_limit;
+  MotorPower[2] = operation_A + motor[2];
+  if (MotorPower[2] < -motor_limit) {
+    MotorPower[2] = -motor_limit;
+  } else if (MotorPower[2] > motor_limit) {
+    MotorPower[2] = motor_limit;
   }
 
-  operation_J = operation_A + motor[3];
-  if (operation_J < -motor_limit) {
-    operation_J = -motor_limit;
-  } else if (operation_J > motor_limit) {
-    operation_J = motor_limit;
+  MotorPower[3] = operation_A + motor[3];
+  if (MotorPower[3] < -motor_limit) {
+    MotorPower[3] = -motor_limit;
+  } else if (MotorPower[3] > motor_limit) {
+    MotorPower[3] = motor_limit;
   }
 
-  dsr1202.move(operation_G, operation_H, operation_I, operation_J);
+  dsr1202.move(MotorPower[0], MotorPower[1], MotorPower[2], MotorPower[3]);
 }
