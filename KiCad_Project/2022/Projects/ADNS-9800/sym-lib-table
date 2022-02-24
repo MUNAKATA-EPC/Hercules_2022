@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name ADNS-9800-eagle-import)(type Legacy)(uri ${KIPRJMOD}/ADNS-9800-eagle-import.lib)(options "")(descr ""))
+  (lib (name Seeeduino_XIAO)(type Legacy)(uri "${KIPRJMOD}/../../Library/Symbol/Seeeduino XIAO.lib")(options "")(descr ""))
 )

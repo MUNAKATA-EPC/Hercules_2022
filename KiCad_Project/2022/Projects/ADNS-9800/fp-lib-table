@@ -1,3 +1,4 @@
 (fp_lib_table
   (lib (name ADNS-9800)(type KiCad)(uri "$(KIPRJMOD)/ADNS-9800.pretty")(options "")(descr ""))
+  (lib (name Library)(type KiCad)(uri ${KIPRJMOD}/../../Library)(options "")(descr ""))
 )
