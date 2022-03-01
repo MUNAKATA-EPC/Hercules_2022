@@ -12,5 +12,5 @@
 - ライブラリについてはLibertyフォルダを相対パスで参照しています。
 - 発注は主にJLCPCBを使用します。
 
-##開発環境に関して
+## 開発環境に関して
 - VScodeの拡張機能のPlatformIOを使用しTeensy4.0とSeeeduinoXIAOに書き込んでいます。
