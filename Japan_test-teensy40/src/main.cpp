@@ -78,11 +78,10 @@ void setup() {
 }
 
 void loop() {
+  Serial_receive();
+  control_LED();
+  pid();
   if (LCD.state == 4 && white.state == 1 && digitalRead(switch_program) == HIGH) {
-    Serial_receive();
-    control_LED();
-    pid();
-
     LINE.timer = millis() - LINE.timer_start;
     if (LINE.timer < 300) {
       Motor(1);  //方向修正
@@ -162,16 +161,9 @@ void loop() {
       }
     }
   } else if (LCD.state == 5 && white.state == 1 && digitalRead(switch_program) == HIGH) {
-    Serial_receive();
-    control_LED();
-    pid();
-
     Motor(1);
   } else {
-    Serial_receive();
     print_LCD();
-    control_LED();
-    
     dsr1202.move(0, 0, 0, 0);
   }
 }

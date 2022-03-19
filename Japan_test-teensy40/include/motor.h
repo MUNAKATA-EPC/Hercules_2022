@@ -54,11 +54,6 @@ void Motor(int direction) {
       motor[2] = 0;  //左前
       motor[3] = motor_speed;  //左後
       break;
-    default:
-      motor[0] = 0; //右前
-      motor[1] = 0; //右後
-      motor[2] = 0; //左前
-      motor[3] = 0; //左後
   }
 
   MotorPower[0] = operation_A + motor[0];

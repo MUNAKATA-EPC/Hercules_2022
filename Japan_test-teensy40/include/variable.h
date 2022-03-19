@@ -24,8 +24,8 @@ public:
 Status LCD, white;
 Timer LINE, position;
 
-double val_I, old_val_I = 0;
-double deviation, val_D = 0;
+double val_I = 0;
+double deviation, old_deviation, val_D = 0;
 double operation_A, operation_B, operation_C = 0;
 
 int motor[] = {0, 0, 0, 0};
