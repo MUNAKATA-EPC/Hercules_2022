@@ -28,7 +28,7 @@ uint8_t 	mpuIntStatus;
 float    	raw_ypr[3], ofset_ypr[3], ypr[3];
 volatile bool   mpuInterrupt = false;
 
-int print_deta = 0;
+float print_deta = 0;
 
 void setup()
 {
@@ -81,8 +81,12 @@ void loop()
   } else {
     print_deta = (ypr[0] / PI * 180);
   }
-  print_deta = print_deta / 2;
-  Serial1.write(print_deta);
+  if (print_deta < 180) {
+    print_deta += 180;
+  } else {
+    print_deta -= 180;
+  }
+  Serial1.write(print_deta / 2);
 
   
 }
