@@ -16,7 +16,6 @@
       "diff_pair_dimensions": [],
       "drc_exclusions": [],
       "rules": {
-        "min_copper_edge_clearance": 0.0,
         "solder_mask_clearance": 0.0,
         "solder_mask_min_width": 0.0
       },
@@ -290,9 +289,9 @@
       "intersheets_ref_show": false,
       "intersheets_ref_suffix": "",
       "junction_size_choice": 3,
-      "label_size_ratio": 0.375,
-      "pin_symbol_size": 25.0,
-      "text_offset_ratio": 0.15
+      "label_size_ratio": 0.25,
+      "pin_symbol_size": 0.0,
+      "text_offset_ratio": 0.08
     },
     "legacy_lib_dir": "",
     "legacy_lib_list": [],
@@ -316,6 +315,11 @@
     "subpart_first_id": 65,
     "subpart_id_separator": 0
   },
-  "sheets": [],
+  "sheets": [
+    [
+      "e40e8cef-4fb0-4fc3-be09-3875b2cc8469",
+      ""
+    ]
+  ],
   "text_variables": {}
 }
