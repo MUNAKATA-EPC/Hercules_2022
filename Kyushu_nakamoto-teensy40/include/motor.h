@@ -1,93 +1,83 @@
 void Motor(int direction) {
-  switch (direction) {
-    case 1:
-      motor[0] = 0;  //右前
-      motor[1] = 0;  //右後
-      motor[2] = 0;  //左前
-      motor[3] = 0;  //左後
-      break;
-    case 2:
-      motor[0] = motor_speed;  //右前
-      motor[1] = motor_speed;  //右後
-      motor[2] = -motor_speed; //左前
-      motor[3] = -motor_speed; //左後
-      break;
-    case 3:
-      motor[0] = -motor_speed; //右前
-      motor[1] = -motor_speed; //右後
-      motor[2] = motor_speed;  //左前
-      motor[3] = motor_speed;  //左後
-      break;
-    case 4:
-      motor[0] = motor_speed;  //右前
-      motor[1] = -motor_speed; //右後
-      motor[2] = motor_speed;  //左前
-      motor[3] = -motor_speed; //左後
-      break;
-    case 5:
-      motor[0] = -motor_speed; //右前
-      motor[1] = motor_speed;  //右後
-      motor[2] = -motor_speed; //左前
-      motor[3] = motor_speed;  //左後
-      break;
-    case 6:
-      motor[0] = motor_speed;  //右前
-      motor[1] = 0;  //右後
-      motor[2] = 0;  //左前
-      motor[3] = -motor_speed; //左後
-      break;
-    case 7:
-      motor[0] = 0;  //右前
-      motor[1] = motor_speed;  //右後
-      motor[2] = -motor_speed; //左前
-      motor[3] = 0;  //左後
-      break;
-    case 8:
-      motor[0] = 0;  //右前
-      motor[1] = -motor_speed; //右後
-      motor[2] = motor_speed;  //左前
-      motor[3] = 0;  //左後
-      break;
-    case 9:
-      motor[0] = -motor_speed; //右前
-      motor[1] = 0;  //右後
-      motor[2] = 0;  //左前
-      motor[3] = motor_speed;  //左後
-      break;
-    default:
-      motor[0] = 0; //右前
-      motor[1] = 0; //右後
-      motor[2] = 0; //左前
-      motor[3] = 0; //左後
+  if (direction == 1) {
+    motor[0] = 0;  //右前
+    motor[1] = 0;  //右後
+    motor[2] = 0;  //左前
+    motor[3] = 0;  //左後
+  } else if (direction == 2) {
+    motor[0] = motor_speed;  //右前
+    motor[1] = motor_speed;  //右後
+    motor[2] = -motor_speed; //左前
+    motor[3] = -motor_speed; //左後
+  } else if (direction == 3) {
+    motor[0] = -motor_speed; //右前
+    motor[1] = -motor_speed; //右後
+    motor[2] = motor_speed;  //左前
+    motor[3] = motor_speed;  //左後
+  } else if (direction == 4) {
+    motor[0] = motor_speed;  //右前
+    motor[1] = -motor_speed; //右後
+    motor[2] = motor_speed;  //左前
+    motor[3] = -motor_speed; //左後
+  } else if (direction == 5) {
+    motor[0] = -motor_speed; //右前
+    motor[1] = motor_speed;  //右後
+    motor[2] = -motor_speed; //左前
+    motor[3] = motor_speed;  //左後
+  } else if (direction == 6) {
+    motor[0] = motor_speed;  //右前
+    motor[1] = 0;  //右後
+    motor[2] = 0;  //左前
+    motor[3] = -motor_speed; //左後
+  } else if (direction == 7) {
+    motor[0] = 0;  //右前
+    motor[1] = motor_speed;  //右後
+    motor[2] = -motor_speed; //左前
+    motor[3] = 0;  //左後
+  } else if (direction == 8) {
+    motor[0] = 0;  //右前
+    motor[1] = -motor_speed; //右後
+    motor[2] = motor_speed;  //左前
+    motor[3] = 0;  //左後
+  } else if (direction == 9) {
+    motor[0] = -motor_speed; //右前
+    motor[1] = 0;  //右後
+    motor[2] = 0;  //左前
+    motor[3] = motor_speed;  //左後
   }
 
-  MotorPower[0] = operation_A + motor[0];
+  MotorPower[0] = motor[0] + operation_A;
   if (MotorPower[0] < -motor_limit) {
     MotorPower[0] = -motor_limit;
   } else if (MotorPower[0] > motor_limit) {
     MotorPower[0] = motor_limit;
   }
 
-  MotorPower[1] = operation_A + motor[1];
+  MotorPower[1] = motor[1] + operation_A;
   if (MotorPower[1] < -motor_limit) {
     MotorPower[1] = -motor_limit;
   } else if (MotorPower[1] > motor_limit) {
     MotorPower[1] = motor_limit;
   }
 
-  MotorPower[2] = operation_A + motor[2];
+  MotorPower[2] = motor[2] + operation_A;
   if (MotorPower[2] < -motor_limit) {
     MotorPower[2] = -motor_limit;
   } else if (MotorPower[2] > motor_limit) {
     MotorPower[2] = motor_limit;
   }
 
-  MotorPower[3] = operation_A + motor[3];
+  MotorPower[3] = motor[3] + operation_A;
   if (MotorPower[3] < -motor_limit) {
     MotorPower[3] = -motor_limit;
   } else if (MotorPower[3] > motor_limit) {
     MotorPower[3] = motor_limit;
   }
 
-  dsr1202.move(MotorPower[0], MotorPower[1], MotorPower[2], MotorPower[3]);
+  Motor0 = MotorPower[0];
+  Motor1 = MotorPower[1];
+  Motor2 = MotorPower[2];
+  Motor3 = MotorPower[3];
+
+  dsr1202.move(Motor0, Motor1, Motor2, Motor3);
 }

@@ -1,14 +1,13 @@
 void Serial_receive() {
-  while (Serial2.available() > 0) {
+  if (Serial2.available() > 0) {
     head_CAM = Serial2.read();
     if (head_CAM == 255) {
       CAM_angle = Serial2.read();
       CAM_distance = Serial2.read();
-      break;
     }
   }
 
-  while (Serial3.available() > 0) {
+  if (Serial3.available() > 0) {
     head_USS = Serial3.read();
     if (head_USS == 255) {
       USS = Serial3.read();
@@ -16,7 +15,6 @@ void Serial_receive() {
       USS2 = Serial3.read();
       USS3 = Serial3.read();
       USS4 = Serial3.read();
-      break;
     }
   }
 
@@ -24,30 +22,23 @@ void Serial_receive() {
     IMU = Serial4.read();
   }
 
-  CAM_angle = CAM_angle * 2;
-  if (CAM_angle < 12) {
+  if (CAM_angle < 6) {
     CAM_area = 2; //前
-  } else if (CAM_angle < 70) {
+  } else if (CAM_angle < 35) {
     CAM_area = 7; //右前
-  } else if (CAM_angle < 112) {
+  } else if (CAM_angle < 56) {
     CAM_area = 5; //右
-  } else if (CAM_angle < 152) {
+  } else if (CAM_angle < 76) {
     CAM_area = 9; //右後
-  } else if (CAM_angle < 192) {
+  } else if (CAM_angle < 96) {
     CAM_area = 3; //後
-  } else if (CAM_angle < 232) {
+  } else if (CAM_angle < 116) {
     CAM_area = 8; //左後
-  } else if (CAM_angle < 272) {
+  } else if (CAM_angle < 136) {
     CAM_area = 4; //左
-  } else if (CAM_angle < 350) {
+  } else if (CAM_angle < 175) {
     CAM_area = 6; //左前
   } else {
     CAM_area = 2; //前
-  }
-
-  if (IMU < 90) {
-    IMU = IMU + 90;
-  } else {
-    IMU = IMU - 90;
   }
 }

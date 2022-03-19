@@ -24,10 +24,11 @@ public:
 Status LCD, white;
 Timer LINE, position;
 
-double val_I, old_val_I = 0;
-double deviation, val_D = 0;
-double operation_A, operation_B, operation_C = 0;
+int val_I = 0;
+int deviation, val_D, old_deviation = 0;
+int operation_A, operation_B, operation_C = 0;
 
 int motor[] = {0, 0, 0, 0};
 
 int MotorPower[] = {0, 0, 0, 0};  //最終操作量
+int Motor0, Motor1, Motor2, Motor3;
