@@ -1,0 +1,9 @@
+Manufacturer=Akizuki Denshi Tsusho
+PartNumber=MUSB-5BF01AS
+PartCategory=Connector
+PackageCategory=Other
+PinCount=9
+Version=1.4
+Released=2021-03-18 11:39:44
+Downloaded=2022-03-25 01:10:30
+3D=Y

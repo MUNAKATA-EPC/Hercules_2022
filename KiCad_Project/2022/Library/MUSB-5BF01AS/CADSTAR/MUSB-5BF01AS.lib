@@ -1,0 +1,19 @@
+.MUSB-5BF01AS :1 ;Board mounting USB connector, mini B, female
+MUSB5BF01AS
+*STM J
+*NGS
+*PNM 1=1 2=2 3=3 4=4 5=5 6=MH1 7=MH2 8=MH3 9=MH4
+*PLB 1="VBUS" 2="D-" 3="D+" 4="ID" 5="GND" 6="MH1" 7="MH2" 8="MH3" 9="MH4"
+*MXP 9
+*DFN MUSB-5BF01AS
+~!Manufacturer_Name (Akizuki Denshi Tsusho)
+~!Manufacturer_Part_Number (MUSB-5BF01AS)
+~!Mouser Part Number (-)
+~!Mouser Price/Stock (-)
+~!Arrow Part Number (-)
+~!Arrow Price/Stock (-)
+~!Link Datasheet (http://akizukidenshi.com/download/ds/useconn/c2235_dim_2.pdf)
+~!Height (4.05mm)
+~!3D_Model (MUSB-5BF01AS)
+MUSB-5BF01AS
+1.1!U 2.1!U 3.1!U 4.1!U 5.1!U 6.1!U 7.1!U 8.1!U 9.1!U 

@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP MUSB-5BF01AS
+D Board mounting USB connector, mini B, female
+K
+F http://akizukidenshi.com/download/ds/useconn/c2235_dim_2.pdf
+$ENDCMP
+#
+#End Doc Library
