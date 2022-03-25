@@ -5,5 +5,5 @@
   (lib (name "teensy")(type "Legacy")(uri "${KIPRJMOD}/../../Library/Symbol/teensy.lib")(options "")(descr ""))
   (lib (name "usini_sensors")(type "KiCad")(uri "${KIPRJMOD}/../../Library/Symbol/usini_sensors.kicad_sym")(options "")(descr ""))
   (lib (name "2MS1T2B4M2QES")(type "Legacy")(uri "${KIPRJMOD}/../../Library/Symbol/2MS1T2B4M2QES.lib")(options "")(descr ""))
-  (lib (name "Logic_Level_Converter")(type "KiCad")(uri "C:/Users/きよゆき/Documents/GitHub/Hercules_2022/KiCad_Project/2022/Library/Symbol/Logic_Level_Converter.kicad_sym")(options "")(descr ""))
+  (lib (name "Logic_Level_Converter")(type "KiCad")(uri "${KIPRJMOD}/../../Library/Symbol/Logic_Level_Converter.kicad_sym")(options "")(descr ""))
 )
