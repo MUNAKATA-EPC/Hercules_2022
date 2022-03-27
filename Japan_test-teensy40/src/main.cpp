@@ -38,10 +38,12 @@ void setup() {
   Serial3.begin(115200); //USSとのシリアル通信
   Serial4.begin(115200); //IMUとのシリアル通信
 
-  while (!Serial1 || !Serial2 || !Serial3 || !Serial4) { //接続待機
-    ;
+  while (!Serial2 || !Serial3 || !Serial4) { //接続待機
+    noTone(buzzer);
   }
+  tone(buzzer, 2093, 100);
 
+  /*
   tone(buzzer, 1046.502, 1000); //ド6
   delay(1000);
   noTone(buzzer);
@@ -73,6 +75,7 @@ void setup() {
   tone(buzzer, 2093.005, 250); //ド7
   delay(250);
   noTone(buzzer);
+  */
 
   lcd.clear(); //LCD表示の全削除
 }
@@ -95,33 +98,13 @@ void loop() {
         if (CAM_distance > 0) {
           position.timer = millis();
           position.timer_start = position.timer;
-          if (CAM_distance < 70) {
-            if (CAM_angle <= 6) {
+          if (CAM_distance <= 55) {
+            if (CAM_angle <= 16) {
               Move(CAM_angle, motor_speed);
             } else if (CAM_angle <= 180) {
-              Move(CAM_angle + 100, motor_speed);
-            } else if (CAM_angle < 354) {
-              Move(CAM_angle - 100, motor_speed);
-            } else {
-              Move(CAM_angle, motor_speed);
-            }
-          } else if (CAM_distance < 80) {
-            if (CAM_angle <= 6) {
-              Move(CAM_angle, motor_speed);
-            } else if (CAM_angle <= 180) {
-              Move(CAM_angle + 90, motor_speed);
-            } else if (CAM_angle < 354) {
-              Move(CAM_angle - 90, motor_speed);
-            } else {
-              Move(CAM_angle, motor_speed);
-            }
-          } else if (CAM_distance <= 100) {
-            if (CAM_angle <= 6){
-              Move(CAM_angle, motor_speed);
-            } else if (CAM_angle <= 180) {
-              Move(CAM_angle + 80, motor_speed);
-            } else if (CAM_angle < 354) {
-              Move(CAM_angle - 80, motor_speed);
+              Move((CAM_angle + 90), motor_speed);
+            } else if (CAM_angle < 344) {
+              Move((CAM_angle - 90), motor_speed);
             } else {
               Move(CAM_angle, motor_speed);
             }
