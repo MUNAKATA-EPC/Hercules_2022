@@ -285,7 +285,7 @@ while(True):  #メインループ
  uart.writechar(255)
  uart.writechar(rads[ball_namber])
  uart.writechar(distanceA[ball_namber])
- uart.writechar(Rads[field_number])
+ uart.writechar(radsD[field_number])
 
  #uart.write(str(abs(cxA[ball_namber]-320)))
 
