@@ -1,5 +1,10 @@
 void pid() {
   deviation = IMU - IMU_center;  //偏差:現在角度と目標角度のズレ
+
+  if (IMU >= 88 && IMU <= 92) {
+    deviation = 0;
+  }
+  
   val_I += deviation;  //偏差の積分値
 
   if (val_I < -300) {
