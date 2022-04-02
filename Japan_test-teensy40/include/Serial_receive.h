@@ -2,9 +2,9 @@ void Serial_receive() {
   if (Serial2.available() > 0) {
     head_CAM = Serial2.read();
     if (head_CAM == 255) {
-      CAM_angle = Serial2.read();
+      CAM_angle = Serial2.read() * 2;
       CAM_distance = Serial2.read();
-      CAM_angle *= 2;
+      CAM_FieldAngle = Serial2.read() * 2;
     }
   }
 

@@ -1,11 +1,16 @@
+//ライブラリ読み込み
 #include <Arduino.h>
 #include <Wire.h>
 #include <FaboLCDmini_AQM0802A.h>
 #include <DSR1202.h>
+//ライブラリ読み込みここまで
 
+//ライブラリセットアップ
 FaBoLCDmini_AQM0802A lcd;
 DSR1202 dsr1202(1);
+//ライブラリセットアップここまで
 
+//ヘッダファイル読み込み
 #include "define.h"
 #include "variable.h"
 #include "Serial_receive.h"
@@ -14,6 +19,7 @@ DSR1202 dsr1202(1);
 #include "pid_parameter.h"
 #include "pid.h"
 #include "motor.h"
+//ヘッダファイル読み込みここまで
 
 void setup() {
   pinMode(button_LCD, INPUT);
@@ -35,47 +41,14 @@ void setup() {
   dsr1202.Init(); //MD準備(USBシリアルも同時開始)
   
   Serial2.begin(115200);  //CAMとのシリアル通信
-  Serial3.begin(115200); //USSとのシリアル通信
-  Serial4.begin(115200); //IMUとのシリアル通信
+  Serial3.begin(115200);  //USSとのシリアル通信
+  Serial4.begin(115200);  //IMUとのシリアル通信
 
-  while (!Serial2 || !Serial3 || !Serial4) { //接続待機
+  while ((!Serial2) || (!Serial3) || (!Serial4)) { //接続待機
     noTone(buzzer);
   }
+  
   tone(buzzer, 2093, 100);
-
-  /*
-  tone(buzzer, 1046.502, 1000); //ド6
-  delay(1000);
-  noTone(buzzer);
-  delay(250);
-  tone(buzzer, 1318.510, 150); //ミ6
-  delay(150);
-  noTone(buzzer);
-  delay(100);
-  tone(buzzer, 1396.913, 250); //ファ6
-  delay(250);
-  noTone(buzzer);
-  delay(150);
-  tone(buzzer, 1567.982, 150); //ソ6
-  delay(150);
-  noTone(buzzer);
-  delay(100);
-  tone(buzzer, 1760.000, 300); //ラ6
-  delay(300);
-  noTone(buzzer);
-  delay(100);
-  tone(buzzer, 1567.982, 250); //ソ6
-  delay(250);
-  noTone(buzzer);
-  delay(200);
-  tone(buzzer, 1567.982, 250); //ソ6
-  delay(250);
-  noTone(buzzer);
-  delay(200);
-  tone(buzzer, 2093.005, 250); //ド7
-  delay(250);
-  noTone(buzzer);
-  */
 
   lcd.clear(); //LCD表示の全削除
 }
@@ -87,18 +60,18 @@ void loop() {
   if (LCD.state == 4 && white.state == 1 && digitalRead(switch_program) == HIGH) {
     LINE.timer = millis() - LINE.timer_start;
     if (LINE.timer < 300) {
-      Motor(1);  //方向修正
+      Move(0, 0);
     } else if (LINE.timer < 500) {
-      Motor(USS);
+      Move(CAM_FieldAngle, (motor_speed * 0.75));
     } else {
-      if (digitalRead(LINE_1) == LOW || digitalRead(LINE_2) == LOW || digitalRead(LINE_3) == LOW || digitalRead(LINE_4) == LOW) {
+      if ((digitalRead(LINE_1) == LOW) || (digitalRead(LINE_2) == LOW) || (digitalRead(LINE_3) == LOW) || (digitalRead(LINE_4) == LOW)) {
         Serial1.println("1R0002R0003R0004R000");
         LINE.timer_start = millis();
       } else {
         if (CAM_distance > 0) {
           position.timer = millis();
           position.timer_start = position.timer;
-          if (CAM_distance <= 55) {
+          if (CAM_distance <= 65) {
             if (CAM_angle <= 16) {
               Move(CAM_angle, motor_speed);
             } else if (CAM_angle <= 180) {
@@ -114,37 +87,19 @@ void loop() {
         } else {
           position.timer = millis() - position.timer_start;
           if (position.timer < 1500) {
-            Motor(1);  //方向修正
+            Move(0, 0);
           } else {
-            if (USS3 > 50) {
-              if (USS2 < 70) {
-                if (USS4 < 70) {
-                  Motor(3);  //後
-                } else {
-                  Motor(9);  //右後
-                }
-              } else if (USS4 < 70) {
-                Motor(8);  //左後
-              } else {
-                Motor(3);  //後
-              }
-            } else if (USS2 < 70) {
-              if (USS4 < 70) {
-                Motor(1);  //方向修正
-              } else {
-                Motor(5);  //右
-              }
-            } else if (USS4 < 70) {
-              Motor(4);  //左
+            if ((CAM_FieldAngle <= 90) || (CAM_FieldAngle >= 270)) {
+              Move(CAM_FieldAngle, 0);
             } else {
-              Motor(1);  //方向修正
+              Move(CAM_FieldAngle, (motor_speed * 0.75));
             }
           }
         }
       }
     }
   } else if (LCD.state == 5 && white.state == 1 && digitalRead(switch_program) == HIGH) {
-    Motor(1);
+    Move(0, 0);
   } else {
     print_LCD();
     dsr1202.move(0, 0, 0, 0);
