@@ -188,5 +188,11 @@ void print_LCD() {
         lcd.print("Run");
       }
       break;
+    default:
+      lcd.setCursor(0, 0);
+      lcd.print("Please");
+      lcd.setCursor(0, 1);
+      lcd.print("Reboot");
+      break;
   }
 }
