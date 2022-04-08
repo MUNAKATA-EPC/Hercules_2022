@@ -3,23 +3,55 @@
 #include <Wire.h>
 #include <FaboLCDmini_AQM0802A.h>
 #include <DSR1202.h>
-//ライブラリ読み込みここまで
 
 //ライブラリセットアップ
 FaBoLCDmini_AQM0802A lcd;
 DSR1202 dsr1202(1);
-//ライブラリセットアップここまで
+
+//定数置き場
+#define buzzer 23 //圧電ブザー
+#define button_LCD 11 //タクトスイッチ
+#define switch_program 9  //トグルスイッチ
+#define button_white 10 //白いボタン
+#define LED 13
+#define LINE_1 2
+#define LINE_2 3
+#define LINE_3 4
+#define LINE_4 5
+
+//グローバル変数置き場(本当は減らしたいけど初心者なので当分このまま)
+int head_CAM, CAM_angle, CAM_distance, CAM_FieldAngle;  //OpenMV 
+int head_USS, USS, USS1, USS2, USS3, USS4;  //USS
+int IMU; //IMU値
+
+class Status {
+public:
+  int val, old_val;
+  int state;
+};
+
+class Timer {
+public:
+  unsigned long timer, timer_start;
+};
+
+Status LCD, white;
+Timer LINE, position;
+
+int val_I;
+int deviation, old_deviation, val_D;
+float operation_A, operation_B, operation_C;
+
+int motor[4]; //モーター出力
+int MotorPower[4];  //最終操作量
 
 //ヘッダファイル読み込み
-#include "define.h"
-#include "variable.h"
 #include "Serial_receive.h"
 #include "print_LCD.h"
 #include "control_LED.h"
 #include "pid_parameter.h"
 #include "pid.h"
 #include "motor.h"
-//ヘッダファイル読み込みここまで
 
 void setup() {
   pinMode(button_LCD, INPUT);
