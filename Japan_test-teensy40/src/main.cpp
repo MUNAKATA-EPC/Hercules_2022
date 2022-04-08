@@ -65,13 +65,15 @@ void loop() {
       Move(CAM_FieldAngle, (motor_speed * 0.75));
     } else {
       if ((digitalRead(LINE_1) == LOW) || (digitalRead(LINE_2) == LOW) || (digitalRead(LINE_3) == LOW) || (digitalRead(LINE_4) == LOW)) {
-        Serial1.println("1R0002R0003R0004R000");
+        for (size_t i = 0; i < 50; i++) {
+          Serial1.println("1R0002R0003R0004R000");
+        }
         LINE.timer_start = millis();
       } else {
         if (CAM_distance > 0) {
           position.timer = millis();
           position.timer_start = position.timer;
-          if (CAM_distance <= 65) {
+          if (CAM_distance <= 57) {
             if (CAM_angle <= 16) {
               Move(CAM_angle, motor_speed);
             } else if (CAM_angle <= 180) {
