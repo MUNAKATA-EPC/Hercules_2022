@@ -22,7 +22,7 @@ threshold_index = 0 #このプログラム上では0で固定(触るな)
 thresholds1 = [(8, 100, 39, 82, -26, 71)]#メイン
 thresholds2 = [(0, 100, -12, 17, 45, 72)]#ゴール（黄色）
 thresholds3 = [(0, 0, 42, 73, 26, 57)]#ゴール（青色）
-thresholds4 = [(30, 100, -64, -8, -32, 32)]#フィールド(緑色)
+thresholds4 = [(30, 85, -64, -20, -32, 32)]#フィールド(緑色)
 
 #上で色の変更可　ただLAB色空間での探知である
 uart = UART(3, 115200, timeout_char = 100)
@@ -52,8 +52,8 @@ while(True):  #メインループ
  N=0#ゴール(黄色)の色を取ったブロックの個数（for文の繰り返した回数）
  m=0#ゴール(青色)の色を取ったブロックの個数(for文の繰り返した回数)
  M=0#フィールドの色を取ったブロックの個数(for文の繰り返した回数)
- cut_fro_and_bak=110#画面上での横線の定義
- cut_lef_and_rig=165#画面上での縦線の定義
+ cut_fro_and_bak=107#画面上での横線の定義
+ cut_lef_and_rig=162#画面上での縦線の定義
  iwashi=0#取得したブロックの密度の最大値を保存
  haraga=0
  shinya=0
@@ -101,7 +101,7 @@ while(True):  #メインループ
      valA[n]=blob.cx()-cut_lef_and_rig#値の調整　画面中央を座標(0,0)に
      vallA[n]=blob.cy()-cut_fro_and_bak
      radsA[n]=int(((math.atan2(vallA[n],valA[n])*-57.32)+180)/2)#範囲の調整片側１８０度
-     distanceA[n]=int((math.sqrt((math.pow(val[n],2))+(math.pow(vall[n],2)))))
+     distanceA[n]=int((math.sqrt((math.pow(valA[n],2))+(math.pow(vallA[n],2)))))
      areaA[n]=blob.area()
 
      #area.append(blob.area())
