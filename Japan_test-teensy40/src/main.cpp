@@ -75,10 +75,6 @@ void setup() {
   Serial2.begin(115200);  //CAMとのシリアル通信
   Serial3.begin(115200);  //USSとのシリアル通信
   Serial4.begin(115200);  //IMUとのシリアル通信
-
-  while ((!Serial2) || (!Serial3) || (!Serial4)) { //接続待機
-    noTone(buzzer);
-  }
   
   tone(buzzer, 2093, 100);
 
@@ -94,7 +90,7 @@ void loop() {
     if (LINE.timer < 300) {
       Move(0, 0);
     } else if (LINE.timer < 500) {
-      Move(CAM_FieldAngle, (motor_speed * 0.75));
+      Move(CAM_FieldAngle, motor_speed);
     } else {
       if ((digitalRead(LINE_1) == LOW) || (digitalRead(LINE_2) == LOW) || (digitalRead(LINE_3) == LOW) || (digitalRead(LINE_4) == LOW)) {
         for (size_t i = 0; i < 50; i++) {
@@ -105,7 +101,7 @@ void loop() {
         if (CAM_distance > 0) {
           position.timer = millis();
           position.timer_start = position.timer;
-          if (CAM_distance <= 57) {
+          if (CAM_distance <= 55) {
             if (CAM_angle <= 16) {
               Move(CAM_angle, motor_speed);
             } else if (CAM_angle <= 180) {
@@ -126,7 +122,7 @@ void loop() {
             if ((CAM_FieldAngle <= 90) || (CAM_FieldAngle >= 270)) {
               Move(CAM_FieldAngle, 0);
             } else {
-              Move(CAM_FieldAngle, (motor_speed * 0.75));
+              Move(CAM_FieldAngle, motor_speed);
             }
           }
         }
