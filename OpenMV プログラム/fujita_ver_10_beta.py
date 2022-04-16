@@ -19,10 +19,10 @@ def led_control(x):
 threshold_index = 0 #このプログラム上では0で固定(触るな)
 
 # Color Tracking Thresholds (L Min, L Max, A Min, A Max, B Min, B Max)
-thresholds1 = [(8, 100, 39, 82, -26, 71)]#メイン
+thresholds1 = [(22, 100, 54, 96, -50, 77)]#メイン
 thresholds2 = [(0, 100, -12, 17, 45, 72)]#ゴール（黄色）
 thresholds3 = [(0, 0, 42, 73, 26, 57)]#ゴール（青色）
-thresholds4 = [(30, 85, -64, -20, -32, 32)]#フィールド(緑色)
+thresholds4 = [(44, 60, -16, 22, -28, -9)]#フィールド(緑色)
 
 #上で色の変更可　ただLAB色空間での探知である
 uart = UART(3, 115200, timeout_char = 100)
