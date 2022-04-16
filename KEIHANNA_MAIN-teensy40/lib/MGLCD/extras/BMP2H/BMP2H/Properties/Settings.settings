@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BMP2H.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="aaa" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Form1</Value>
+    </Setting>
+    <Setting Name="BMP2H" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BMP2H</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

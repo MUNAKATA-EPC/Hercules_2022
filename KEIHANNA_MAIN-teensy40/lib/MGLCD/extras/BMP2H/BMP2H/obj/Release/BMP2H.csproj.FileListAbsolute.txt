@@ -1,0 +1,17 @@
+C:\temp\BMP2H\BMP2H\bin\Release\BMP2H.exe.config
+C:\temp\BMP2H\BMP2H\bin\Release\BMP2H.exe
+C:\temp\BMP2H\BMP2H\bin\Release\BMP2H.pdb
+C:\temp\BMP2H\BMP2H\obj\Release\BMP2H.MainForm.resources
+C:\temp\BMP2H\BMP2H\obj\Release\BMP2H.Properties.Resources.resources
+C:\temp\BMP2H\BMP2H\obj\Release\BMP2H.csproj.GenerateResource.Cache
+C:\temp\BMP2H\BMP2H\obj\Release\BMP2H.exe
+C:\temp\BMP2H\BMP2H\obj\Release\BMP2H.pdb
+C:\Users\VOSTRO3560\Documents\Arduino\libraries\MGLCD\extras\BMP2H\BMP2H\bin\Release\BMP2H.exe.config
+C:\Users\VOSTRO3560\Documents\Arduino\libraries\MGLCD\extras\BMP2H\BMP2H\obj\Release\BMP2H.exe
+C:\Users\VOSTRO3560\Documents\Arduino\libraries\MGLCD\extras\BMP2H\BMP2H\obj\Release\BMP2H.pdb
+C:\Users\VOSTRO3560\Documents\Arduino\libraries\MGLCD\extras\BMP2H\BMP2H\bin\Release\BMP2H.exe
+C:\Users\VOSTRO3560\Documents\Arduino\libraries\MGLCD\extras\BMP2H\BMP2H\bin\Release\BMP2H.pdb
+C:\Users\VOSTRO3560\Documents\Arduino\libraries\MGLCD\extras\BMP2H\BMP2H\obj\Release\BMP2H.csprojResolveAssemblyReference.cache
+C:\Users\VOSTRO3560\Documents\Arduino\libraries\MGLCD\extras\BMP2H\BMP2H\obj\Release\BMP2H.MainForm.resources
+C:\Users\VOSTRO3560\Documents\Arduino\libraries\MGLCD\extras\BMP2H\BMP2H\obj\Release\BMP2H.Properties.Resources.resources
+C:\Users\VOSTRO3560\Documents\Arduino\libraries\MGLCD\extras\BMP2H\BMP2H\obj\Release\BMP2H.csproj.GenerateResource.Cache
