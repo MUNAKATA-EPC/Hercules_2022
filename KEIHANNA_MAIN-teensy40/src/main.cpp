@@ -9,18 +9,17 @@
 DSR1202 dsr1202(1);
 
 #define CS_PIN 10
-#define DI_PIN 9
-#define MAX_FREQ (300000*1000L)
+#define DI_PIN 34
+#define MAX_FREQ (1000*1000L)
 
 MGLCD_AQM1248A_SPI MGLCD(MGLCD_SpiPin2(CS_PIN, DI_PIN), MAX_FREQ);
 
 //定数置き場
-#define buzzer 23 //圧電ブザー
-#define button_LCD_R 11 //タクトスイッチ
-#define button_LCD_L 20 //タクトスイッチ
-#define switch_program 9  //トグルスイッチ
-#define button_LCD_C 10 //白いボタン
-#define LED 13
+#define buzzer 33 //圧電ブザー
+#define button_LCD_R 27 //タクトスイッチ
+#define button_LCD_L 32 //タクトスイッチ
+#define switch_program 31  //トグルスイッチ
+#define button_LCD_C 30 //白いボタン
 #define LINE_1 2
 #define LINE_2 3
 #define LINE_3 4
@@ -55,7 +54,6 @@ int MotorPower[4];  //最終操作量
 //ヘッダファイル読み込み
 #include "Serial_receive.h"
 #include "print_LCD.h"
-#include "control_LED.h"
 #include "pid_parameter.h"
 #include "pid.h"
 #include "motor.h"
@@ -65,26 +63,26 @@ void setup() {
   pinMode(button_LCD_L, INPUT);
   pinMode(button_LCD_C, INPUT);
   pinMode(switch_program, INPUT);
-  pinMode(LED, OUTPUT);
   pinMode(LINE_1, INPUT);
   pinMode(LINE_2, INPUT);
   pinMode(LINE_3, INPUT);
   pinMode(LINE_4, INPUT);
+
+  MGLCD.Reset();  //液晶初期化
+
+  MGLCD.SetRegulatorVoltage(3); //コントラスト粗調整
+  MGLCD.SetVolumeResistor(30); // コントラストの微調整
+
+  MGLCD.Locate(0, 3);
+  MGLCD.print("HELLO!");
+  MGLCD.Locate(0, 5);
+  MGLCD.print("MUNAKO HERCULES");
 
   dsr1202.Init(); //MD準備(USBシリアルも同時開始)
   
   Serial2.begin(115200);  //CAMとのシリアル通信
   Serial3.begin(115200);  //USSとのシリアル通信
   Serial4.begin(115200);  //IMUとのシリアル通信
-
-  MGLCD.Reset();  //液晶初期化処理
-
-  MGLCD.Locate(0, 0);
-  MGLCD.print("HELLO!");
-  MGLCD.Locate(0, 1);
-  MGLCD.print("MUNAKO HERCULES");
-  MGLCD.Locate(0, 2);
-  MGLCD.print("(´・ω・`)");
   
   tone(buzzer, 2093, 100);
 
@@ -93,9 +91,8 @@ void setup() {
 
 void loop() {
   Serial_receive();
-  control_LED();
   pid();
-  if (LCD.state == 0 && LCD_C.state == 1 && digitalRead(switch_program) == HIGH) {
+  if (LCD.state == 0 && LCD_C.state == 1 && digitalRead(switch_program) == LOW) {
     LINE.timer = millis() - LINE.timer_start;
     if (LINE.timer < 300) {
       Move(0, 0);
@@ -138,7 +135,7 @@ void loop() {
         }
       }
     }
-  } else if (LCD.state == 5 && LCD_C.state == 1 && digitalRead(switch_program) == HIGH) {
+  } else if (LCD.state == 5 && LCD_C.state == 1 && digitalRead(switch_program) == LOW) {
     Move(0, 0);
   } else {
     print_LCD();
