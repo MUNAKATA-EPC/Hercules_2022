@@ -86,6 +86,7 @@ void loop()
   } else {
     print_deta -= 180;
   }
+  Serial.println(print_deta / 2);
   Serial1.write(print_deta / 2);
 
   
