@@ -1,4 +1,12 @@
 void print_LCD() {
+  //一定間隔でLCD表示にリセットをかけることで表示位置バグが改善するんじゃないかというアレ
+  hyouji.timer = millis() - hyouji.timer_start;
+  
+  if (hyouji.timer > 100) {
+    MGLCD.ClearScreen();
+    hyouji.timer_start = millis();
+  }
+
   LCD_R.val = digitalRead(button_LCD_R);
   if (LCD_R.val == LOW && LCD_R.old_val == HIGH) {
     LCD.state = LCD.state + 1;
@@ -35,53 +43,53 @@ void print_LCD() {
 
   switch (LCD.state) {
     case 0: //メインプログラム
-      MGLCD.Locate(0, 3);
-      MGLCD.print("Main");
+      MGLCD.Locate(17, 3);
+      MGLCD.print("MAIN");
       if (LCD_C.state == 0) {
-        MGLCD.Locate(0, 5);
-        MGLCD.print("Stop");
+        MGLCD.Locate(17, 5);
+        MGLCD.print("STOP");
       } else if (LCD_C.state == 1) {
-        MGLCD.Locate(0, 5);
-        MGLCD.print("Run");
+        MGLCD.Locate(18, 5);
+        MGLCD.print("RUN");
       }
       break;
     case 1: //IMUモニターと超音波
-      MGLCD.Locate(0, 1);
+      MGLCD.Locate(14, 1);
       MGLCD.print("IMU:");
       if (IMU < 10) {
-        MGLCD.Locate(4, 1);
+        MGLCD.Locate(18, 1);
         MGLCD.print("00");
-        MGLCD.Locate(6, 1);
+        MGLCD.Locate(20, 1);
         MGLCD.print(IMU);
       } else if (IMU < 100) {
-        MGLCD.Locate(4, 1);
+        MGLCD.Locate(18, 1);
         MGLCD.print("0");
-        MGLCD.Locate(5, 1);
+        MGLCD.Locate(19, 1);
         MGLCD.print(IMU);
       } else {
-        MGLCD.Locate(4, 1);
+        MGLCD.Locate(18, 1);
         MGLCD.print(IMU);
       }
 
-      MGLCD.Locate(0, 3);
-      MGLCD.print("Front:");
+      MGLCD.Locate(12, 2);
+      MGLCD.print("FRONT:");
       if (USS1 < 10) {
-        MGLCD.Locate(6, 3);
+        MGLCD.Locate(18, 2);
         MGLCD.print("00");
-        MGLCD.Locate(8, 3);
+        MGLCD.Locate(20, 2);
         MGLCD.print(USS1);
       } else if (USS1 < 100) {
-        MGLCD.Locate(6, 3);
+        MGLCD.Locate(18, 2);
         MGLCD.print("0");
-        MGLCD.Locate(7, 3);
+        MGLCD.Locate(19, 2);
         MGLCD.print(USS1);
       } else {
-        MGLCD.Locate(6, 3);
+        MGLCD.Locate(18, 2);
         MGLCD.print(USS1);
       }
 
       MGLCD.Locate(12, 3);
-      MGLCD.print("Right:");
+      MGLCD.print("RIGHT:");
       if (USS4 < 10) {
         MGLCD.Locate(18, 3);
         MGLCD.print("00");
@@ -97,25 +105,25 @@ void print_LCD() {
         MGLCD.print(USS4);
       }
 
-      MGLCD.Locate(1, 5);
-      MGLCD.print("Left:");
+      MGLCD.Locate(13, 4);
+      MGLCD.print("LEFT:");
       if (USS2 < 10) {
-        MGLCD.Locate(6, 5);
+        MGLCD.Locate(18, 4);
         MGLCD.print("00");
-        MGLCD.Locate(8, 5);
+        MGLCD.Locate(20, 4);
         MGLCD.print(USS2);
       } else if (USS2 < 100) {
-        MGLCD.Locate(6, 5);
+        MGLCD.Locate(18, 4);
         MGLCD.print("0");
-        MGLCD.Locate(7, 5);
+        MGLCD.Locate(19, 4);
         MGLCD.print(USS2);
       } else {
-        MGLCD.Locate(6, 5);
+        MGLCD.Locate(18, 4);
         MGLCD.print(USS2);
       }
 
       MGLCD.Locate(13, 5);
-      MGLCD.print("Back:");
+      MGLCD.print("BACK:");
       if (USS3 < 10) {
         MGLCD.Locate(18, 5);
         MGLCD.print("00");
@@ -132,74 +140,74 @@ void print_LCD() {
       }
       break;
     case 2: //カメラアングルとか
-      MGLCD.Locate(0, 1);
-      MGLCD.print("Ball:");
+      MGLCD.Locate(13, 1);
+      MGLCD.print("BALL:");
       if (CAM_angle < 10) {
-        MGLCD.Locate(5, 1);
+        MGLCD.Locate(18, 1);
         MGLCD.print("00");
-        MGLCD.Locate(7, 1);
+        MGLCD.Locate(20, 1);
         MGLCD.print(CAM_angle);
       } else if (CAM_angle < 100) {
-        MGLCD.Locate(5, 1);
+        MGLCD.Locate(18, 1);
         MGLCD.print("0");
-        MGLCD.Locate(6, 1);
+        MGLCD.Locate(19, 1);
         MGLCD.print(CAM_angle);
       } else {
-        MGLCD.Locate(5, 1);
+        MGLCD.Locate(18, 1);
         MGLCD.print(CAM_angle);
       }
 
-      MGLCD.Locate(0, 3);
-      MGLCD.print("Distance:");
+      MGLCD.Locate(9, 3);
+      MGLCD.print("DISTANCE:");
       if (CAM_distance < 10) {
-        MGLCD.Locate(9, 3);
+        MGLCD.Locate(18, 3);
         MGLCD.print("00");
-        MGLCD.Locate(11, 3);
+        MGLCD.Locate(20, 3);
         MGLCD.print(CAM_distance);
       } else if (CAM_distance < 100) {
-        MGLCD.Locate(9, 3);
+        MGLCD.Locate(18, 3);
         MGLCD.print("0");
-        MGLCD.Locate(10, 3);
+        MGLCD.Locate(19, 3);
         MGLCD.print(CAM_distance);
       } else {
-        MGLCD.Locate(9, 3);
+        MGLCD.Locate(18, 3);
         MGLCD.print(CAM_distance);
       }
 
-      MGLCD.Locate(0, 5);
-      MGLCD.print("Field:");
+      MGLCD.Locate(12, 5);
+      MGLCD.print("FIELD:");
       if (CAM_FieldAngle < 10) {
-        MGLCD.Locate(6, 5);
+        MGLCD.Locate(18, 5);
         MGLCD.print("00");
-        MGLCD.Locate(8, 5);
+        MGLCD.Locate(20, 5);
         MGLCD.print(CAM_FieldAngle);
       } else if (CAM_FieldAngle < 100) {
-        MGLCD.Locate(6, 5);
+        MGLCD.Locate(18, 5);
         MGLCD.print("0");
-        MGLCD.Locate(7, 5);
+        MGLCD.Locate(19, 5);
         MGLCD.print(CAM_FieldAngle);
       } else {
-        MGLCD.Locate(6, 5);
+        MGLCD.Locate(18, 5);
         MGLCD.print(CAM_FieldAngle);
       }
       break;
     case 3: //ToFモニター
-      MGLCD.Locate(0, 3);
-      MGLCD.print("404 Not Found");
+      MGLCD.Locate(8, 3);
+      MGLCD.print("TOF NOT FOUND");
       break;
     case 4: //マウスセンサチェック
-      MGLCD.Locate(0, 3);
-      MGLCD.print("404 Not Found");
+      MGLCD.Locate(6, 3);
+      MGLCD.print("MOUSE NOT FOUND");
       break;
     case 5: //テストプログラム(方向修正)
-      MGLCD.Locate(0, 3);
-      MGLCD.print("Test");
+      MGLCD.Locate(17, 3);
+      MGLCD.print("TEST");
       if (LCD_C.state == 0) {
-        MGLCD.Locate(0, 5);
-        MGLCD.print("Stop");
+        MGLCD.Locate(17, 5);
+        MGLCD.print("STOP");
       } else if (LCD_C.state == 1) {
-        MGLCD.Locate(0, 5);
-        MGLCD.print("Run");
+        MGLCD.Locate(18, 5);
+        MGLCD.print("RUN");
       }
       break;
   }

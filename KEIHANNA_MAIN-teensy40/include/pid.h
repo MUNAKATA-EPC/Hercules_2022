@@ -1,5 +1,5 @@
 void pid() {
-  deviation = IMU - IMU_center;  //偏差:現在角度と目標角度のズレ
+  deviation = IMU_center - IMU;  //偏差:現在角度と目標角度のズレ
 
   val_I += deviation;  //偏差の積分値
 

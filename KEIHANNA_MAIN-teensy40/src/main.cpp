@@ -16,10 +16,10 @@ MGLCD_AQM1248A_SPI MGLCD(MGLCD_SpiPin2(CS_PIN, DI_PIN), MAX_FREQ);
 
 //定数置き場
 #define buzzer 33 //圧電ブザー
-#define button_LCD_R 27 //タクトスイッチ
-#define button_LCD_L 32 //タクトスイッチ
+#define button_LCD_R 27 //タクトスイッチ(右)
+#define button_LCD_L 32 //タクトスイッチ(左)
 #define switch_program 31  //トグルスイッチ
-#define button_LCD_C 30 //白いボタン
+#define button_LCD_C 30 //タクトスイッチ(コマンド)
 #define LINE_1 2
 #define LINE_2 3
 #define LINE_3 4
@@ -42,7 +42,7 @@ public:
 };
 
 Status LCD, LCD_R, LCD_L, LCD_C;
-Timer LINE, position;
+Timer LINE, position, hyouji;
 
 int val_I;
 int deviation, old_deviation, val_D;
@@ -71,11 +71,10 @@ void setup() {
   MGLCD.Reset();  //液晶初期化
 
   MGLCD.SetRegulatorVoltage(3); //コントラスト粗調整
-  MGLCD.SetVolumeResistor(30); // コントラストの微調整
 
-  MGLCD.Locate(0, 3);
+  MGLCD.Locate(15, 3);
   MGLCD.print("HELLO!");
-  MGLCD.Locate(0, 5);
+  MGLCD.Locate(6, 5);
   MGLCD.print("MUNAKO HERCULES");
 
   dsr1202.Init(); //MD準備(USBシリアルも同時開始)
@@ -109,14 +108,14 @@ void loop() {
           position.timer = millis();
           position.timer_start = position.timer;
           if (CAM_distance <= 55) {
-            if (CAM_angle <= 16) {
-              Move(CAM_angle, motor_speed);
-            } else if (CAM_angle <= 180) {
-              Move((CAM_angle + 90), motor_speed);
-            } else if (CAM_angle < 344) {
+            if (CAM_angle < 84) {
               Move((CAM_angle - 90), motor_speed);
-            } else {
+            } else if (CAM_angle <= 106) {
               Move(CAM_angle, motor_speed);
+            } else if (CAM_angle <= 270) {
+              Move((CAM_angle + 90), motor_speed);
+            } else {
+              Move((CAM_angle - 90), motor_speed);
             }
           } else {
             Move(CAM_angle, motor_speed);
@@ -126,7 +125,7 @@ void loop() {
           if (position.timer < 1500) {
             Move(0, 0);
           } else {
-            if ((CAM_FieldAngle <= 90) || (CAM_FieldAngle >= 270)) {
+            if ((CAM_FieldAngle >= 0) || (CAM_FieldAngle >= 180)) {
               Move(CAM_FieldAngle, 0);
             } else {
               Move(CAM_FieldAngle, motor_speed);
@@ -136,7 +135,7 @@ void loop() {
       }
     }
   } else if (LCD.state == 5 && LCD_C.state == 1 && digitalRead(switch_program) == LOW) {
-    Move(0, 0);
+    Move(90, 0);
   } else {
     print_LCD();
     dsr1202.move(0, 0, 0, 0);
