@@ -87,11 +87,10 @@ void Motor(int direction) {
   dsr1202.move(MotorPower[0], MotorPower[1], MotorPower[2], MotorPower[3]);
 }
 
-//0度を真左、90度を直進と想定しています
 void Move(int motor_rads, int motor_power) {
   motor[0] = motor_power * sin((motor_rads + 45) * PI / 180); //右前
-  motor[1] = -motor_power * cos((motor_rads + 45) * PI / 180);  //右後
-  motor[2] = motor_power * cos((motor_rads + 45) * PI / 180); //左前
+  motor[1] = motor_power * cos((motor_rads + 45) * PI / 180);  //右後
+  motor[2] = -motor_power * cos((motor_rads + 45) * PI / 180); //左前
   motor[3] = -motor_power * sin((motor_rads + 45) * PI / 180);  //左後
 
   MotorPower[0] = operation_A + motor[0];

@@ -1,18 +1,13 @@
 //ライブラリ読み込み
 #include <Arduino.h>
 #include <DSR1202.h>
-#include <MGLCD.h>
-#include <MGLCD_SPI.h>
-#include <SPI.h>
+#include <U8g2lib.h>
 
 //ライブラリセットアップ
 DSR1202 dsr1202(1);
 
-#define CS_PIN 10
-#define DI_PIN 34
-#define MAX_FREQ (1000*1000L)
-
-MGLCD_AQM1248A_SPI MGLCD(MGLCD_SpiPin2(CS_PIN, DI_PIN), MAX_FREQ);
+//AQM1248Aは128 * 48
+U8G2_ST7565_AK_AQM1248_F_4W_HW_SPI u8g2(U8G2_R0, 10, 34, 35); //CS, DC(RS), Reset(適当)
 
 //定数置き場
 #define buzzer 33 //圧電ブザー
@@ -20,10 +15,11 @@ MGLCD_AQM1248A_SPI MGLCD(MGLCD_SpiPin2(CS_PIN, DI_PIN), MAX_FREQ);
 #define button_LCD_L 32 //タクトスイッチ(左)
 #define switch_program 31  //トグルスイッチ
 #define button_LCD_C 30 //タクトスイッチ(コマンド)
-#define LINE_1 2
-#define LINE_2 3
-#define LINE_3 4
-#define LINE_4 5
+#define LINE_1 2  //前
+#define LINE_2 3  //右
+#define LINE_3 4  //後
+#define LINE_4 5  //左
+#define LED 9
 
 //グローバル変数置き場(本当は減らしたいけど初心者なので当分このまま)
 int head_CAM, CAM_angle, CAM_distance, CAM_FieldAngle;  //OpenMV 
@@ -42,7 +38,7 @@ public:
 };
 
 Status LCD, LCD_R, LCD_L, LCD_C;
-Timer LINE, position, hyouji;
+Timer LINE, position;
 
 int val_I;
 int deviation, old_deviation, val_D;
@@ -59,6 +55,17 @@ int MotorPower[4];  //最終操作量
 #include "motor.h"
 
 void setup() {
+  u8g2.begin();
+
+  u8g2.setFlipMode(1);  //反転は1
+
+  u8g2.clearBuffer();					//内部メモリクリア(毎回表示内容更新前に置く)
+  u8g2.setFont(u8g2_font_ncenB14_tr);	//フォント選択(これは横に14ピクセル、縦に14ピクセル)
+  u8g2.drawStr(0,31,"Hello World!");	//書き込み内容書くところ(画面左端から横に何ピクセル、縦に何ピクセルか指定)
+  u8g2.sendBuffer();					//ディスプレイに送る(毎回書く)
+
+  tone(buzzer, 1568, 100);
+
   pinMode(button_LCD_R, INPUT);
   pinMode(button_LCD_L, INPUT);
   pinMode(button_LCD_C, INPUT);
@@ -68,15 +75,6 @@ void setup() {
   pinMode(LINE_3, INPUT);
   pinMode(LINE_4, INPUT);
 
-  MGLCD.Reset();  //液晶初期化
-
-  MGLCD.SetRegulatorVoltage(3); //コントラスト粗調整
-
-  MGLCD.Locate(15, 3);
-  MGLCD.print("HELLO!");
-  MGLCD.Locate(6, 5);
-  MGLCD.print("MUNAKO HERCULES");
-
   dsr1202.Init(); //MD準備(USBシリアルも同時開始)
   
   Serial2.begin(115200);  //CAMとのシリアル通信
@@ -84,21 +82,19 @@ void setup() {
   Serial4.begin(115200);  //IMUとのシリアル通信
   
   tone(buzzer, 2093, 100);
-
-  MGLCD.ClearScreen();  //液晶表示削除
 }
 
 void loop() {
   Serial_receive();
   pid();
-  if (LCD.state == 0 && LCD_C.state == 1 && digitalRead(switch_program) == LOW) {
+  if ((LCD.state == 0) && (LCD_C.state == 1) && (digitalRead(switch_program) == LOW)) {
     LINE.timer = millis() - LINE.timer_start;
     if (LINE.timer < 300) {
       Move(0, 0);
     } else if (LINE.timer < 500) {
       Move(CAM_FieldAngle, motor_speed);
     } else {
-      if ((digitalRead(LINE_1) == LOW) || (digitalRead(LINE_2) == LOW) || (digitalRead(LINE_3) == LOW) || (digitalRead(LINE_4) == LOW)) {
+      if ((digitalRead(LINE_1) == LOW) || (digitalRead(LINE_2) == LOW) || (digitalRead(LINE_4) == LOW)) {
         for (size_t i = 0; i < 50; i++) {
           Serial1.println("1R0002R0003R0004R000");
         }
@@ -108,14 +104,14 @@ void loop() {
           position.timer = millis();
           position.timer_start = position.timer;
           if (CAM_distance <= 55) {
-            if (CAM_angle < 84) {
-              Move((CAM_angle - 90), motor_speed);
-            } else if (CAM_angle <= 106) {
+            if (CAM_angle <= 16) {
               Move(CAM_angle, motor_speed);
-            } else if (CAM_angle <= 270) {
+            } else if (CAM_angle <= 180) {
               Move((CAM_angle + 90), motor_speed);
-            } else {
+            } else if (CAM_angle < 344) {
               Move((CAM_angle - 90), motor_speed);
+            } else {
+              Move(CAM_angle, motor_speed);
             }
           } else {
             Move(CAM_angle, motor_speed);
@@ -125,7 +121,7 @@ void loop() {
           if (position.timer < 1500) {
             Move(0, 0);
           } else {
-            if ((CAM_FieldAngle >= 0) || (CAM_FieldAngle >= 180)) {
+            if ((CAM_FieldAngle <= 90) || (CAM_FieldAngle >= 270)) {
               Move(CAM_FieldAngle, 0);
             } else {
               Move(CAM_FieldAngle, motor_speed);
@@ -134,8 +130,8 @@ void loop() {
         }
       }
     }
-  } else if (LCD.state == 5 && LCD_C.state == 1 && digitalRead(switch_program) == LOW) {
-    Move(90, 0);
+  } else if ((LCD.state == 7) && (LCD_C.state == 1) && (digitalRead(switch_program) == LOW)) {
+    Move(0, 0);
   } else {
     print_LCD();
     dsr1202.move(0, 0, 0, 0);
