@@ -42,13 +42,17 @@ void setup()
   Wire.begin();
   Wire.setClock(400000);
 
- \
+ 
   Serial1.begin(115200);
   Serial.begin(115200);
 
   imu_init();
-  imu_attachSensorOfset(93, -26, 13, 1565);
-  // Your offsets:	-2841	313	1565	93	-26	13
+  //imu_attachSensorOfset(93, -26, 13, 1565);
+  // offsets example:	-2841	313	1565	93	-26	13
+
+  imu_attachSensorOfset(46, 91, 17, 5784);
+  // my offsets -2704 -952 5784 46 91 17
+
   /*
 	 Calibrationプログラムによって得られたオフセットを適用します
 	 コメントアウトされた"Your offsets"の後の並びとimu_attachSensorOfset()の引数を参照して
@@ -75,17 +79,21 @@ void loop()
   if(digitalRead(SW_PIN) == LOW){
   	attachOfset();
   }
-  //Serial.println(ypr[0] / PI * 128.0);
-  if ((ypr[0] / PI * 180) < 0) {
-    print_deta = (ypr[0] / PI * 180) + 360;
+
+  print_deta = ypr[0] / PI * 180.0;
+  
+  if (print_deta < 0) {
+    print_deta += 360;
   } else {
-    print_deta = (ypr[0] / PI * 180);
+    print_deta += 0;
   }
+ 
   if (print_deta < 180) {
     print_deta += 180;
   } else {
     print_deta -= 180;
   }
+
   Serial.println(print_deta / 2);
   Serial1.write(print_deta / 2);
 
