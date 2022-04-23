@@ -81,9 +81,10 @@ void print_LCD() {
     u8g2.drawStr(86, 28, DisplayUSS4);
 
     //全体
-    char DisplayUSS [2] = {"0"};
-    DisplayUSS [0] = '0' + USS % 10;
-    u8g2.drawStr(57, 28, DisplayUSS);
+    char DisplayUSS [3] = {"00"};
+    DisplayUSS [0] = '0' + (USS / 10) % 10;
+    DisplayUSS [1] = '0' + USS % 10;
+    u8g2.drawStr(48, 28, DisplayUSS);
 
   } else if (LCD.state == 3) {  //カメラアングル
 

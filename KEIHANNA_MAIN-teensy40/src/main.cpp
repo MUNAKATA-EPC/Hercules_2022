@@ -38,7 +38,7 @@ public:
 };
 
 Status LCD, LCD_R, LCD_L, LCD_C;
-Timer LINE, position;
+Timer LINE, position, Ball;
 
 int val_I;
 int deviation, old_deviation, val_D;
@@ -64,7 +64,7 @@ void setup() {
   u8g2.drawStr(0,31,"Hello World!");	//書き込み内容書くところ(画面左端から横に何ピクセル、縦に何ピクセルか指定)
   u8g2.sendBuffer();					//ディスプレイに送る(毎回書く)
 
-  tone(buzzer, 1568, 100);
+  tone(buzzer, 1568, 100);  //通電確認音
 
   pinMode(button_LCD_R, INPUT);
   pinMode(button_LCD_L, INPUT);
@@ -81,7 +81,7 @@ void setup() {
   Serial3.begin(115200);  //USSとのシリアル通信
   Serial4.begin(115200);  //IMUとのシリアル通信
   
-  tone(buzzer, 2093, 100);
+  tone(buzzer, 2093, 100);  //起動確認音
 }
 
 void loop() {
@@ -89,42 +89,147 @@ void loop() {
   pid();
   if ((LCD.state == 0) && (LCD_C.state == 1) && (digitalRead(switch_program) == LOW)) {
     LINE.timer = millis() - LINE.timer_start;
-    if (LINE.timer < 300) {
+    if (LINE.timer < 150) {
+      if (IMU == 10) {
+        LINE.timer = 300;
+        goto Ball;
+      }
       Move(0, 0);
-    } else if (LINE.timer < 500) {
-      Move(CAM_FieldAngle, motor_speed);
+    } else if (LINE.timer < 300) {
+      if (IMU == 10) {
+        LINE.timer = 300;
+        goto Ball;
+      }
+      Motor(USS);
     } else {
       if ((digitalRead(LINE_1) == LOW) || (digitalRead(LINE_2) == LOW) || (digitalRead(LINE_4) == LOW)) {
+        if (USS == 10) {
+          goto Ball;
+        }
         for (size_t i = 0; i < 50; i++) {
           Serial1.println("1R0002R0003R0004R000");
         }
         LINE.timer_start = millis();
       } else {
+        Ball:
         if (CAM_distance > 0) {
           position.timer = millis();
           position.timer_start = position.timer;
-          if (CAM_distance <= 55) {
-            if (CAM_angle <= 16) {
-              Move(CAM_angle, motor_speed);
-            } else if (CAM_angle <= 180) {
-              Move((CAM_angle + 90), motor_speed);
-            } else if (CAM_angle < 344) {
-              Move((CAM_angle - 90), motor_speed);
+          Ball.timer = millis() - Ball.timer_start;
+          if (Ball.timer <= 1500) { //標準速度
+            if (CAM_distance <= 38) {
+              if (USS2 < 50 && USS3 > 50) {
+                if (CAM_angle <= 16) {
+                  Move(CAM_angle, motor_speed);
+                } else if (CAM_angle <= 225) {
+                  Move((CAM_angle + 90), motor_speed);
+                  Ball.timer_start = millis();
+                } else if (CAM_angle < 344) {
+                  Move((CAM_angle - 90), motor_speed);
+                  Ball.timer_start = millis();
+                } else {
+                  Move(CAM_angle, motor_speed);
+                }
+              } else if (USS2 > 50 && USS3 < 50) {
+                if (CAM_angle <= 16) {
+                  Move(CAM_angle, motor_speed);
+                } else if (CAM_angle <= 135) {
+                  Move((CAM_angle + 90), motor_speed);
+                  Ball.timer_start = millis();
+                } else if (CAM_angle < 344) {
+                  Move((CAM_angle - 90), motor_speed);
+                  Ball.timer_start = millis();
+                } else {
+                  Move(CAM_angle, motor_speed);
+                }
+              } else {
+                if (CAM_angle <= 16) {
+                  Move(CAM_angle, motor_speed);
+                } else if (CAM_angle <= 180) {
+                  Move((CAM_angle + 90), motor_speed);
+                  Ball.timer_start = millis();
+                } else if (CAM_angle < 344) {
+                  Move((CAM_angle - 90), motor_speed);
+                  Ball.timer_start = millis();
+                } else {
+                  Move(CAM_angle, motor_speed);
+                }
+              }
             } else {
               Move(CAM_angle, motor_speed);
+              Ball.timer_start = millis();
             }
-          } else {
-            Move(CAM_angle, motor_speed);
+          } else {  //マキシマムモード()
+            if (CAM_distance <= 38) {
+              if (USS2 < 50 && USS3 > 50) {
+                if (CAM_angle <= 16) {
+                  Move(CAM_angle, (motor_speed + 3));
+                } else if (CAM_angle <= 225) {
+                  Move((CAM_angle + 90), motor_speed);
+                  Ball.timer_start = millis();
+                } else if (CAM_angle < 344) {
+                  Move((CAM_angle - 90), motor_speed);
+                  Ball.timer_start = millis();
+                } else {
+                  Move(CAM_angle, (motor_speed + 3));
+                }
+              } else if (USS2 > 50 && USS3 < 50) {
+                if (CAM_angle <= 16) {
+                  Move(CAM_angle, (motor_speed + 3));
+                } else if (CAM_angle <= 135) {
+                  Move((CAM_angle + 90), motor_speed);
+                  Ball.timer_start = millis();
+                } else if (CAM_angle < 344) {
+                  Move((CAM_angle - 90), motor_speed);
+                  Ball.timer_start = millis();
+                } else {
+                  Move(CAM_angle, (motor_speed + 3));
+                }
+              } else {
+                if (CAM_angle <= 16) {
+                  Move(CAM_angle, (motor_speed + 3));
+                } else if (CAM_angle <= 180) {
+                  Move((CAM_angle + 90), motor_speed);
+                  Ball.timer_start = millis();
+                } else if (CAM_angle < 344) {
+                  Move((CAM_angle - 90), motor_speed);
+                  Ball.timer_start = millis();
+                } else {
+                  Move(CAM_angle, (motor_speed + 3));
+                }
+              }
+            } else {
+              Move(CAM_angle, motor_speed);
+              Ball.timer_start = millis();
+            }
           }
         } else {
           position.timer = millis() - position.timer_start;
           if (position.timer < 1500) {
             Move(0, 0);
           } else {
-            if ((CAM_FieldAngle <= 90) || (CAM_FieldAngle >= 270)) {
-              Move(CAM_FieldAngle, 0);
+            if (USS3 > 50) {
+              if (USS2 < 70) {
+                if (USS4 < 70) {
+                  Motor(3);  //後
+                } else {
+                  Motor(9);  //右後
+                }
+              } else if (USS4 < 70) {
+                Motor(8);  //左後
+              } else {
+                Motor(3);  //後
+              }
+            } else if (USS2 < 70) {
+              if (USS4 < 70) {
+                Motor(1);  //方向修正
+              } else {
+                Motor(5);  //右
+              }
+            } else if (USS4 < 70) {
+              Motor(4);  //左
             } else {
-              Move(CAM_FieldAngle, motor_speed);
+              Motor(1);  //方向修正
             }
           }
         }
