@@ -19,7 +19,7 @@ def led_control(x):
 threshold_index = 0 #このプログラム上では0で固定(触るな)
 
 # Color Tracking Thresholds (L Min, L Max, A Min, A Max, B Min, B Max)
-thresholds1 = [(0, 100, 35, 72, 15, 41)]#メイン
+thresholds1 = [(40, 100, 40, 76, 16, 45)]#メイン
 thresholds2 = [(0, 100, -12, 17, 45, 72)]#ゴール（黄色）
 thresholds3 = [(0, 0, 42, 73, 26, 57)]#ゴール（青色）
 thresholds4 = [(44, 60, -16, 22, -28, -9)]#フィールド(緑色)
@@ -33,11 +33,12 @@ sensor.reset()
 sensor.set_pixformat(sensor.RGB565)#カラースケール
 sensor.set_framesize(sensor.QVGA)#解像度
 sensor.skip_frames(time = 400)#描写速度
-sensor.set_contrast(1)#コントラスト
+sensor.set_contrast(-2)#コントラスト
 sensor.set_brightness(-3)#明るさ
-sensor.set_saturation(1)#彩度
+sensor.set_saturation(0)#彩度
 sensor.set_auto_gain(False) # must be turned off for color tracking
-#sensor.set_auto_whitebal(False,(-5.02073, -5.019987, 0.6176831))# must be turned off for color tracking
+
+sensor.set_auto_whitebal(False,(-2.502073, -3.219987, 0.6176831))# must be turned off for color tracking
 clock = time.clock()
 
 tim1 = Timer(4, freq=1000)
@@ -52,8 +53,8 @@ while(True):  #メインループ
  N=0#ゴール(黄色)の色を取ったブロックの個数（for文の繰り返した回数）
  m=0#ゴール(青色)の色を取ったブロックの個数(for文の繰り返した回数)
  M=0#フィールドの色を取ったブロックの個数(for文の繰り返した回数)
- cut_fro_and_bak=105#画面上での横線の定義
- cut_lef_and_rig=130#画面上での縦線の定義
+ cut_fro_and_bak=100#画面上での横線の定義
+ cut_lef_and_rig=135#画面上での縦線の定義
  iwashi=0#取得したブロックの密度の最大値を保存
  haraga=0
  shinya=0
@@ -279,7 +280,7 @@ while(True):  #メインループ
  uart.writechar(255)
  uart.writechar(radsA[ball_number])
  uart.writechar(distanceA[ball_number])
- print(radsA[ball_number])
+ print(distanceA[ball_number])
  #uart.writechar(radsB[yellow_number])
  #uart.writechar(radsC[blue_number])
  uart.writechar(radsD[field_number])
