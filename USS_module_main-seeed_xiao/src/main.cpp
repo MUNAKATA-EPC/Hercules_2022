@@ -10,7 +10,7 @@
 #define trigPin4 9  //  右超音波のトリガー
 #define LED 13  //LEDピン
 
-#define val 35.00
+#define val 30.00
 
 class ClassA {
 private:
@@ -18,9 +18,6 @@ private:
 public:
   double Duration = 0;
   double Distance = 0;
-
-  int send_Distance = 0;
-
 };
 
 ClassA front, left, back, right;
@@ -151,11 +148,6 @@ void loop() {
 
   Serial.println(right.Distance);  //シリアルモニタ用
 
-  front.send_Distance = front.Distance;
-  left.send_Distance = left.Distance;
-  back.send_Distance = back.Distance;
-  right.send_Distance = right.Distance;
-
   Serial1.write(255);
   
   if (front.Distance < val) {
@@ -215,17 +207,17 @@ void loop() {
 
     }
   } else if (right.Distance < 35.00) {
-    Serial1.write(2); //左
+    Serial1.write(4); //左
 
   } else {
-    Serial1.write(2); //停止
+    Serial1.write(10); //停止
 
   }
 
-  Serial1.write(front.send_Distance);
-  Serial1.write(left.send_Distance);
-  Serial1.write(back.send_Distance);
-  Serial1.write(right.send_Distance);
+  Serial1.write(front.Distance);
+  Serial1.write(left.Distance);
+  Serial1.write(back.Distance);
+  Serial1.write(right.Distance);
 
   Serial1.flush();
 }
