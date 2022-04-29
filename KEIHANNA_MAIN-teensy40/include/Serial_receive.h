@@ -4,7 +4,8 @@ void Serial_receive() {
     if (head_CAM == 255) {
       CAM_angle = Serial2.read() * 2;
       CAM_distance = Serial2.read();
-      CAM_FieldAngle = Serial2.read() * 2;
+      CAM_YellowAngle = Serial2.read() * 2;
+      CAM_BlueAngle = Serial2.read() * 2;
     }
   }
 

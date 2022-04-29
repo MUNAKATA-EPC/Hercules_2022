@@ -102,13 +102,6 @@ void print_LCD() {
     DisplayCAM_distance [2] = '0' + CAM_distance % 10;
     u8g2.drawStr(56, 28, DisplayCAM_distance);
 
-    u8g2.drawStr(0, 42, "Field:");
-    char DisplayCAM_FieldAngle [4] = {"000"};
-    DisplayCAM_FieldAngle [0] = '0' + (CAM_FieldAngle / 100) % 10;
-    DisplayCAM_FieldAngle [1] = '0' + (CAM_FieldAngle / 10) % 10;
-    DisplayCAM_FieldAngle [2] = '0' + CAM_FieldAngle % 10;
-    u8g2.drawStr(56, 42, DisplayCAM_FieldAngle);
-
   } else if (LCD.state == 4) {  //ラインセンサ
 
     if (digitalRead(LINE_1) == LOW) { //前のライン反応
@@ -129,9 +122,21 @@ void print_LCD() {
       u8g2.drawStr(65, 42, "HIGH");
     }
 
-  } else if (LCD.state == 5) {  //ToF
+  } else if (LCD.state == 5) {  //ゴール角度
 
-    u8g2.drawStr(0, 28, "ToF");
+    u8g2.drawStr(0, 14, "Yellow:");
+    char DisplayCAM_YellowAngle [4] = {"000"};
+    DisplayCAM_YellowAngle [0] = '0' + (CAM_YellowAngle / 100) % 10;
+    DisplayCAM_YellowAngle [1] = '0' + (CAM_YellowAngle / 10) % 10;
+    DisplayCAM_YellowAngle [2] = '0' + CAM_YellowAngle % 10;
+    u8g2.drawStr(98, 14, DisplayCAM_YellowAngle);
+
+    u8g2.drawStr(0, 28, "Blue:");
+    char DisplayCAM_BlueAngle [4] = {"000"};
+    DisplayCAM_BlueAngle [0] = '0' + (CAM_BlueAngle / 100) % 10;
+    DisplayCAM_BlueAngle [1] = '0' + (CAM_BlueAngle / 10) % 10;
+    DisplayCAM_BlueAngle [2] = '0' + CAM_BlueAngle % 10;
+    u8g2.drawStr(56, 28, DisplayCAM_BlueAngle);
 
   } else if (LCD.state == 6) {  //マウス
 
