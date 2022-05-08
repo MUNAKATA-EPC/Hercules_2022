@@ -23,4 +23,12 @@ void Serial_receive() {
   if (Serial4.available() > 0) {
     IMU = Serial4.read();
   }
+
+  if (Serial5.available() > 0) {
+    head_BT = Serial5.read();
+    if (head_BT == 255) {
+      BT_Angle = Serial5.read() * 2;
+      BT_Power = Serial5.read();
+    }
+  }
 }

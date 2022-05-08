@@ -6,7 +6,7 @@ void print_LCD() {
   if ((LCD_R.val == LOW) && (LCD_R.old_val == HIGH)) {
     LCD.state = LCD.state + 1;
     LCD_C.state = 0;
-    if (LCD.state >= 8) {
+    if (LCD.state >= 9) {
       LCD.state = 0;
     }
   }
@@ -17,12 +17,12 @@ void print_LCD() {
     LCD.state = LCD.state - 1;
     LCD_C.state = 0;
     if (LCD.state <= -1) {
-      LCD.state = 7;
+      LCD.state = 8;
     }
   }
   LCD_L.old_val = LCD_L.val;
 
-  if ((LCD.state == 0) || (LCD.state == 7)) {
+  if ((LCD.state == 0) || (LCD.state == 7) || (LCD.state == 8)) {
     LCD_C.val = digitalRead(button_LCD_C);
     if ((LCD_C.val == LOW) && (LCD_C.old_val == HIGH)) {
       LCD_C.state = LCD_C.state + 1;
@@ -150,7 +150,27 @@ void print_LCD() {
       u8g2.drawStr(0, 28, "Run.Test");
     }
 
-  }
+  } else if (LCD.state == 8) {  //無線操作
 
+    u8g2.drawStr(0, 21, "BTmode");
+    if (LCD_C.state == 0) {
+      u8g2.drawStr(0, 35, "Stop");
+    } else if (LCD_C.state == 1) {
+      u8g2.drawStr(0, 35, "Run");
+    }
+
+    char DisplayBT_Angle [4] = {"000"};
+    DisplayBT_Angle [0] = '0' + (BT_Angle / 100) % 10;
+    DisplayBT_Angle [1] = '0' + (BT_Angle / 10) % 10;
+    DisplayBT_Angle [2] = '0' + BT_Angle % 10;
+    u8g2.drawStr(0, 49, DisplayBT_Angle);
+
+    char DisplayBT_Power [4] = {"000"};
+    DisplayBT_Power [0] = '0' + (BT_Power / 100) % 10;
+    DisplayBT_Power [1] = '0' + (BT_Power / 10) % 10;
+    DisplayBT_Power [2] = '0' + BT_Power % 10;
+    u8g2.drawStr(65, 49, DisplayBT_Power);
+
+  }
   u8g2.sendBuffer();					//ディスプレイに送る(毎回書く)
 }

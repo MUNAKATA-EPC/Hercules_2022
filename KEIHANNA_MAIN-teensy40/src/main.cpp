@@ -25,6 +25,7 @@ U8G2_ST7565_AK_AQM1248_F_4W_HW_SPI u8g2(U8G2_R0, 10, 34, 35); //CS, DC(RS), Rese
 int head_CAM, CAM_angle, CAM_distance, CAM_YellowAngle, CAM_BlueAngle;  //OpenMVから受け取るデータ用
 int head_USS, USS, USS1, USS2, USS3, USS4;  //USSから受け取るデータ用
 int IMU; //IMU値
+int head_BT, BT_Angle, BT_Power; //無線機
 
 class Status {
 public:
@@ -64,7 +65,7 @@ void setup() {
   u8g2.drawStr(0,31,"Hello World!");	//書き込み内容書くところ(画面左端から横に何ピクセル、縦に何ピクセルか指定。ちなみに、文字の左下が指示座標になる。)
   u8g2.sendBuffer();  //ディスプレイに送る(毎回書く)
 
-  //tone(buzzer, 1568, 100);  //通電確認音
+  tone(buzzer, 1568, 100);  //通電確認音
 
   //各ピン設定開始
   pinMode(button_LCD_R, INPUT);
@@ -81,41 +82,43 @@ void setup() {
   Serial2.begin(115200);  //OpenMVとのシリアル通信
   Serial3.begin(115200);  //USSとのシリアル通信
   Serial4.begin(115200);  //IMUとのシリアル通信
+  Serial5.begin(115200);  //M5Stamp Picoとの通信
   
-  //tone(buzzer, 2093, 100);  //起動確認音
+  tone(buzzer, 2093, 100);  //起動確認音
 
-  //Adventurer 3 Lite
-  tone(buzzer, 1046.502, 1000); //ド6
+  /*Adventurer 3 Lite
+  tone(buzzer, 1047, 1000); //ド6
   delay(1000);
   noTone(buzzer);
   delay(250);
-  tone(buzzer, 1318.510, 150); //ミ6
+  tone(buzzer, 1319, 150); //ミ6
   delay(150);
   noTone(buzzer);
   delay(100);
-  tone(buzzer, 1396.913, 250); //ファ6
+  tone(buzzer, 1397, 250); //ファ6
   delay(250);
   noTone(buzzer);
   delay(150);
-  tone(buzzer, 1567.982, 150); //ソ6
+  tone(buzzer, 1568, 150); //ソ6
   delay(150);
   noTone(buzzer);
   delay(100);
-  tone(buzzer, 1760.000, 300); //ラ6
+  tone(buzzer, 1760, 300); //ラ6
   delay(300);
   noTone(buzzer);
   delay(100);
-  tone(buzzer, 1567.982, 250); //ソ6
+  tone(buzzer, 1568, 250); //ソ6
   delay(250);
   noTone(buzzer);
   delay(200);
-  tone(buzzer, 1567.982, 250); //ソ6
+  tone(buzzer, 1568, 250); //ソ6
   delay(250);
   noTone(buzzer);
   delay(200);
-  tone(buzzer, 2093.005, 250); //ド7
+  tone(buzzer, 2093, 250); //ド7
   delay(250);
   noTone(buzzer);
+  */
 }
 
 void loop() {
@@ -167,7 +170,7 @@ void loop() {
               Move(CAM_angle, motor_speed);
               Ball.timer_start = millis();
             }
-          } else {  //マキシマムモード(一定時間経過後パワーを2%上げる)
+          } else {  //マキシマムモード(一定時間経過後パワーを上げる)
             if (CAM_distance <= 52) {
               if (CAM_angle <= 20) {
                 Move(CAM_angle, (motor_speed + 3));
@@ -219,6 +222,12 @@ void loop() {
     }
   } else if ((LCD.state == 7) && (LCD_C.state == 1) && (digitalRead(switch_program) == LOW)) {
     Move(0, 0);
+  } else if ((LCD.state == 8) && (LCD_C.state == 1) && (digitalRead(switch_program) == LOW)) {
+    if (BT_Angle > 360) {
+      Move(0, 0);
+    } else {
+      Move(BT_Angle, BT_Power);
+    }
   } else {
     print_LCD();
     dsr1202.move(0, 0, 0, 0);
