@@ -56,8 +56,9 @@ int MotorPower[4];  //最終操作量(方向修正による操作量を含めた
 #include "motor.h"
 
 void setup() {
-  u8g2.begin(); //LCD初期化
+  tone(buzzer, 1568, 100);  //通電確認音
 
+  u8g2.begin(); //LCD初期化
   u8g2.setFlipMode(1);  //反転は1(通常表示は0)
 
   u8g2.clearBuffer(); //内部メモリクリア(毎回表示内容更新前に置く)
@@ -65,7 +66,6 @@ void setup() {
   u8g2.drawStr(0,31,"Hello World!");	//書き込み内容書くところ(画面左端から横に何ピクセル、縦に何ピクセルか指定。ちなみに、文字の左下が指示座標になる。)
   u8g2.sendBuffer();  //ディスプレイに送る(毎回書く)
 
-  tone(buzzer, 1568, 100);  //通電確認音
 
   //各ピン設定開始
   pinMode(button_LCD_R, INPUT);
@@ -84,7 +84,7 @@ void setup() {
   Serial4.begin(115200);  //IMUとのシリアル通信
   Serial5.begin(115200);  //M5Stamp Picoとの通信
   
-  tone(buzzer, 2093, 100);  //起動確認音
+  //tone(buzzer, 2093, 100);  //起動確認音
 
   /*Adventurer 3 Lite
   tone(buzzer, 1047, 1000); //ド6
@@ -223,11 +223,7 @@ void loop() {
   } else if ((LCD.state == 7) && (LCD_C.state == 1) && (digitalRead(switch_program) == LOW)) {
     Move(0, 0);
   } else if ((LCD.state == 8) && (LCD_C.state == 1) && (digitalRead(switch_program) == LOW)) {
-    if (BT_Angle > 360) {
-      Move(0, 0);
-    } else {
-      Move(BT_Angle, BT_Power);
-    }
+    Move(BT_Angle, BT_Power);
   } else {
     print_LCD();
     dsr1202.move(0, 0, 0, 0);

@@ -129,14 +129,14 @@ void print_LCD() {
     DisplayCAM_YellowAngle [0] = '0' + (CAM_YellowAngle / 100) % 10;
     DisplayCAM_YellowAngle [1] = '0' + (CAM_YellowAngle / 10) % 10;
     DisplayCAM_YellowAngle [2] = '0' + CAM_YellowAngle % 10;
-    u8g2.drawStr(98, 14, DisplayCAM_YellowAngle);
+    u8g2.drawStr(73, 14, DisplayCAM_YellowAngle);
 
     u8g2.drawStr(0, 28, "Blue:");
     char DisplayCAM_BlueAngle [4] = {"000"};
     DisplayCAM_BlueAngle [0] = '0' + (CAM_BlueAngle / 100) % 10;
     DisplayCAM_BlueAngle [1] = '0' + (CAM_BlueAngle / 10) % 10;
     DisplayCAM_BlueAngle [2] = '0' + CAM_BlueAngle % 10;
-    u8g2.drawStr(56, 28, DisplayCAM_BlueAngle);
+    u8g2.drawStr(73, 28, DisplayCAM_BlueAngle);
 
   } else if (LCD.state == 6) {  //マウス
 

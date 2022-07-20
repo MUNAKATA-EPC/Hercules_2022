@@ -1,4 +1,4 @@
-int IMU_center = 90; //ジャイロ中心値
+#define IMU_center 90 //ジャイロ中心値
 #define gain_P 1.14  //比例ゲイン
 #define gain_I 0.00  //積分ゲイン
 #define gain_D 119.93  //微分ゲイン

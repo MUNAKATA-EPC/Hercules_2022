@@ -9,7 +9,7 @@ void pid() {
     val_I = 30000;
   }
 
-  if ((IMU >= 88) && (IMU <= 92)) {
+  if (abs(deviation) <= 2) {
     val_I = 0;
   }
 
